@@ -12,18 +12,29 @@ js/main.js         — mobilní menu, vizuální jazykový přepínač, reveal a
 ```
 
 ## Co je reálný obsah
-Jména pilotů (Tomáš, Bohdan, Lubo, Jarda, Jiří), pozice ve formaci, registrace
+Jména pilotů (Tomáš, Bob, Lubo, Jarda, Jiří), pozice ve formaci, registrace
 strojů (OK-KNR, OK-MPR, OK-LPR, OK-SEN), typy letadel, LKZA a souřadnice,
 e-mail a Facebook — vychází z aktuálně dostupného obsahu na follow-me.cz.
+Portrétní fotky pilotů jsou reálné snímky dodané klientem, zpracované do
+jednotného retro duotone stylu (viz níže).
+
+## Fotografie pilotů
+Pět dodaných portrétů (`assets/images/pilots/*.jpg`) prošlo stejným
+zpracováním: převod do stupňů šedi, zvýšený kontrast, duotone remap do
+barev webu (černá → teplá hliníková), jemné filmové zrno a vinětace — aby
+seděly do industriální/archivní nálady webu a zároveň vypadaly jednotně, i
+když byly pořízené každá jinde a jindy. Zdrojové barevné fotky nejsou v
+repozitáři, jen zpracovaný výstup.
 
 ## Co je potřeba doplnit / ověřit s klientem
-- **Fotografie.** Všechny portréty pilotů a fotky ve strojích/galerii jsou
-  zatím abstraktní SVG/CSS placeholdery v barvách značky — ne skutečné
-  snímky. Jakmile dodáte fotoarchiv, nahradíme je 1:1 ve stejném ořezu.
-- **Chybějící čísla.** U Bohdana (výška/váha/hodiny), Jardy (věk/hodiny) a
+- **Fotky strojů a galerie.** Portréty pilotů už jsou reálné; fotky ve
+  strojích a galerii jsou zatím abstraktní CSS placeholdery v barvách
+  značky. Jakmile dodáte fotoarchiv letadel/akcí, nahradíme je stejným
+  postupem jako portréty.
+- **Chybějící čísla.** U Boba (výška/váha/hodiny), Jardy (věk/hodiny) a
   Jiřího (věk/hodiny/přesná pozice) starý web čísla neuváděl — na webu jsou
   proto pomlčky místo vymyšlených hodnot.
-- **Pátý pilot.** Web nyní počítá s pěti piloty (Tomáš, Bohdan, Lubo, Jarda,
+- **Pátý pilot.** Web nyní počítá s pěti piloty (Tomáš, Bob, Lubo, Jarda,
   Jiří), protože pátý profil byl na starém webu skutečně publikován. Pozici
   Jiřího ve formaci (slot/záloha) je potřeba s týmem potvrdit.
 - **Kalendář akcí.** Sekce Events je hotová komponenta, ale bez vymyšlených

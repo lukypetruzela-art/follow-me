@@ -178,6 +178,25 @@ section[id]{ scroll-margin-top:90px; }
 .pilot-silhouette{ position:absolute; right:-40px; bottom:-20px; width:78%; opacity:0.9; }
 .pilot-card.reverse .pilot-silhouette{ right:auto; left:-40px; transform:scaleX(-1); }
 
+.pilot-photo{
+  position:absolute; inset:0; z-index:1;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 22%;
+  filter: contrast(1.04) saturate(0.92);
+  transition: filter .3s ease, transform .5s ease;
+}
+.pilot-card:hover .pilot-photo{ transform:scale(1.015); }
+.pilot-portrait::after{
+  /* bottom gradient so the tag/label stays legible over any photo */
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(0deg, rgba(11,12,14,0.78) 0%, rgba(11,12,14,0.05) 42%, rgba(11,12,14,0.18) 100%);
+}
+.pilot-tag{ z-index:2; }
+.pilot-portrait .crop-marks span{ z-index:3; }
+@media (prefers-reduced-motion: reduce){
+  .pilot-card:hover .pilot-photo{ transform:none; }
+}
+
 .pilot-tag{ position:relative; z-index:2; padding:22px 26px; width:100%; display:flex; justify-content:space-between; align-items:flex-end; background:linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0)); }
 .pilot-num{ font-family:'IBM Plex Mono',monospace; font-size:52px; color:rgba(237,234,226,0.15); line-height:1; }
 .pilot-role-tag{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--yellow); border:1px solid var(--yellow); padding:4px 10px; white-space:nowrap; }
