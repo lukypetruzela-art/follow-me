@@ -33,7 +33,7 @@
     });
 
     // zavřít menu při přechodu na širokou obrazovku
-    window.matchMedia("(min-width: 901px)").addEventListener("change", function (mq) {
+    window.matchMedia("(min-width: 1101px)").addEventListener("change", function (mq) {
       if (mq.matches) setMenu(false);
     });
   }
