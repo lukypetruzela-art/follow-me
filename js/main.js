@@ -10,18 +10,31 @@
   var menu = document.getElementById("mobileMenu");
 
   if (toggle && menu) {
+    var setMenu = function (open) {
+      menu.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+
     toggle.addEventListener("click", function () {
-      var isOpen = menu.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      document.body.style.overflow = isOpen ? "hidden" : "";
+      setMenu(!menu.classList.contains("open"));
     });
 
     menu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menu.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-        document.body.style.overflow = "";
-      });
+      link.addEventListener("click", function () { setMenu(false); });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.classList.contains("open")) {
+        setMenu(false);
+        toggle.focus();
+      }
+    });
+
+    // zavřít menu při přechodu na širokou obrazovku
+    window.matchMedia("(min-width: 901px)").addEventListener("change", function (mq) {
+      if (mq.matches) setMenu(false);
     });
   }
 

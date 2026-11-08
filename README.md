@@ -39,8 +39,11 @@ repozitáři, jen zpracovaný výstup.
   Jiřího ve formaci (slot/záloha) je potřeba s týmem potvrdit.
 - **Kalendář akcí.** Sekce Events je hotová komponenta, ale bez vymyšlených
   dat — termíny je potřeba doplnit podle aktuálního kalendáře.
-- **Jazykové mutace.** Přepínač CZ/EN/PL/DE je zatím jen vizuální — reálný
-  vícejazyčný obsah není zapojený.
+- **Jazykové mutace.** Přepínač CZ/EN/PL/DE je v `index.html` zakomentovaný,
+  dokud nebudou hotové překlady — nefunkční tlačítka by návštěvníky mátla.
+- **Fotky formace.** Klient dodal dvě reálné fotky (formace ve vzduchu, OK-KNR
+  na trávě); podle nich jsou opravené barevné vzorky strojů. Samotné soubory
+  je potřeba nahrát do `assets/images/` a nasadit do hero a galerie.
 
 ## Technické poznámky
 - Fonty: Oswald (display), Inter (body), IBM Plex Mono (technická data) —

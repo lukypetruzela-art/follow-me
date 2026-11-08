@@ -8,6 +8,9 @@
 <meta property="og:title" content="FOLLOW-ME — čtyři piloti. čtyři stroje. jedna formace.">
 <meta property="og:description" content="Formační letecký tým historických strojů Zlín Z-226 / Z-326. LKZA Zábřeh u Hlučína.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0C0E'/%3E%3Cpath d='M50 22 L20 55 M50 22 L80 55 M50 22 L50 80' stroke='%23EDEAE2' stroke-opacity='.4' stroke-width='4'/%3E%3Ccircle cx='50' cy='22' r='9' fill='%23F4C000'/%3E%3Ccircle cx='20' cy='55' r='9' fill='%23EDEAE2'/%3E%3Ccircle cx='80' cy='55' r='9' fill='%23EDEAE2'/%3E%3Ccircle cx='50' cy='80' r='9' fill='%23EDEAE2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,7 +19,7 @@
 <body>
 
 <!-- ============================================================ NAV -->
-<nav class="nav">
+<nav class="nav" aria-label="Hlavní menu">
   <a href="#top" class="nav-mark">
     <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
       <circle cx="50" cy="22" r="6" fill="#F4C000"/>
@@ -36,13 +39,15 @@
     <a href="#fly">Fly with us</a>
     <a href="#contact">Contact</a>
   </div>
+  <!-- Přepínač jazyka je skrytý, dokud nebudou hotové překlady (EN/PL/DE).
   <div class="nav-lang mono" role="group" aria-label="Přepínač jazyka">
     <button type="button" class="active" data-lang="cz">CZ</button><span>/</span>
     <button type="button" data-lang="en">EN</button><span>/</span>
     <button type="button" data-lang="pl">PL</button><span>/</span>
     <button type="button" data-lang="de">DE</button>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">
+  -->
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -55,9 +60,6 @@
   <a href="#events">Events</a>
   <a href="#fly">Fly with us</a>
   <a href="#contact">Contact</a>
-  <div class="mm-foot mono">
-    <span>CZ</span><span>EN</span><span>PL</span><span>DE</span>
-  </div>
 </div>
 
 <!-- ============================================================ HERO -->
@@ -105,18 +107,13 @@
     </div>
     <div class="cell">
       <span class="label">MACHINES</span>
-      <span class="value">OK-KNR · OK-MPR · OK-LPR · OK-SEN</span>
+      <span class="value"><span class="nw">OK-KNR</span> · <span class="nw">OK-MPR</span> · <span class="nw">OK-LPR</span> · <span class="nw">OK-SEN</span></span>
     </div>
     <div class="cell">
       <span class="label">STATUS</span>
       <span class="value yellow"><span class="dot" aria-hidden="true"></span>ACTIVE FORMATION</span>
     </div>
   </div>
-
-  <a href="#team" class="scroll-cue mono">
-    <span class="line" aria-hidden="true"></span>
-    SCROLL
-  </a>
 </section>
 
 <!-- ============================================================ TEAM INTRO -->
@@ -124,13 +121,13 @@
   <div class="section-intro">
     <p>
       <b>FOLLOW-ME</b> je formační tým, který od svého domovského letiště LKZA
-      u Zábřehu nad Hlučínem — mezi Ostravou a Opavou — pravidelně vzlétá ve
+      v Zábřehu u Hlučína — mezi Ostravou a Opavou — pravidelně vzlétá ve
       čtyřčlenné sestavě strojů Zlín Z-226 a Z-326. Piloti přezdívkami mezi
       sebou nešetří, veřejně je ale nepoužívají — na webu je tedy potkáte
       pod jmény, ne pod volacími znaky.
     </p>
     <p>
-      Stroje z produkce moravanské továrny v Otrokovicích už dnes nemají
+      Stroje z produkce otrokovické továrny Moravan už dnes nemají
       akrobatické oprávnění — přesto formace trénuje předvedenou sestavu tak
       přesně a tak těsně, jak to jde. Za dobu, kdy se tým drží ve vzduchu,
       navštívil řadu airshow po celé zemi i za hranicemi a ukázal divákům
@@ -163,7 +160,7 @@
       </div>
     </div>
     <div class="pilot-data">
-      <span class="pilot-eyebrow mono">PILOT FILE / 01 — REGISTRATION: TOMÁŠ</span>
+      <span class="pilot-eyebrow mono">PILOT FILE / 01 — AIRCRAFT: OK-KNR</span>
       <h3 class="pilot-name">Tomáš</h3>
       <p class="pilot-position">Formation leader — číslo <b>jedna</b>, navigace, komunikace, velení formace.</p>
       <div class="pilot-specs mono">
@@ -174,7 +171,7 @@
       </div>
       <p class="pilot-bio">
         Za knipl usedl poprvé ve čtrnácti na Blaníku. Dnes svoje účty platí jako
-        kapitán-examinátor u dopravní společnosti, ve zmenšených strojích létá
+        kapitán-examinátor u dopravní společnosti, v malých strojích nalétá
         zhruba <b>50 hodin ročně</b>. V sestavě drží vedení, navigaci a
         komunikaci — jeho jediným cílem je létat tak čistě, aby na zádech
         kombinézy nezůstal otisk dvojky, která mu sedí za zády.
@@ -183,13 +180,13 @@
         <div class="aircraft-swatch swatch-knr" aria-hidden="true"></div>
         <div class="txt">
           <b>OK-KNR — ZLIN Z-226MS</b>
-          žlutý s černou kostkou, stejnou, jakou nosí i vozy s nápisem „Follow me"
+          žlutý s černou kostkou, stejnou, jakou nosí i vozy s nápisem „Follow me“
         </div>
       </div>
     </div>
   </article>
 
-  <!-- PILOT 02 — BOHDAN -->
+  <!-- PILOT 02 — BOB -->
   <article class="pilot-card reverse">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
@@ -203,7 +200,7 @@
       </div>
     </div>
     <div class="pilot-data">
-      <span class="pilot-eyebrow mono">PILOT FILE / 02 — REGISTRATION: BOB</span>
+      <span class="pilot-eyebrow mono">PILOT FILE / 02 — AIRCRAFT: OK-MPR</span>
       <h3 class="pilot-name">Bob</h3>
       <p class="pilot-position">Pravé křídlo — číslo <b>dvě</b>, ten, kdo drží pozici nalepený vpravo od jedničky.</p>
       <div class="pilot-specs mono">
@@ -217,14 +214,14 @@
         jen ryzí krvi řady Z-26. Civilně je ředitelem, na Treneru odlétá zhruba
         <b>50 až 100 hodin ročně</b>. Jeho úkolem v sestavě je držet se za
         jedničkou za každou cenu — otázka, jestli se na ni nespoléhá až
-        moc, zůstává mezi piloty stálým vtipem. O stříbrno-červený
+        moc, zůstává mezi piloty stálým vtipem. O stříbrný
         <b>OK-MPR</b> pečuje s péčí, která hraničí s posedlostí leštěním.
       </p>
       <div class="pilot-aircraft">
         <div class="aircraft-swatch swatch-mpr" aria-hidden="true"></div>
         <div class="txt">
           <b>OK-MPR — ZLIN Z-226MS</b>
-          stříbrno-červený, sériové číslo 263
+          stříbrný s červeno-bílou šachovnicí, sériové číslo 263
         </div>
       </div>
     </div>
@@ -244,7 +241,7 @@
       </div>
     </div>
     <div class="pilot-data">
-      <span class="pilot-eyebrow mono">PILOT FILE / 03 — REGISTRATION: LUBO</span>
+      <span class="pilot-eyebrow mono">PILOT FILE / 03 — AIRCRAFT: OK-LPR</span>
       <h3 class="pilot-name">Lubo</h3>
       <p class="pilot-position">Levé křídlo — číslo <b>tři</b>, pozice, na které se prvotřídnost nedá fingovat.</p>
       <div class="pilot-specs mono">
@@ -261,13 +258,13 @@
         nižší nálet musí vyvážit citem a promáčenou kombinézou. Je jediný
         člen týmu, který nepochází a nežije na moravském východě. Dřív sedával
         v <b>OK-SEN</b>, dnes létá s <b>OK-LPR</b> — registrace vznikla z jeho
-        iniciál LP a stejného „R" jako u zbytku formace.
+        iniciál LP a stejného „R“ jako u zbytku formace.
       </p>
       <div class="pilot-aircraft">
         <div class="aircraft-swatch swatch-lpr" aria-hidden="true"></div>
         <div class="txt">
           <b>OK-LPR — ZLIN Z-226MS</b>
-          sériové číslo 020
+          světle zelený s červeno-bílou šachovnicí, sériové číslo 020
         </div>
       </div>
     </div>
@@ -287,9 +284,9 @@
       </div>
     </div>
     <div class="pilot-data">
-      <span class="pilot-eyebrow mono">PILOT FILE / 04 — REGISTRATION: JAROUŠ</span>
+      <span class="pilot-eyebrow mono">PILOT FILE / 04 — AIRCRAFT: OK-SEN</span>
       <h3 class="pilot-name">Jarda</h3>
-      <p class="pilot-position">Slot — číslo <b>čtyři</b>, „tail-end-charlie" formace.</p>
+      <p class="pilot-position">Slot — číslo <b>čtyři</b>, „tail-end-charlie“ formace.</p>
       <div class="pilot-specs mono">
         <div><span class="k">BORN</span><span class="v">—</span></div>
         <div><span class="k">HEIGHT</span><span class="v">—</span></div>
@@ -300,7 +297,7 @@
         Do sestavy přibyl jako poslední a na pozici čtyřky si zvykl rychle a
         beze slov — doslova. Létá přesně a na rozdíl od upovídané dvojky a
         trojky v éteru mlčí. Civilně je vedoucím létání na domovském
-        aeroklubu. V sestavě sedí za žluto-modrým <b>OK-SEN</b>, i když se
+        aeroklubu. V sestavě usedá do modro-žlutého <b>OK-SEN</b>, i když se
         proslýchá, že by raději usedl za žlutý ocas OK-KNR ve svém milovaném
         Brigadýru — tuhle úchylku si ale nechává většinou pro sebe.
       </p>
@@ -308,7 +305,7 @@
         <div class="aircraft-swatch swatch-sen" aria-hidden="true"></div>
         <div class="txt">
           <b>OK-SEN — ZLIN Z-326MF</b>
-          žluto-modrý, první vyrobený kus modifikace „MF"
+          modro-žlutý s černo-žlutou šachovnicí, první kus modifikace „MF“
         </div>
       </div>
     </div>
@@ -328,7 +325,7 @@
       </div>
     </div>
     <div class="pilot-data">
-      <span class="pilot-eyebrow mono">PILOT FILE / 05 — REGISTRATION: JIŘÍ</span>
+      <span class="pilot-eyebrow mono">PILOT FILE / 05 — RESERVE</span>
       <h3 class="pilot-name">Jiří</h3>
       <p class="pilot-position">Slot pilot, letecká rodina, technik od fochu.</p>
       <div class="pilot-specs mono">
@@ -348,20 +345,20 @@
         republiky. Ve volném čase lítá s RC modely, jezdí na kole, hraje tenis
         a jako obyvatel podhůří vyráží na běžky i sjezdovky.
       </p>
-      <p class="pilot-note mono"><span class="yellow-dot">●</span> Přesné zařazení do formace a nalétané hodiny je potřeba s týmem ověřit.</p>
+      <!-- TODO: přesné zařazení do formace a nalétané hodiny ověřit s týmem. -->
     </div>
   </article>
 
 </div>
 
 <!-- ============================================================ MACHINES -->
-<div class="section-label">
+<div class="section-label" id="machines">
   <span class="num mono">02</span>
   <div class="rule"></div>
   <h2>Machines</h2>
 </div>
 <div class="section-intro">
-  <p>Čtyři stroje z produkce moravanské továrny v Otrokovicích. Padesát let staré, a přesto pořád ve vzduchu — stáří tu není slabina, je to kvalita.</p>
+  <p>Čtyři stroje z produkce otrokovické továrny Moravan. Padesát let staré, a přesto pořád ve vzduchu — stáří tu není slabina, je to kvalita.</p>
 </div>
 
 <div class="machines-grid">
@@ -381,7 +378,7 @@
     </div>
     <p class="machine-text">
       Žluto-černá kostkovaná MS, podle které formaci na zemi pozná i naprostý
-      laik — stejné barvy nosí i doprovodná vozidla s nápisem „Follow me".
+      laik — stejné barvy nosí i doprovodná vozidla s nápisem „Follow me“.
       Vede formaci na pozici lídra.
     </p>
     <div class="machine-foot mono"><span>ROLE</span><b>FORMATION LEAD</b></div>
@@ -398,10 +395,10 @@
     <div class="machine-specs mono">
       <div><span class="k">SERIAL</span><span class="v">263</span></div>
       <div><span class="k">POSITION</span><span class="v">02 / RIGHT</span></div>
-      <div><span class="k">PILOT</span><span class="v">BOHDAN</span></div>
+      <div><span class="k">PILOT</span><span class="v">BOB</span></div>
     </div>
     <p class="machine-text">
-      Stříbrno-červený stroj udržovaný s péčí hraničící s posedlostí leštěním.
+      Stříbrný stroj s červeno-bílou šachovnicí, udržovaný s péčí hraničící s posedlostí leštěním.
       Létá na pravém křídle formace, přilepený k lídrovi za každého počasí.
     </p>
     <div class="machine-foot mono"><span>ROLE</span><b>RIGHT WING</b></div>
@@ -421,7 +418,7 @@
       <div><span class="k">PILOT</span><span class="v">LUBO</span></div>
     </div>
     <p class="machine-text">
-      Registrace vznikla z iniciál pilota (LP) a společného „R" celé formace.
+      Registrace vznikla z iniciál pilota (LP) a společného „R“ celé formace.
       Prochází dlouhodobou restaurací, kterou z velké části financují nášivky
       na rukávu dopravního kapitána.
     </p>
@@ -442,7 +439,7 @@
       <div><span class="k">PILOT</span><span class="v">JARDA</span></div>
     </div>
     <p class="machine-text">
-      První a jediný postavený kus modifikace „MF" — na rozdíl od
+      První a jediný postavený kus modifikace „MF“ — na rozdíl od
       standardních 326 nese kovovou stavitelnou vrtuli místo dřevěné, kvůli
       čemuž musel být posunut i kokpit. Zkušební lety proběhly na začátku
       listopadu 1997, do Aeroklubu Zábřeh dorazila 15. listopadu. Kromě
@@ -481,29 +478,29 @@
     <div class="formation-item">
       <div class="fnum mono">01</div>
       <div>
-        <h4 class="display">Leader</h4>
+        <h3 class="display">Leader</h3>
         <p>Vede formaci, drží navigaci a komunikaci s okolím. Jeho úkolem je létat tak čistě a předvídatelně, aby zbytek formace věděl přesně, co bude dělat dál.</p>
       </div>
     </div>
     <div class="formation-item">
       <div class="fnum mono">02</div>
       <div>
-        <h4 class="display">Right Wing</h4>
+        <h3 class="display">Right Wing</h3>
         <p>Drží se těsně vpravo od lídra, kopíruje každý jeho pohyb. Odstup od sousedního stroje se počítá v metrech, ne v desítkách metrů.</p>
       </div>
     </div>
     <div class="formation-item">
       <div class="fnum mono">03</div>
       <div>
-        <h4 class="display">Left Wing</h4>
+        <h3 class="display">Left Wing</h3>
         <p>Zrcadlová pozice ke dvojce, vlevo od lídra. Nejnáročnější na cit, protože chyba se tady nedá zamaskovat.</p>
       </div>
     </div>
     <div class="formation-item">
       <div class="fnum mono">04</div>
       <div>
-        <h4 class="display">Slot</h4>
-        <p>„Tail-end-charlie" — sedí za lídrem a snáší turbulenci od zbytku sestavy. Přesnost bez chatování v éteru.</p>
+        <h3 class="display">Slot</h3>
+        <p>„Tail-end-charlie“ — sedí za lídrem a snáší turbulenci od zbytku sestavy. Přesnost bez chatování v éteru.</p>
       </div>
     </div>
   </div>
@@ -525,18 +522,18 @@
   <h2>Gallery</h2>
 </div>
 
-<div class="gallery-grid">
+<div class="gallery-grid" aria-hidden="true">
   <div class="g-tile wide tall" style="--gp1:#2c3440;--gp2:#12151a;"><span class="g-label mono">FORMATION · AIRBORNE</span></div>
   <div class="g-tile" style="--gp1:#332a1c;--gp2:#15120d;"><span class="g-label mono">OK-KNR</span></div>
   <div class="g-tile" style="--gp1:#26242a;--gp2:#111117;"><span class="g-label mono">OK-MPR</span></div>
   <div class="g-tile wide" style="--gp1:#20262b;--gp2:#0f1214;"><span class="g-label mono">MLADÁ BOLESLAV · AIRSHOW</span></div>
   <div class="g-tile" style="--gp1:#28211a;--gp2:#100d0a;"><span class="g-label mono">OK-LPR</span></div>
   <div class="g-tile tall" style="--gp1:#1d2b33;--gp2:#0c1215;"><span class="g-label mono">OK-SEN</span></div>
-  <div class="g-tile" style="--gp1:#242830;--gp2:#101216;"><span class="g-label mono">ŠUMPERK</span></div>
+  <div class="g-tile wide" style="--gp1:#242830;--gp2:#101216;"><span class="g-label mono">ŠUMPERK</span></div>
   <div class="g-tile wide" style="--gp1:#2a2320;--gp2:#12100e;"><span class="g-label mono">VYŠKOV</span></div>
   <div class="g-tile" style="--gp1:#232a24;--gp2:#0f130f;"><span class="g-label mono">TRAINING</span></div>
 </div>
-<p class="g-note mono">Dlaždice jsou zástupné — po dodání reálného fotoarchivu (trénink, airshow, jednotlivé stroje) sem nasadíme skutečné fotografie ve stejném ořezu a rytmu mřížky.</p>
+<!-- Dlaždice jsou zástupné — po dodání fotoarchivu je nahradit skutečnými fotkami ve stejném ořezu. -->
 
 <!-- ============================================================ EVENTS -->
 <div class="section-label" id="events">
@@ -552,26 +549,14 @@
     </thead>
     <tbody>
       <tr>
-        <td data-label="Date">TBD</td>
-        <td data-label="Location">TBD</td>
-        <td data-label="Event">Sezóna 2026 — termíny se doplní</td>
-        <td data-label="Status"><span class="status-pill tbd">TO BE CONFIRMED</span></td>
-      </tr>
-      <tr>
-        <td data-label="Date">TBD</td>
-        <td data-label="Location">TBD</td>
-        <td data-label="Event">Sezóna 2026 — termíny se doplní</td>
-        <td data-label="Status"><span class="status-pill tbd">TO BE CONFIRMED</span></td>
-      </tr>
-      <tr>
-        <td data-label="Date">TBD</td>
-        <td data-label="Location">TBD</td>
-        <td data-label="Event">Sezóna 2026 — termíny se doplní</td>
+        <td data-label="Date">2027</td>
+        <td data-label="Location">—</td>
+        <td data-label="Event">Kalendář sezóny 2027 připravujeme. Aktuality najdete na <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebooku</a>.</td>
         <td data-label="Status"><span class="status-pill tbd">TO BE CONFIRMED</span></td>
       </tr>
     </tbody>
   </table>
-  <p class="g-note mono" style="padding-left:0;">Tabulka je funkční komponenta — reálné termíny airshow doplníme podle aktuálního kalendáře týmu.</p>
+  <!-- Termíny akcí doplnit podle kalendáře týmu. -->
 </div>
 
 <!-- ============================================================ FLY WITH US -->
@@ -590,7 +575,7 @@
 <!-- ============================================================ CONTACT -->
 <section class="contact-section reveal" id="contact">
   <div class="contact-block">
-    <h3 class="display">Domovská základna</h3>
+    <h2 class="display">Domovská základna</h2>
     <p>
       Formaci nejčastěji potkáte nad letištěm LKZA — Zábřeh u Hlučína, mezi
       Ostravou a Opavou. Fanoušci satelitních map si mohou souřadnice rovnou
