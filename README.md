@@ -41,9 +41,12 @@ repozitáři, jen zpracovaný výstup.
   dat — termíny je potřeba doplnit podle aktuálního kalendáře.
 - **Jazykové mutace.** Přepínač CZ/EN/PL/DE je v `index.html` zakomentovaný,
   dokud nebudou hotové překlady — nefunkční tlačítka by návštěvníky mátla.
-- **Fotky formace.** Klient dodal dvě reálné fotky (formace ve vzduchu, OK-KNR
-  na trávě); podle nich jsou opravené barevné vzorky strojů. Samotné soubory
-  je potřeba nahrát do `assets/images/` a nasadit do hero a galerie.
+- **Fotky formace.** Dvě reálné fotky (formace ve vzduchu, OK-KNR na trávě)
+  jsou v `assets/images/gallery/` — použité v galerii, v pásu s citátem a
+  v sekci Instagram. Ostatní dlaždice galerie jsou zatím zástupné.
+- **Instagram.** Sekce `#instagram` odkazuje na @follow_me_airshow_team.
+  Pro živý feed založte zdroj na behold.so a jeho JSON URL vložte do atributu
+  `data-feed` u `.ig-section` — web pak sám ukáže posledních 6 příspěvků.
 
 ## Technické poznámky
 - Fonty: Oswald (display), Inter (body), IBM Plex Mono (technická data) —

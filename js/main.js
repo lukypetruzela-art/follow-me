@@ -49,6 +49,48 @@
     });
   });
 
+  /* ---------- instagram: živý feed (volitelný) ---------- */
+  // Když má sekce v data-feed URL JSON feedu (např. z behold.so), nahradí
+  // statické dlaždice posledními šesti příspěvky. Při chybě zůstanou dlaždice.
+  var igSection = document.querySelector(".ig-section");
+  var igGrid = document.getElementById("igGrid");
+  var feedUrl = igSection && igSection.getAttribute("data-feed");
+
+  if (igGrid && feedUrl && window.fetch) {
+    fetch(feedUrl)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        var posts = (Array.isArray(data) ? data : data.posts || []).slice(0, 6);
+        if (!posts.length) return;
+        igGrid.innerHTML = "";
+        posts.forEach(function (post) {
+          var src = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) ||
+            (post.mediaType === "VIDEO" ? post.thumbnailUrl : post.mediaUrl) || post.thumbnailUrl;
+          if (!src) return;
+          var caption = (post.prunedCaption || post.caption || "").trim();
+          var a = document.createElement("a");
+          a.className = "ig-tile";
+          a.href = post.permalink;
+          a.target = "_blank";
+          a.rel = "noopener";
+          var img = document.createElement("img");
+          img.src = src;
+          img.alt = caption ? caption.slice(0, 120) : "Příspěvek FOLLOW-ME na Instagramu";
+          img.loading = "lazy";
+          a.appendChild(img);
+          if (caption) {
+            var cap = document.createElement("span");
+            cap.className = "ig-cap mono";
+            cap.textContent = caption.split("\n")[0];
+            a.appendChild(cap);
+          }
+          igGrid.appendChild(a);
+        });
+        igGrid.classList.add("is-live");
+      })
+      .catch(function () { /* necháme statické dlaždice */ });
+  }
+
   /* ---------- reveal on scroll ---------- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");

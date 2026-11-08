@@ -47,6 +47,7 @@
     <button type="button" data-lang="de">DE</button>
   </div>
   -->
+  <a class="nav-ig" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener" aria-label="FOLLOW-ME na Instagramu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span class="mono">INSTAGRAM</span></a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -60,6 +61,7 @@
   <a href="#events">Events</a>
   <a href="#fly">Fly with us</a>
   <a href="#contact">Contact</a>
+  <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener" class="mm-ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>@follow_me_airshow_team</a>
 </div>
 
 <!-- ============================================================ HERO -->
@@ -507,7 +509,7 @@
 </div>
 
 <!-- ============================================================ HISTORY -->
-<div class="history-strip reveal">
+<div class="history-strip has-photo reveal">
   <div class="quote display">
     <span class="bright">TOHLE NEJSOU LETADLA V MUZEU.</span><br>
     <span class="fade">JSOU TO STROJE, KTERÉ POŘÁD LÍTAJÍ.</span>
@@ -522,22 +524,59 @@
   <h2>Gallery</h2>
 </div>
 
-<div class="gallery-grid" aria-hidden="true">
-  <div class="g-tile wide tall" style="--gp1:#2c3440;--gp2:#12151a;"><span class="g-label mono">FORMATION · AIRBORNE</span></div>
-  <div class="g-tile" style="--gp1:#332a1c;--gp2:#15120d;"><span class="g-label mono">OK-KNR</span></div>
-  <div class="g-tile" style="--gp1:#26242a;--gp2:#111117;"><span class="g-label mono">OK-MPR</span></div>
-  <div class="g-tile wide" style="--gp1:#20262b;--gp2:#0f1214;"><span class="g-label mono">MLADÁ BOLESLAV · AIRSHOW</span></div>
-  <div class="g-tile" style="--gp1:#28211a;--gp2:#100d0a;"><span class="g-label mono">OK-LPR</span></div>
-  <div class="g-tile tall" style="--gp1:#1d2b33;--gp2:#0c1215;"><span class="g-label mono">OK-SEN</span></div>
-  <div class="g-tile wide" style="--gp1:#242830;--gp2:#101216;"><span class="g-label mono">ŠUMPERK</span></div>
-  <div class="g-tile wide" style="--gp1:#2a2320;--gp2:#12100e;"><span class="g-label mono">VYŠKOV</span></div>
-  <div class="g-tile" style="--gp1:#232a24;--gp2:#0f130f;"><span class="g-label mono">TRAINING</span></div>
+<div class="gallery-grid">
+  <figure class="g-tile wide tall has-photo"><img src="assets/images/gallery/formace.jpg" alt="Formace FOLLOW-ME ve vzduchu: OK-KNR, OK-SEN, OK-MPR a OK-LPR" width="1104" height="600" loading="lazy" style="object-position:60% 50%"><figcaption class="g-label mono">FORMATION · AIRBORNE</figcaption></figure>
+  <figure class="g-tile tall has-photo"><img src="assets/images/gallery/ok-knr.jpg" alt="Zlín Z-226MS OK-KNR na travnatém letišti pod bouřkovými mraky" width="1200" height="1600" loading="lazy" style="object-position:60% 75%"><figcaption class="g-label mono">OK-KNR</figcaption></figure>
+  <div aria-hidden="true" class="g-tile" style="--gp1:#26242a;--gp2:#111117;"><span class="g-label mono">OK-MPR</span></div>
+  <div aria-hidden="true" class="g-tile wide" style="--gp1:#20262b;--gp2:#0f1214;"><span class="g-label mono">MLADÁ BOLESLAV · AIRSHOW</span></div>
+  <div aria-hidden="true" class="g-tile" style="--gp1:#28211a;--gp2:#100d0a;"><span class="g-label mono">OK-LPR</span></div>
+  <div aria-hidden="true" class="g-tile" style="--gp1:#1d2b33;--gp2:#0c1215;"><span class="g-label mono">OK-SEN</span></div>
+  <div aria-hidden="true" class="g-tile wide" style="--gp1:#242830;--gp2:#101216;"><span class="g-label mono">ŠUMPERK</span></div>
+  <div aria-hidden="true" class="g-tile wide" style="--gp1:#2a2320;--gp2:#12100e;"><span class="g-label mono">VYŠKOV</span></div>
+  <div aria-hidden="true" class="g-tile" style="--gp1:#232a24;--gp2:#0f130f;"><span class="g-label mono">TRAINING</span></div>
 </div>
 <!-- Dlaždice jsou zástupné — po dodání fotoarchivu je nahradit skutečnými fotkami ve stejném ořezu. -->
 
+<!-- ============================================================ INSTAGRAM -->
+<div class="section-label" id="instagram">
+  <span class="num mono">05</span>
+  <div class="rule"></div>
+  <h2>Instagram</h2>
+</div>
+
+<!-- Živý feed: po založení zdroje na behold.so vložte jeho JSON URL do data-feed
+     a sekce si sama načte posledních 6 příspěvků. Bez něj se ukážou dlaždice níže. -->
+<section class="ig-section" aria-labelledby="ig-title" data-feed="">
+  <div class="ig-head">
+    <div>
+      <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>LIVE FROM THE FLIGHT LINE</span>
+      <h2 class="ig-handle display" id="ig-title"><a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">@follow_me<wbr>_airshow<wbr>_team</a></h2>
+      <p class="ig-text">Zákulisí tréninků, přelety airshow a stroje z blízka. Nejčerstvější záběry z kokpitu i z ranveje dáváme na Instagram.</p>
+    </div>
+    <a class="btn" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">SLEDOVAT NA INSTAGRAMU →</a>
+  </div>
+
+  <div class="ig-grid" id="igGrid">
+    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
+      <img src="assets/images/gallery/formace.jpg" alt="Formace FOLLOW-ME ve vzduchu" width="1104" height="600" loading="lazy" style="object-position:62% 50%">
+    </a>
+    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
+      <img src="assets/images/gallery/ok-knr.jpg" alt="OK-KNR na letišti pod bouřkovými mraky" width="1200" height="1600" loading="lazy" style="object-position:60% 72%">
+    </a>
+    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
+      <img src="assets/images/gallery/formace.jpg" alt="Detail formace — OK-KNR a OK-SEN" width="1104" height="600" loading="lazy" style="object-position:82% 45%; transform:scale(1.6)">
+    </a>
+    <a class="ig-tile ig-cta" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
+      <span class="ig-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+      <span class="ig-cta-text display">Follow<br>the leader</span>
+      <span class="ig-cta-sub mono">@follow_me_airshow_team →</span>
+    </a>
+  </div>
+</section>
+
 <!-- ============================================================ EVENTS -->
 <div class="section-label" id="events">
-  <span class="num mono">05</span>
+  <span class="num mono">06</span>
   <div class="rule"></div>
   <h2>Flight Schedule</h2>
 </div>
@@ -551,7 +590,7 @@
       <tr>
         <td data-label="Date">2027</td>
         <td data-label="Location">—</td>
-        <td data-label="Event">Kalendář sezóny 2027 připravujeme. Aktuality najdete na <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebooku</a>.</td>
+        <td data-label="Event">Kalendář sezóny 2027 připravujeme. Aktuality najdete na <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagramu</a> a <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebooku</a>.</td>
         <td data-label="Status"><span class="status-pill tbd">TO BE CONFIRMED</span></td>
       </tr>
     </tbody>
@@ -587,6 +626,7 @@
     <div class="row"><span class="k">COORDINATES</span><span class="v">49°55'42"N 18°04'42"E</span></div>
     <div class="row"><span class="k">EMAIL</span><span class="v"><a href="mailto:follow-me@email.cz">follow-me@email.cz</a></span></div>
     <div class="row"><span class="k">AEROKLUB</span><span class="v"><a href="http://www.lkza.cz/" target="_blank" rel="noopener">lkza.cz</a></span></div>
+    <div class="row"><span class="k">INSTAGRAM</span><span class="v"><a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">@follow_me_airshow_team</a></span></div>
     <div class="row"><span class="k">FACEBOOK</span><span class="v"><a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">/FollowMeDemonstrationTeam</a></span></div>
   </dl>
 </section>
@@ -596,6 +636,7 @@
   <div class="fr mono">
     <a href="#top">Top ↑</a>
     <a href="mailto:follow-me@email.cz">Email</a>
+    <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebook</a>
   </div>
 </footer>
