@@ -91,6 +91,79 @@
       .catch(function () { /* necháme statické dlaždice */ });
   }
 
+  /* ---------- video reel: smyčka úseku z YouTube ---------- */
+  var reel = document.querySelector(".reel");
+  var reduceMotionReel = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reel && !reduceMotionReel) {
+    var vid = reel.getAttribute("data-video");
+    var start = parseFloat(reel.getAttribute("data-start")) || 0;
+    var end = parseFloat(reel.getAttribute("data-end")) || start + 10;
+    var bar = document.getElementById("reelBar");
+    var tc = document.getElementById("reelTc");
+    var player = null;
+    var ticker = null;
+
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var tick = function () {
+      if (!player || !player.getCurrentTime) return;
+      var t = player.getCurrentTime();
+      if (t >= end || t < start - 1) { player.seekTo(start, true); t = start; }
+      bar.style.width = Math.max(0, Math.min(1, (t - start) / (end - start))) * 100 + "%";
+      tc.textContent = pad(Math.floor(t / 60)) + ":" + pad(Math.floor(t % 60));
+    };
+
+    var createPlayer = function () {
+      player = new window.YT.Player("reelPlayer", {
+        videoId: vid,
+        host: "https://www.youtube-nocookie.com",
+        playerVars: {
+          autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, rel: 0,
+          playsinline: 1, iv_load_policy: 3, start: Math.floor(start)
+        },
+        events: {
+          onReady: function (e) { e.target.mute(); e.target.playVideo(); },
+          onStateChange: function (e) {
+            if (e.data === window.YT.PlayerState.PLAYING) {
+              reel.classList.add("is-playing");
+              if (!ticker) ticker = setInterval(tick, 200);
+            } else if (e.data === window.YT.PlayerState.ENDED) {
+              e.target.seekTo(start, true);
+              e.target.playVideo();
+            }
+          }
+        }
+      });
+    };
+
+    var loadApi = function () {
+      if (window.YT && window.YT.Player) { createPlayer(); return; }
+      var prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () { if (prev) prev(); createPlayer(); };
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    };
+
+    // video načíst až když se sekce blíží k obrazovce
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); loadApi(); }
+      }, { rootMargin: "300px" });
+      io.observe(reel);
+    } else {
+      loadApi();
+    }
+
+    // šetřit výkon: pauza, když je smyčka mimo obrazovku
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (!player || !player.playVideo) return;
+        if (entries[0].isIntersecting) player.playVideo(); else player.pauseVideo();
+      }).observe(reel);
+    }
+  }
+
   /* ---------- reveal on scroll ---------- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");
