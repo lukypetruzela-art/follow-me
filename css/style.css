@@ -153,7 +153,7 @@ button{font:inherit; cursor:pointer;}
 @media (max-width:640px){ .reel{ padding:50px 20px 0; } }
 .reel-frame{ position:relative; aspect-ratio:21/9; overflow:hidden; border:1px solid var(--line-strong); background:var(--gunmetal); }
 @media (max-width:640px){ .reel-frame{ aspect-ratio:4/3; } }
-.reel-poster{ position:absolute; inset:0; background:url("../assets/images/gallery/formace.jpg") 60% 50%/cover no-repeat; filter:grayscale(0.15) contrast(1.05); }
+.reel-poster{ position:absolute; inset:0; background:url("../assets/images/photos/echelon-ctyri-stroje.jpg") 50% 50%/cover no-repeat; filter:grayscale(0.15) contrast(1.05); }
 .reel-player{ position:absolute; top:50%; left:50%; width:100%; aspect-ratio:16/9; transform:translate(-50%,-50%) scale(1.18); pointer-events:none; opacity:0; transition:opacity .8s ease; }
 /* video 16:9 musí pokrýt rámeček 21:9 i 4:3 */
 @media (max-width:640px){ .reel-player{ width:auto; height:100%; } }
@@ -270,7 +270,7 @@ button{font:inherit; cursor:pointer;}
 /* aircraft colour swatches, reused for pilots + machines */
 .swatch-knr{ background: repeating-conic-gradient(var(--yellow) 0% 25%, #17181A 0% 50%) 0 0/12px 12px; }
 .swatch-mpr{ background: linear-gradient(135deg, #D9DEE2 0%, #A9B2BA 55%, transparent 55%), repeating-conic-gradient(#C8242B 0% 25%, #F2F2F2 0% 50%) 0 0/10px 10px; }
-.swatch-lpr{ background: linear-gradient(135deg, #B9D3A3 0%, #8FB37E 55%, transparent 55%), repeating-conic-gradient(#C8242B 0% 25%, #F2F2F2 0% 50%) 0 0/10px 10px; }
+.swatch-lpr{ background: linear-gradient(135deg, #B9D3A3 0%, #8FB37E 55%, transparent 55%), repeating-conic-gradient(#6E1E2A 0% 25%, #B9D3A3 0% 50%) 0 0/10px 10px; }
 .swatch-sen{ background: linear-gradient(135deg, #24406E 0%, #1A2F55 55%, transparent 55%), repeating-conic-gradient(var(--yellow) 0% 25%, #17181A 0% 50%) 0 0/10px 10px; }
 
 /* ---------- MACHINES ---------- */
@@ -279,6 +279,11 @@ button{font:inherit; cursor:pointer;}
 @media (max-width:640px){ .machines-grid{ width:calc(100% - 40px); margin-bottom:40px; } .machine-card{ padding:28px 24px; min-height:0; } }
 
 .machine-card{ background:var(--gunmetal); padding:36px; display:flex; flex-direction:column; min-height:420px; }
+.machine-photo{ margin:-36px -36px 28px; aspect-ratio:16/9; overflow:hidden; border-bottom:1px solid var(--line-strong); background:#1a1d20; }
+.machine-photo img{ width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.machine-card:hover .machine-photo img{ transform:scale(1.03); }
+@media (max-width:640px){ .machine-photo{ margin:-28px -24px 24px; } }
+@media (prefers-reduced-motion: reduce){ .machine-card:hover .machine-photo img{ transform:none; } }
 .machine-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px; }
 .machine-reg{ white-space:nowrap; font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(30px,3vw,40px); font-weight:700; letter-spacing:0.01em; }
 .machine-swatch{ width:40px; height:40px; border:1px solid var(--line-strong); flex-shrink:0; }
@@ -309,8 +314,8 @@ button{font:inherit; cursor:pointer;}
 /* ---------- HISTORY / QUOTE STRIP ---------- */
 .history-strip{ border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); padding:80px 40px; text-align:center; background:var(--gunmetal); }
 .history-strip.has-photo{ position:relative; padding:150px 40px; overflow:hidden;
-  background:linear-gradient(0deg, rgba(11,12,14,0.72), rgba(11,12,14,0.72)), url("../assets/images/gallery/formace.jpg") 62% 50%/cover no-repeat, var(--gunmetal); }
-@media (max-width:640px){ .history-strip.has-photo{ padding:110px 20px; background-position:center, 70% 50%, center; } }
+  background:linear-gradient(0deg, rgba(11,12,14,0.72), rgba(11,12,14,0.72)), url("../assets/images/photos/head-on.jpg") 50% 45%/cover no-repeat, var(--gunmetal); }
+@media (max-width:640px){ .history-strip.has-photo{ padding:110px 20px; background-position:center, 50% 45%, center; } }
 .history-strip .quote{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(22px,3.4vw,40px); line-height:1.25; max-width:1000px; margin:0 auto; }
 .history-strip .quote .fade{ color:var(--aluminium); }
 .history-strip .quote .bright{ color:var(--offwhite); }
@@ -318,8 +323,8 @@ button{font:inherit; cursor:pointer;}
 @media (max-width:640px){ .history-strip .sub{ font-size:11px; } }
 
 /* ---------- GALLERY ---------- */
-.gallery-grid{ max-width:var(--max); margin:0 auto; padding:0 40px 90px; display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; grid-auto-flow:dense; gap:2px; }
-@media (max-width:640px){ .gallery-grid{ padding:0 20px 60px; grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } }
+.gallery-grid{ max-width:var(--max); margin:0 auto; padding:0 40px 2px; display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; grid-auto-flow:dense; gap:2px; }
+@media (max-width:640px){ .gallery-grid{ padding:0 20px 2px; grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } }
 .g-tile{ position:relative; overflow:hidden; border:1px solid var(--line); display:flex; align-items:flex-end; padding:10px; }
 .g-tile.tall{ grid-row:span 2; }
 .g-tile.wide{ grid-column:span 2; }
@@ -328,6 +333,28 @@ button{font:inherit; cursor:pointer;}
 .g-tile.has-photo:hover img{ transform:scale(1.02); }
 @media (prefers-reduced-motion: reduce){ .g-tile.has-photo:hover img{ transform:none; } }
 figure.g-tile{ margin:0; }
+a.g-tile{ cursor:zoom-in; }
+a.g-tile:focus-visible{ outline:2px solid var(--yellow); outline-offset:-2px; }
+a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
+.gallery-more[hidden]{ display:none; }
+.gallery-actions{ max-width:var(--max); margin:0 auto; padding:28px 40px 90px; display:flex; justify-content:center; }
+@media (max-width:640px){ .gallery-actions{ padding:22px 20px 60px; } }
+.btn-outline.mono{ font-size:12px; }
+
+/* lightbox */
+.lightbox{ border:none; padding:0; margin:0; width:100vw; height:100vh; max-width:none; max-height:none; background:rgba(11,12,14,0.96); color:var(--offwhite); }
+.lightbox::backdrop{ background:rgba(11,12,14,0.9); }
+.lightbox[open]{ display:flex; align-items:center; justify-content:center; }
+.lb-figure{ margin:0; max-width:min(92vw,1600px); max-height:88vh; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.lb-figure img{ max-width:100%; max-height:calc(88vh - 40px); object-fit:contain; border:1px solid var(--line-strong); }
+.lb-cap{ display:flex; gap:20px; justify-content:space-between; width:100%; font-size:11px; letter-spacing:0.12em; color:var(--aluminium); }
+.lb-cap #lbCount{ color:var(--yellow); }
+.lb-btn{ position:absolute; background:rgba(11,12,14,0.6); border:1px solid var(--line-strong); color:var(--offwhite); width:48px; height:48px; font-size:18px; display:flex; align-items:center; justify-content:center; transition:border-color .2s, color .2s; }
+.lb-btn:hover, .lb-btn:focus-visible{ border-color:var(--yellow); color:var(--yellow); }
+.lb-prev{ left:20px; top:50%; transform:translateY(-50%); }
+.lb-next{ right:20px; top:50%; transform:translateY(-50%); }
+.lb-close{ right:20px; top:20px; }
+@media (max-width:640px){ .lb-prev, .lb-next{ top:auto; bottom:20px; transform:none; } .lb-figure{ max-height:76vh; } .lb-figure img{ max-height:calc(76vh - 40px); } }
 .g-tile .g-label{ position:relative; z-index:2; font-size:10px; color:var(--offwhite); letter-spacing:0.08em; opacity:0.85; }
 .g-tile::before{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(160deg, var(--gp1,#2a2e33) 0%, var(--gp2,#141518) 100%); }
 .g-tile::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0) 60%); }
@@ -400,6 +427,7 @@ figure.g-tile{ margin:0; }
 
 /* ---------- FLY WITH US ---------- */
 .fly-section{ position:relative; padding:110px 40px; border-top:1px solid var(--line-strong); overflow:hidden; }
+.fly-section.has-photo{ background:linear-gradient(90deg, rgba(11,12,14,0.94) 0%, rgba(11,12,14,0.8) 50%, rgba(11,12,14,0.94) 100%), url("../assets/images/photos/lpr-pojizdeni.jpg") 50% 40%/cover no-repeat; }
 .fly-section::before{ content:""; position:absolute; inset:0; background:radial-gradient(ellipse 700px 400px at 15% 20%, rgba(244,192,0,0.06), transparent 60%); }
 .fly-inner{ position:relative; max-width:900px; margin:0 auto; text-align:center; }
 .fly-inner h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(32px,5vw,64px); margin-bottom:22px; }
@@ -412,6 +440,8 @@ figure.g-tile{ margin:0; }
 /* ---------- CONTACT / FOOTER ---------- */
 .contact-section{ padding:100px 40px 0; max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:60px; }
 @media (max-width:860px){ .contact-section{ grid-template-columns:1fr; gap:40px; padding:80px 20px 0; } }
+.contact-photo{ margin:0 0 28px; aspect-ratio:16/9; overflow:hidden; border:1px solid var(--line-strong); }
+.contact-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 60%; }
 .contact-block h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:28px; margin-bottom:18px; }
 .contact-block p{ color:var(--aluminium); font-size:15px; line-height:1.7; max-width:44ch; }
 .contact-meta{ display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }

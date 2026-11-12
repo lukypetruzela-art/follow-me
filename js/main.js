@@ -164,6 +164,64 @@
     }
   }
 
+  /* ---------- galerie: další fotky + prohlížeč ---------- */
+  var moreBtn = document.getElementById("galleryMoreBtn");
+  var moreGrid = document.getElementById("galleryMore");
+  if (moreBtn && moreGrid) {
+    moreBtn.addEventListener("click", function () {
+      var show = moreGrid.hidden;
+      moreGrid.hidden = !show;
+      moreBtn.setAttribute("aria-expanded", show ? "true" : "false");
+      moreBtn.textContent = show ? "MÉNĚ FOTEK ↑" : "DALŠÍ FOTKY (" + moreGrid.children.length + ") ↓";
+    });
+  }
+
+  var lb = document.getElementById("lightbox");
+  var tiles = Array.prototype.slice.call(document.querySelectorAll("a.g-tile"));
+  if (lb && lb.showModal && tiles.length) {
+    var lbImg = document.getElementById("lbImg");
+    var lbCap = document.getElementById("lbCap");
+    var lbCount = document.getElementById("lbCount");
+    var current = 0;
+
+    var show = function (i) {
+      current = (i + tiles.length) % tiles.length;
+      var t = tiles[current];
+      var img = t.querySelector("img");
+      lbImg.src = t.getAttribute("href");
+      lbImg.alt = img ? img.alt : "";
+      lbCap.textContent = t.getAttribute("data-caption") || "";
+      lbCount.textContent = (current + 1) + " / " + tiles.length;
+    };
+
+    tiles.forEach(function (t, i) {
+      t.addEventListener("click", function (e) {
+        e.preventDefault();
+        show(i);
+        lb.showModal();
+      });
+    });
+
+    document.getElementById("lbPrev").addEventListener("click", function () { show(current - 1); });
+    document.getElementById("lbNext").addEventListener("click", function () { show(current + 1); });
+    document.getElementById("lbClose").addEventListener("click", function () { lb.close(); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+
+    // přejetí prstem na mobilu
+    var touchX = null;
+    lb.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    });
+  }
+
   /* ---------- reveal on scroll ---------- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");
