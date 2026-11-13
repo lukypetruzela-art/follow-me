@@ -11,6 +11,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="cs_CZ">
+<meta property="og:url" content="https://follow-me-blond.vercel.app/en/">
+<meta property="og:site_name" content="FOLLOW-ME">
+<meta property="og:image" content="https://follow-me-blond.vercel.app/assets/images/og/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Four FOLLOW-ME aircraft in echelon against storm clouds">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B0C0E">
 <link rel="alternate" hreflang="cs" href="https://follow-me-blond.vercel.app/">
 <link rel="alternate" hreflang="en" href="https://follow-me-blond.vercel.app/en/">
@@ -190,6 +197,13 @@
     <p class="hero-claim">
       A formation display team flying vintage Zlín Z-226 and Z-326 aircraft, built in Otrokovice. <b>Home base: LKZA, Zábřeh near Hlučín.</b>
     </p>
+    <!-- Next display: filled in automatically from data/events.json. -->
+    <a class="next-event" id="nextEvent" href="#events" hidden>
+      <span class="ne-label mono"><span class="dot" aria-hidden="true"></span>NEXT DISPLAY</span>
+      <span class="ne-name" id="neName"></span>
+      <span class="ne-meta mono" id="neMeta"></span>
+      <span class="ne-count mono" id="neCount"></span>
+    </a>
   </div>
 
   <div class="hero-readout mono">
@@ -259,7 +273,7 @@
 <div class="pilot-wrap">
 
   <!-- PILOT 01 — TOMÁŠ -->
-  <article class="pilot-card">
+  <article id="pilot-tomas" class="pilot-card">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
         <span class="cm-tl"></span><span class="cm-tr"></span>
@@ -272,6 +286,7 @@
       </div>
     </div>
     <div class="pilot-data">
+      <svg class="pos-mini" viewBox="0 0 44 38" aria-hidden="true"><path d="M22 6 L8 20 M22 6 L36 20 M22 6 L22 32"/><circle cx="22" cy="6" r="3.4" class="on"/><circle cx="36" cy="20" r="3.4"/><circle cx="8" cy="20" r="3.4"/><circle cx="22" cy="32" r="3.4"/></svg>
       <span class="pilot-eyebrow mono">PILOT FILE / 01 — AIRCRAFT: OK-KNR</span>
       <h3 class="pilot-name">Tomáš</h3>
       <p class="pilot-position">Formation leader — number <b>one</b>: navigation, radio and command of the formation.</p>
@@ -295,7 +310,7 @@
   </article>
 
   <!-- PILOT 02 — BOB -->
-  <article class="pilot-card reverse">
+  <article id="pilot-bob" class="pilot-card reverse">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
         <span class="cm-tl"></span><span class="cm-tr"></span>
@@ -308,6 +323,7 @@
       </div>
     </div>
     <div class="pilot-data">
+      <svg class="pos-mini" viewBox="0 0 44 38" aria-hidden="true"><path d="M22 6 L8 20 M22 6 L36 20 M22 6 L22 32"/><circle cx="22" cy="6" r="3.4"/><circle cx="36" cy="20" r="3.4" class="on"/><circle cx="8" cy="20" r="3.4"/><circle cx="22" cy="32" r="3.4"/></svg>
       <span class="pilot-eyebrow mono">PILOT FILE / 02 — AIRCRAFT: OK-MPR</span>
       <h3 class="pilot-name">Bob</h3>
       <p class="pilot-position">Right wing — number <b>two</b>, the one glued to the leader’s right.</p>
@@ -331,7 +347,7 @@
   </article>
 
   <!-- PILOT 03 — LUBO -->
-  <article class="pilot-card">
+  <article id="pilot-lubo" class="pilot-card">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
         <span class="cm-tl"></span><span class="cm-tr"></span>
@@ -344,6 +360,7 @@
       </div>
     </div>
     <div class="pilot-data">
+      <svg class="pos-mini" viewBox="0 0 44 38" aria-hidden="true"><path d="M22 6 L8 20 M22 6 L36 20 M22 6 L22 32"/><circle cx="22" cy="6" r="3.4"/><circle cx="36" cy="20" r="3.4"/><circle cx="8" cy="20" r="3.4" class="on"/><circle cx="22" cy="32" r="3.4"/></svg>
       <span class="pilot-eyebrow mono">PILOT FILE / 03 — AIRCRAFT: OK-LPR</span>
       <h3 class="pilot-name">Lubo</h3>
       <p class="pilot-position">Left wing — number <b>three</b>, a position where you simply can’t fake top-class flying.</p>
@@ -367,7 +384,7 @@
   </article>
 
   <!-- PILOT 04 — JARDA -->
-  <article class="pilot-card reverse">
+  <article id="pilot-jarda" class="pilot-card reverse">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
         <span class="cm-tl"></span><span class="cm-tr"></span>
@@ -380,6 +397,7 @@
       </div>
     </div>
     <div class="pilot-data">
+      <svg class="pos-mini" viewBox="0 0 44 38" aria-hidden="true"><path d="M22 6 L8 20 M22 6 L36 20 M22 6 L22 32"/><circle cx="22" cy="6" r="3.4"/><circle cx="36" cy="20" r="3.4"/><circle cx="8" cy="20" r="3.4"/><circle cx="22" cy="32" r="3.4" class="on"/></svg>
       <span class="pilot-eyebrow mono">PILOT FILE / 04 — AIRCRAFT: OK-SEN</span>
       <h3 class="pilot-name">Jarda</h3>
       <p class="pilot-position">Slot — number <b>four</b>, the formation’s “tail-end Charlie”.</p>
@@ -403,7 +421,7 @@
   </article>
 
   <!-- PILOT 05 — JIŘÍ -->
-  <article class="pilot-card">
+  <article id="pilot-jiri" class="pilot-card">
     <div class="pilot-portrait">
       <div class="crop-marks" aria-hidden="true">
         <span class="cm-tl"></span><span class="cm-tr"></span>
@@ -416,6 +434,7 @@
       </div>
     </div>
     <div class="pilot-data">
+      <svg class="pos-mini" viewBox="0 0 44 38" aria-hidden="true"><path d="M22 6 L8 20 M22 6 L36 20 M22 6 L22 32"/><circle cx="22" cy="6" r="3.4"/><circle cx="36" cy="20" r="3.4"/><circle cx="8" cy="20" r="3.4"/><circle cx="22" cy="32" r="3.4" class="ring"/></svg>
       <span class="pilot-eyebrow mono">PILOT FILE / 05 — RESERVE</span>
       <h3 class="pilot-name">Jiří</h3>
       <p class="pilot-position">Slot pilot from a flying family, and an engineer to the core.</p>
@@ -536,46 +555,69 @@
 </div>
 
 <div class="formation-section">
-  <svg class="formation-diagram-big" viewBox="0 0 340 280" fill="none" aria-hidden="true">
+  <div class="formation-visual">
+  <svg class="formation-diagram-big" viewBox="0 0 340 280" fill="none" role="group" aria-label="Formation diagram">
     <line x1="170" y1="40" x2="60" y2="150" stroke="rgba(237,234,226,0.25)" stroke-width="1"/>
     <line x1="170" y1="40" x2="280" y2="150" stroke="rgba(237,234,226,0.25)" stroke-width="1"/>
     <line x1="170" y1="40" x2="170" y2="240" stroke="rgba(237,234,226,0.25)" stroke-width="1"/>
     <line x1="60" y1="150" x2="280" y2="150" stroke="rgba(237,234,226,0.12)" stroke-width="1" stroke-dasharray="3 5"/>
-    <circle cx="170" cy="40" r="6" fill="#F4C000"/>
-    <text x="184" y="44" fill="#F4C000" font-family="IBM Plex Mono" font-size="12">01 · LEAD</text>
-    <circle cx="60" cy="150" r="6" fill="#B9BEC2"/>
-    <text x="4" y="174" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">03 · LEFT</text>
-    <circle cx="280" cy="150" r="6" fill="#B9BEC2"/>
-    <text x="250" y="174" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">02 · RIGHT</text>
-    <circle cx="170" cy="240" r="6" fill="#B9BEC2"/>
-    <text x="184" y="244" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">04 · SLOT</text>
+    <g class="fd-node" data-pos="1" data-pilot="pilot-tomas" tabindex="0" role="button" aria-label="Position 01 – leader: Tomáš, OK-KNR">
+      <circle class="fd-halo" cx="170" cy="40" r="17"/>
+      <circle class="fd-dot" cx="170" cy="40" r="6" fill="#F4C000"/>
+      <text class="fd-label" x="184" y="44" fill="#F4C000" font-family="IBM Plex Mono" font-size="12">01 · LEAD</text>
+      <text class="fd-who" x="184" y="60" font-family="IBM Plex Mono" font-size="10">TOMÁŠ · OK-KNR</text>
+    </g>
+    <g class="fd-node" data-pos="2" data-pilot="pilot-bob" tabindex="0" role="button" aria-label="Position 02 – right wing: Bob, OK-MPR">
+      <circle class="fd-halo" cx="280" cy="150" r="17"/>
+      <circle class="fd-dot" cx="280" cy="150" r="6" fill="#B9BEC2"/>
+      <text class="fd-label" x="250" y="174" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">02 · RIGHT</text>
+      <text class="fd-who" x="250" y="190" font-family="IBM Plex Mono" font-size="10">BOB · OK-MPR</text>
+    </g>
+    <g class="fd-node" data-pos="3" data-pilot="pilot-lubo" tabindex="0" role="button" aria-label="Position 03 – left wing: Lubo, OK-LPR">
+      <circle class="fd-halo" cx="60" cy="150" r="17"/>
+      <circle class="fd-dot" cx="60" cy="150" r="6" fill="#B9BEC2"/>
+      <text class="fd-label" x="4" y="174" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">03 · LEFT</text>
+      <text class="fd-who" x="4" y="190" font-family="IBM Plex Mono" font-size="10">LUBO · OK-LPR</text>
+    </g>
+    <g class="fd-node" data-pos="4" data-pilot="pilot-jarda" tabindex="0" role="button" aria-label="Position 04 – slot: Jarda, OK-SEN">
+      <circle class="fd-halo" cx="170" cy="240" r="17"/>
+      <circle class="fd-dot" cx="170" cy="240" r="6" fill="#B9BEC2"/>
+      <text class="fd-label" x="184" y="244" fill="#B9BEC2" font-family="IBM Plex Mono" font-size="12">04 · SLOT</text>
+      <text class="fd-who" x="184" y="260" font-family="IBM Plex Mono" font-size="10">JARDA · OK-SEN</text>
+    </g>
   </svg>
+    <p class="fd-hint mono">Hover over a position — click to jump to the pilot’s file.</p>
+  </div>
 
   <div class="formation-list">
-    <div class="formation-item">
+    <div class="formation-item" data-pos="1">
       <div class="fnum mono">01</div>
       <div>
+        <span class="fi-who mono">TOMÁŠ · OK-KNR</span>
         <h3 class="display">Leader</h3>
         <p>Leads the formation and handles navigation and radio. The job is to fly so smoothly and predictably that the rest of the formation always knows exactly what comes next.</p>
       </div>
     </div>
-    <div class="formation-item">
+    <div class="formation-item" data-pos="2">
       <div class="fnum mono">02</div>
       <div>
+        <span class="fi-who mono">BOB · OK-MPR</span>
         <h3 class="display">Right Wing</h3>
         <p>Holds tight on the leader’s right and mirrors every move. The gap to the next aircraft is measured in metres, not tens of metres.</p>
       </div>
     </div>
-    <div class="formation-item">
+    <div class="formation-item" data-pos="3">
       <div class="fnum mono">03</div>
       <div>
+        <span class="fi-who mono">LUBO · OK-LPR</span>
         <h3 class="display">Left Wing</h3>
         <p>The mirror image of number two, on the leader’s left. The position that demands the finest touch — there is nowhere to hide a mistake.</p>
       </div>
     </div>
-    <div class="formation-item">
+    <div class="formation-item" data-pos="4">
       <div class="fnum mono">04</div>
       <div>
+        <span class="fi-who mono">JARDA · OK-SEN</span>
         <h3 class="display">Slot</h3>
         <p>The “tail-end Charlie” — sits behind the leader and rides out the turbulence from the rest of the formation. Precision without the radio chatter.</p>
       </div>
@@ -720,7 +762,62 @@
     </tbody>
   </table>
   <!-- Termíny se spravují v administraci na /admin (soubor data/events.json). -->
+
+  <div class="season-map">
+    <div class="sm-head">
+      <h3 class="display">Season Map</h3>
+      <p class="sm-legend mono"><span class="lg lg-home"></span>Home base LKZA <span class="lg lg-ev"></span>Displays</p>
+    </div>
+    <div class="map-frame">
+      <img src="../assets/images/map-base.svg" alt="" aria-hidden="true" width="540" height="408">
+      <svg class="map-pins" id="mapPins" viewBox="0 0 539.9 408" role="img" aria-label="Map of this season’s displays"
+           data-lon0="10.5" data-lat1="53.6" data-k="60" data-cos="0.6428"></svg>
+    </div>
+    <p class="sm-note mono" id="mapNote">Display locations will appear on the map as soon as they are in the calendar.</p>
+  </div>
+  <p class="invite-link"><a href="#invite" class="mono">Organising an air event? Invite us →</a></p>
 </div>
+
+<!-- ============================================================ INVITE -->
+<section class="invite-section reveal" id="invite" aria-labelledby="invite-title">
+  <div class="invite-intro">
+    <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>FOR EVENT ORGANISERS</span>
+    <h2 class="display" id="invite-title">Invite us to your event</h2>
+    <p>An air show, an airfield anniversary, a corporate event or a flypast over town — four vintage Trenérs in formation steal the show in the air and on the ground. Fill in a few details and we’ll get back to you.</p>
+    <p class="invite-fine mono">The form opens your email app with a pre-filled message to follow-me@email.cz.</p>
+  </div>
+  <form class="invite-form" id="inviteForm" novalidate>
+    <div class="f-row">
+      <label><span class="mono">Full name *</span><input name="name" required autocomplete="name"></label>
+      <label><span class="mono">Organisation</span><input name="org" autocomplete="organization"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Email *</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span class="mono">Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Event name *</span><input name="event" required></label>
+      <label><span class="mono">Event type</span>
+        <select name="type">
+          <option>Air show</option>
+          <option>Airfield anniversary / open day</option>
+          <option>Corporate or private event</option>
+          <option>Flypast over an event</option>
+          <option>Other</option>
+        </select>
+      </label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Date *</span><input name="date" type="date" required></label>
+      <label><span class="mono">Location / airfield *</span><input name="place" required placeholder="e.g. Hradec Králové (LKHK)"></label>
+    </div>
+    <label class="f-full"><span class="mono">Message</span><textarea name="msg" rows="4" placeholder="Programme, expected display time, expected crowd size…"></textarea></label>
+    <div class="f-actions">
+      <button type="submit" class="btn">SEND ENQUIRY →</button>
+      <p class="f-error mono" id="inviteError" role="alert" hidden>Please fill in the required fields marked with an asterisk.</p>
+    </div>
+  </form>
+</section>
 
 <!-- ============================================================ FLY WITH US -->
 <section class="fly-section has-photo reveal" id="fly">

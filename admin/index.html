@@ -54,6 +54,7 @@
   .pill.confirmed{ color:var(--green); border-color:var(--green); }
   .pill.tbc{ color:var(--yellow); border-color:var(--yellow); }
   .pill.cancelled{ color:var(--red); border-color:var(--red); }
+  .hint{ font-size:12px; color:var(--aluminium); margin-top:6px; }
   .empty{ padding:26px 18px; color:var(--aluminium); }
   .msg{ padding:12px 16px; border:1px solid var(--line-strong); margin-bottom:20px; font-size:14px; }
   .msg.ok{ border-color:var(--green); color:var(--green); }
@@ -101,6 +102,8 @@
       <div class="c3 wide-m"><label for="f-location">Místo</label><input id="f-location" maxlength="120" placeholder="např. Hradec Králové (LKHK)"></div>
       <div class="c3 wide-m"><label for="f-link">Odkaz na akci</label><input type="url" id="f-link" maxlength="300" placeholder="https://…"></div>
       <div class="c3 wide-m"><label for="f-note">Poznámka</label><input id="f-note" maxlength="200" placeholder="např. vystoupení v sobotu 14:30"></div>
+      <div class="c6"><label for="f-coords">Souřadnice místa (pro mapu sezóny)</label><input id="f-coords" placeholder="např. 50.2532, 15.8456" inputmode="decimal">
+        <p class="hint">V Mapách Google klikněte pravým tlačítkem na letiště a klikněte na čísla nahoře — zkopírují se. Pak je sem vložte. Bez souřadnic se akce na mapě nezobrazí.</p></div>
       <div class="c6 actions">
         <button type="submit" id="addBtn">PŘIDAT DO SEZNAMU</button>
         <button type="button" class="ghost" id="cancelEdit" hidden>ZRUŠIT ÚPRAVU</button>
@@ -167,7 +170,7 @@
       var pill = document.createElement("span"); pill.className = "pill mono " + e.status; pill.textContent = STATUS[e.status] || e.status;
       n.appendChild(pill);
       var l = document.createElement("div"); l.className = "l";
-      l.textContent = [e.location, e.note].filter(Boolean).join(" · ") + ((e.dateTo || e.date) < today ? " · proběhlo (na webu se nezobrazuje)" : "");
+      l.textContent = [e.location, e.note, typeof e.lat === "number" ? "📍 na mapě" : ""].filter(Boolean).join(" · ") + ((e.dateTo || e.date) < today ? " · proběhlo (na webu se nezobrazuje)" : "");
       info.appendChild(n); info.appendChild(l);
       var btns = document.createElement("div"); btns.className = "btns";
       var ed = document.createElement("button"); ed.type = "button"; ed.className = "ghost"; ed.textContent = "UPRAVIT";
@@ -187,6 +190,7 @@
   function startEdit(e) {
     editing = e;
     fields.forEach(function (f) { $("f-" + f).value = e[f] || (f === "status" ? "tbc" : ""); });
+    $("f-coords").value = (typeof e.lat === "number") ? e.lat + ", " + e.lng : "";
     $("formTitle").textContent = "Upravit akci"; $("addBtn").textContent = "POTVRDIT ÚPRAVU"; $("cancelEdit").hidden = false;
     $("f-name").focus(); window.scrollTo({ top: $("formTitle").offsetTop - 20, behavior: "smooth" });
   }
@@ -201,6 +205,13 @@
     fields.forEach(function (f) { var v = $("f-" + f).value.trim(); if (v) e[f] = v; });
     if (e.dateTo && e.dateTo < e.date) { msg("Datum „do“ nemůže být dřív než datum „od“.", "err"); return; }
     if (e.link && !/^https:\/\//.test(e.link)) { msg("Odkaz musí začínat https://", "err"); return; }
+    var c = $("f-coords").value.trim();
+    if (c) {
+      var m = c.replace(/[°NE]/gi, "").match(/^\s*(-?\d+(?:[.,]\d+)?)\s*[,; ]\s*(-?\d+(?:[.,]\d+)?)\s*$/);
+      if (!m) { msg("Souřadnice zadejte jako dvě čísla, např. 50.2532, 15.8456", "err"); return; }
+      e.lat = parseFloat(m[1].replace(",", ".")); e.lng = parseFloat(m[2].replace(",", "."));
+      if (!(e.lat >= 35 && e.lat <= 65 && e.lng >= -15 && e.lng <= 40)) { msg("Souřadnice jsou mimo Evropu — nejsou prohozené?", "err"); return; }
+    }
     if (editing) { e.id = editing.id; events[events.indexOf(editing)] = e; }
     else events.push(e);
     msg(""); setDirty(true); resetForm(); render();

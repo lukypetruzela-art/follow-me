@@ -84,6 +84,20 @@ repozitáři, jen zpracovaný výstup.
   repositories* → `follow-me` → Permissions: *Contents → Read and write*.
   Po uložení proměnných ve Vercelu dejte **Redeploy**.
 
+## Kalendář na webu: odpočet a mapa
+- **Příští vystoupení** v úvodu ukazuje nejbližší nezrušenou akci s odpočtem dní.
+- **Mapa sezóny** pod kalendářem ukazuje akce, které mají v administraci vyplněné
+  souřadnice (pole „Souřadnice místa“, formát `50.2532, 15.8456`). Podklad mapy je
+  `assets/images/map-base.svg`.
+
+## Poptávka vystoupení
+Formulář `#invite` nic neposílá na server: složí přehledný e-mail a otevře ho
+v poštovním programu návštěvníka (adresa follow-me@email.cz).
+
+## Náhled při sdílení
+`assets/images/og/og-cs.jpg` a `og-en.jpg` (1200 × 630) se ukazují při sdílení
+odkazu na Facebooku, WhatsAppu apod.
+
 ## Instagram (živý feed)
 Sekce `#instagram` umí ukazovat posledních 6 příspěvků přes službu Behold.
 JSON adresu feedu vložte do atributu `data-feed` u `<section class="ig-section">`

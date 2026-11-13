@@ -229,74 +229,213 @@
   }
 
   /* ---------- kalendář akcí z data/events.json ---------- */
-  // Akce se spravují v /admin. Zobrazují se jen budoucí; když žádné nejsou,
-  // zůstane v tabulce výchozí řádek „Kalendář připravujeme“ z HTML.
+  // Akce se spravují v /admin. Jeden soubor napájí tabulku, odpočet v úvodu
+  // i mapu sezóny. Zobrazují se jen budoucí akce; když žádné nejsou, zůstane
+  // v tabulce výchozí řádek „Kalendář připravujeme“ z HTML.
+  var en = EN;
   var eventsBody = document.getElementById("eventsBody");
-  if (eventsBody && window.fetch) {
-    var en = EN;
-    var base = eventsBody.getAttribute("data-src") || "data/events.json";
-    var LABEL = en
-      ? { confirmed: "CONFIRMED", tbc: "TO BE CONFIRMED", cancelled: "CANCELLED", date: "Date", place: "Location", event: "Event", status: "Status", more: "Event website" }
-      : { confirmed: "POTVRZENO", tbc: "BUDE UPŘESNĚNO", cancelled: "ZRUŠENO", date: "Datum", place: "Místo", event: "Akce", status: "Stav", more: "Web akce" };
-    var fmtDate = function (iso) {
-      var p = iso.split("-");
-      return en ? +p[2] + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1] - 1] + " " + p[0]
-                : +p[2] + ". " + +p[1] + ". " + p[0];
-    };
-    var fmtRange = function (e) {
-      if (!e.dateTo) return fmtDate(e.date);
-      var a = e.date.split("-"), b = e.dateTo.split("-");
-      if (!en && a[0] === b[0] && a[1] === b[1]) return +a[2] + ".–" + fmtDate(e.dateTo);
-      return fmtDate(e.date) + " – " + fmtDate(e.dateTo);
-    };
-    var cell = function (label, child) {
-      var td = document.createElement("td");
-      td.setAttribute("data-label", label);
-      if (typeof child === "string") td.textContent = child; else td.appendChild(child);
-      return td;
-    };
-    var today = new Date().toISOString().slice(0, 10);
+  var LABEL = en
+    ? { confirmed: "CONFIRMED", tbc: "TO BE CONFIRMED", cancelled: "CANCELLED", date: "Date", place: "Location", event: "Event", status: "Status", more: "Event website" }
+    : { confirmed: "POTVRZENO", tbc: "BUDE UPŘESNĚNO", cancelled: "ZRUŠENO", date: "Datum", place: "Místo", event: "Akce", status: "Stav", more: "Web akce" };
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var fmtDate = function (iso) {
+    var p = iso.split("-");
+    return en ? +p[2] + " " + MONTHS[+p[1] - 1] + " " + p[0] : +p[2] + ". " + +p[1] + ". " + p[0];
+  };
+  var fmtRange = function (e) {
+    if (!e.dateTo) return fmtDate(e.date);
+    var a = e.date.split("-"), b = e.dateTo.split("-");
+    if (a[0] === b[0] && a[1] === b[1]) {
+      return en ? +a[2] + "–" + fmtDate(e.dateTo) : +a[2] + ".–" + fmtDate(e.dateTo);
+    }
+    return fmtDate(e.date) + " – " + fmtDate(e.dateTo);
+  };
+  var pad2 = function (n) { return (n < 10 ? "0" : "") + n; };
+  var now = new Date();
+  var today = now.getFullYear() + "-" + pad2(now.getMonth() + 1) + "-" + pad2(now.getDate());
+  var dataSrc = (eventsBody && eventsBody.getAttribute("data-src")) || "data/events.json";
 
-    fetch(base, { cache: "no-cache" })
-      .then(function (r) { return r.ok ? r.json() : []; })
-      .then(function (list) {
-        var upcoming = (Array.isArray(list) ? list : []).filter(function (e) {
-          return e && e.date && (e.dateTo || e.date) >= today;
-        }).sort(function (a, b) { return a.date.localeCompare(b.date); });
-        if (!upcoming.length) return;
-        eventsBody.innerHTML = "";
-        upcoming.forEach(function (e) {
-          var tr = document.createElement("tr");
-          if (e.status === "cancelled") tr.className = "is-cancelled";
-          var name = document.createElement("span");
-          var strong = document.createElement("span");
-          strong.className = "ev-name";
-          strong.textContent = e.name;
-          name.appendChild(strong);
-          if (e.note) {
-            var note = document.createElement("span");
-            note.className = "ev-note";
-            note.textContent = e.note;
-            name.appendChild(note);
-          }
-          if (e.link) {
-            var a = document.createElement("a");
-            a.href = e.link; a.target = "_blank"; a.rel = "noopener";
-            a.className = "ev-link";
-            a.textContent = LABEL.more + " ↗";
-            name.appendChild(a);
-          }
-          var pill = document.createElement("span");
-          pill.className = "status-pill " + ({ confirmed: "ok", tbc: "tbd", cancelled: "cancel" }[e.status] || "tbd");
-          pill.textContent = LABEL[e.status] || LABEL.tbc;
-          tr.appendChild(cell(LABEL.date, fmtRange(e)));
-          tr.appendChild(cell(LABEL.place, e.location || "—"));
-          tr.appendChild(cell(LABEL.event, name));
-          tr.appendChild(cell(LABEL.status, pill));
-          eventsBody.appendChild(tr);
-        });
-      })
-      .catch(function () { /* necháme výchozí řádek */ });
+  var eventsPromise = window.fetch
+    ? fetch(dataSrc, { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (list) {
+          return (Array.isArray(list) ? list : []).filter(function (e) {
+            return e && e.date && (e.dateTo || e.date) >= today;
+          }).sort(function (a, b) { return a.date.localeCompare(b.date); });
+        })
+        .catch(function () { return []; })
+    : Promise.resolve([]);
+
+  // tabulka
+  var cell = function (label, child) {
+    var td = document.createElement("td");
+    td.setAttribute("data-label", label);
+    if (typeof child === "string") td.textContent = child; else td.appendChild(child);
+    return td;
+  };
+  eventsPromise.then(function (upcoming) {
+    if (!eventsBody || !upcoming.length) return;
+    eventsBody.innerHTML = "";
+    upcoming.forEach(function (e) {
+      var tr = document.createElement("tr");
+      if (e.status === "cancelled") tr.className = "is-cancelled";
+      var name = document.createElement("span");
+      var strong = document.createElement("span");
+      strong.className = "ev-name";
+      strong.textContent = e.name;
+      name.appendChild(strong);
+      if (e.note) {
+        var note = document.createElement("span");
+        note.className = "ev-note";
+        note.textContent = e.note;
+        name.appendChild(note);
+      }
+      if (e.link) {
+        var a = document.createElement("a");
+        a.href = e.link; a.target = "_blank"; a.rel = "noopener";
+        a.className = "ev-link";
+        a.textContent = LABEL.more + " ↗";
+        name.appendChild(a);
+      }
+      var pill = document.createElement("span");
+      pill.className = "status-pill " + ({ confirmed: "ok", tbc: "tbd", cancelled: "cancel" }[e.status] || "tbd");
+      pill.textContent = LABEL[e.status] || LABEL.tbc;
+      tr.appendChild(cell(LABEL.date, fmtRange(e)));
+      tr.appendChild(cell(LABEL.place, e.location || "—"));
+      tr.appendChild(cell(LABEL.event, name));
+      tr.appendChild(cell(LABEL.status, pill));
+      eventsBody.appendChild(tr);
+    });
+  });
+
+  /* ---------- příští vystoupení (odpočet v úvodu) ---------- */
+  var nextBox = document.getElementById("nextEvent");
+  var daysLabel = function (d) {
+    if (en) return d === 0 ? "TODAY" : d === 1 ? "TOMORROW" : "IN " + d + " DAYS";
+    if (d === 0) return "DNES";
+    if (d === 1) return "ZÍTRA";
+    return "ZA " + d + (d >= 2 && d <= 4 ? " DNY" : " DNÍ");
+  };
+  eventsPromise.then(function (upcoming) {
+    var next = upcoming.filter(function (e) { return e.status !== "cancelled"; })[0];
+    if (!nextBox || !next) return;
+    var t0 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    var p = next.date.split("-");
+    var days = Math.round((Date.UTC(+p[0], +p[1] - 1, +p[2]) - t0) / 86400000);
+    document.getElementById("neName").textContent = next.name;
+    document.getElementById("neMeta").textContent = fmtRange(next) + (next.location ? " · " + next.location : "");
+    document.getElementById("neCount").textContent = days < 0 ? (en ? "HAPPENING NOW" : "PRÁVĚ PROBÍHÁ") : daysLabel(days);
+    nextBox.hidden = false;
+  });
+
+  /* ---------- mapa sezóny ---------- */
+  var pins = document.getElementById("mapPins");
+  if (pins) {
+    var NS = "http://www.w3.org/2000/svg";
+    var LON0 = +pins.getAttribute("data-lon0"), LAT1 = +pins.getAttribute("data-lat1");
+    var K = +pins.getAttribute("data-k"), COS = +pins.getAttribute("data-cos");
+    var proj = function (lat, lng) { return [(lng - LON0) * COS * K, (LAT1 - lat) * K]; };
+    var el = function (tag, attrs, parent) {
+      var n = document.createElementNS(NS, tag);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      (parent || pins).appendChild(n);
+      return n;
+    };
+    // síť poledníků a rovnoběžek jako na letecké mapě
+    var vb = pins.viewBox.baseVal;
+    for (var lon = 11; lon <= 24; lon++) {
+      var x = proj(50, lon)[0];
+      el("line", { x1: x, y1: 0, x2: x, y2: vb.height, "class": "grid" });
+      if (lon % 2 === 0) el("text", { x: x + 2, y: vb.height - 4, "class": "grid-t" }).textContent = lon + "°E";
+    }
+    for (var lat = 47; lat <= 53; lat++) {
+      var y = proj(lat, 11)[1];
+      el("line", { x1: 0, y1: y, x2: vb.width, y2: y, "class": "grid" });
+      el("text", { x: 3, y: y - 2, "class": "grid-t" }).textContent = lat + "°N";
+    }
+    var HOME = { lat: 49.9283, lng: 18.0783 };
+    var hp = proj(HOME.lat, HOME.lng);
+    var routes = el("g", {});
+    var pinLayer = el("g", {});
+
+    eventsPromise.then(function (upcoming) {
+      var located = upcoming.filter(function (e) { return typeof e.lat === "number" && typeof e.lng === "number"; });
+      located.forEach(function (e) {
+        var p = proj(e.lat, e.lng);
+        var dx = p[0] - hp[0], dy = p[1] - hp[1];
+        var mx = (hp[0] + p[0]) / 2 - dy * 0.18, my = (hp[1] + p[1]) / 2 + dx * 0.18;
+        el("path", { d: "M" + hp[0] + " " + hp[1] + " Q" + mx + " " + my + " " + p[0] + " " + p[1], "class": "route" }, routes);
+        var g = el("g", { "class": "pin" + (e.status === "cancelled" ? " cancelled" : ""), tabindex: "0" }, pinLayer);
+        el("circle", { cx: p[0], cy: p[1], r: 4, "class": "p" }, g);
+        var left = p[0] > vb.width - 120;
+        var anchor = left ? "end" : "start", tx = p[0] + (left ? -8 : 8);
+        el("text", { x: tx, y: p[1] + 3, "text-anchor": anchor }, g).textContent = fmtRange(e);
+        el("text", { x: tx, y: p[1] + 14, "text-anchor": anchor, "class": "pin-name" }, g).textContent = e.name;
+        el("title", {}, g).textContent = e.name + " — " + fmtRange(e) + (e.location ? ", " + e.location : "");
+        g.addEventListener("click", function () { var t = document.getElementById("events"); if (t) t.scrollIntoView({ behavior: "smooth" }); });
+      });
+      var home = el("g", { "class": "pin home" }, pinLayer);
+      el("circle", { cx: hp[0], cy: hp[1], r: 5, "class": "pulse" }, home);
+      el("circle", { cx: hp[0], cy: hp[1], r: 5, "class": "p" }, home);
+      el("text", { x: hp[0] + 8, y: hp[1] + 15 }, home).textContent = "LKZA";
+      var note = document.getElementById("mapNote");
+      if (note && located.length) note.hidden = true;
+    });
+  }
+
+  /* ---------- interaktivní formace ---------- */
+  var fdNodes = document.querySelectorAll(".fd-node");
+  var fdItems = document.querySelectorAll(".formation-item[data-pos]");
+  var setPos = function (pos) {
+    [].forEach.call(fdNodes, function (n) { n.classList.toggle("is-active", n.getAttribute("data-pos") === pos); });
+    [].forEach.call(fdItems, function (n) { n.classList.toggle("is-active", n.getAttribute("data-pos") === pos); });
+  };
+  [].forEach.call(fdNodes, function (n) {
+    var pos = n.getAttribute("data-pos");
+    var go = function () {
+      var card = document.getElementById(n.getAttribute("data-pilot"));
+      if (card) { card.scrollIntoView({ behavior: "smooth", block: "center" }); history.replaceState(null, "", "#" + card.id); }
+    };
+    n.addEventListener("mouseenter", function () { setPos(pos); });
+    n.addEventListener("focus", function () { setPos(pos); });
+    n.addEventListener("mouseleave", function () { setPos(null); });
+    n.addEventListener("blur", function () { setPos(null); });
+    n.addEventListener("click", go);
+    n.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+  [].forEach.call(fdItems, function (n) {
+    n.addEventListener("mouseenter", function () { setPos(n.getAttribute("data-pos")); });
+    n.addEventListener("mouseleave", function () { setPos(null); });
+  });
+
+  /* ---------- poptávka vystoupení ---------- */
+  // Bez serveru: složí přehledný e-mail a otevře ho v poštovním programu návštěvníka.
+  var form = document.getElementById("inviteForm");
+  if (form) {
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var bad = [];
+      [].forEach.call(form.querySelectorAll("[required]"), function (f) {
+        var ok = f.value.trim() && (f.type !== "email" || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value.trim()));
+        f.classList.toggle("is-invalid", !ok);
+        if (!ok) bad.push(f);
+      });
+      document.getElementById("inviteError").hidden = !bad.length;
+      if (bad.length) { bad[0].focus(); return; }
+      var v = function (n) { return (form.elements[n].value || "").trim(); };
+      var date = v("date") ? fmtDate(v("date")) : "";
+      var L = en
+        ? ["Event", "Type", "Date", "Location", "Name", "Organisation", "Email", "Phone", "Message", "Event enquiry"]
+        : ["Akce", "Typ", "Datum", "Místo", "Jméno", "Organizace", "E-mail", "Telefon", "Zpráva", "Poptávka vystoupení"];
+      var lines = [
+        L[0] + ": " + v("event"), L[1] + ": " + v("type"), L[2] + ": " + date, L[3] + ": " + v("place"), "",
+        L[4] + ": " + v("name"), L[5] + ": " + (v("org") || "—"), L[6] + ": " + v("email"), L[7] + ": " + (v("phone") || "—")
+      ];
+      if (v("msg")) lines.push("", L[8] + ":", v("msg"));
+      var subject = L[9] + ": " + v("event") + " (" + date + ")";
+      window.location.href = "mailto:follow-me@email.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+    });
+    form.addEventListener("input", function (e) { e.target.classList.remove("is-invalid"); });
   }
 
   /* ---------- reveal on scroll ---------- */

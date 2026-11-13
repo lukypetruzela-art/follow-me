@@ -47,6 +47,12 @@ function validate(list) {
     const id = /^[a-z0-9-]{1,40}$/.test(e.id || "") ? e.id : crypto.randomBytes(6).toString("hex");
     const out = { id, date, name, location, status };
     if (dateTo && dateTo !== date) out.dateTo = dateTo;
+    const lat = Number(e.lat), lng = Number(e.lng);
+    if (e.lat != null && e.lat !== "" && e.lng != null && e.lng !== "") {
+      if (!(lat >= 35 && lat <= 65 && lng >= -15 && lng <= 40)) throw new Error(`Akce ${n}: souřadnice jsou mimo Evropu.`);
+      out.lat = Math.round(lat * 10000) / 10000;
+      out.lng = Math.round(lng * 10000) / 10000;
+    }
     if (link) out.link = link;
     if (note) out.note = note;
     return out;

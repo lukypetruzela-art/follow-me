@@ -519,3 +519,96 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
   html{ scroll-behavior:auto; }
   .dot{ animation:none; }
 }
+
+/* ---------- PŘÍŠTÍ VYSTOUPENÍ (úvod) ---------- */
+.next-event{ display:inline-grid; grid-template-columns:auto auto; grid-template-areas:"label count" "name count" "meta count"; column-gap:28px; row-gap:4px; align-items:center;
+  margin-top:28px; padding:14px 18px; border:1px solid var(--line-strong); background:rgba(27,30,33,0.72); backdrop-filter:blur(4px); transition:border-color .25s ease; max-width:100%; }
+.next-event[hidden]{ display:none; }
+.next-event:hover, .next-event:focus-visible{ border-color:var(--yellow); }
+.ne-label{ grid-area:label; display:inline-flex; align-items:center; gap:8px; font-size:10px; letter-spacing:0.14em; color:var(--yellow); }
+.ne-name{ grid-area:name; font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(17px,2vw,22px); letter-spacing:0.03em; color:var(--offwhite); line-height:1.15; }
+.ne-meta{ grid-area:meta; font-size:12px; color:var(--aluminium); }
+.ne-count{ grid-area:count; justify-self:end; font-size:13px; letter-spacing:0.08em; color:var(--black); background:var(--yellow); padding:8px 12px; white-space:nowrap; }
+@media (max-width:560px){ .next-event{ grid-template-columns:1fr; grid-template-areas:"label" "name" "meta" "count"; } .ne-count{ justify-self:start; margin-top:8px; } }
+
+/* ---------- INTERAKTIVNÍ FORMACE ---------- */
+.formation-visual{ display:flex; flex-direction:column; gap:14px; }
+.fd-hint{ font-size:11px; color:var(--aluminium); opacity:0.7; text-align:center; }
+.fd-node{ cursor:pointer; outline:none; }
+.fd-halo{ fill:rgba(244,192,0,0); stroke:rgba(244,192,0,0); stroke-width:1; transition:fill .25s, stroke .25s; }
+.fd-dot{ transition:r .25s ease; }
+.fd-who{ fill:var(--offwhite); opacity:0; transition:opacity .25s; letter-spacing:0.06em; }
+.fd-node.is-active .fd-halo, .fd-node:focus-visible .fd-halo{ fill:rgba(244,192,0,0.12); stroke:rgba(244,192,0,0.7); }
+.fd-node.is-active .fd-dot, .fd-node:focus-visible .fd-dot{ fill:var(--yellow); r:8; }
+.fd-node.is-active .fd-label{ fill:var(--yellow); }
+.fd-node.is-active .fd-who, .fd-node:focus-visible .fd-who{ opacity:1; }
+.formation-item{ transition:background .25s ease; cursor:default; }
+.formation-item.is-active{ background:linear-gradient(90deg, rgba(244,192,0,0.07), transparent 70%); }
+.formation-item.is-active h3{ color:var(--yellow); }
+.fi-who{ display:block; font-size:10px; letter-spacing:0.12em; color:var(--aluminium); margin-bottom:4px; }
+.pilot-data{ position:relative; }
+.pos-mini{ position:absolute; top:34px; right:40px; width:46px; height:40px; }
+.pos-mini path{ stroke:rgba(237,234,226,0.25); stroke-width:1; fill:none; }
+.pos-mini circle{ fill:rgba(237,234,226,0.25); }
+.pos-mini circle.on{ fill:var(--yellow); }
+.pos-mini circle.ring{ fill:none; stroke:var(--yellow); stroke-width:1.4; stroke-dasharray:2 2; }
+@media (max-width:560px){ .pos-mini{ top:26px; right:20px; width:38px; height:33px; } }
+.pilot-card:target{ outline:2px solid var(--yellow); outline-offset:4px; }
+
+/* ---------- MAPA SEZÓNY ---------- */
+.season-map{ margin-top:46px; max-width:900px; }
+.sm-head{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+.sm-head h3{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:16px; letter-spacing:0.14em; color:var(--aluminium); }
+.sm-legend{ font-size:11px; color:var(--aluminium); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.lg{ display:inline-block; width:9px; height:9px; border-radius:50%; margin-left:10px; }
+.lg-home{ background:var(--yellow); margin-left:0; }
+.lg-ev{ background:var(--offwhite); }
+.map-frame{ position:relative; border:1px solid var(--line-strong); background:#0E0F11; aspect-ratio:539.9/408; overflow:hidden; }
+.map-frame img, .map-pins{ position:absolute; inset:0; width:100%; height:100%; }
+.map-pins .grid{ stroke:rgba(237,234,226,0.07); stroke-width:0.6; }
+.map-pins .grid-t{ fill:rgba(237,234,226,0.3); font:7px 'IBM Plex Mono',monospace; }
+.map-pins .route{ stroke:rgba(244,192,0,0.45); stroke-width:1; stroke-dasharray:3 3; fill:none; animation:route-dash 1.2s linear infinite; }
+@keyframes route-dash{ to{ stroke-dashoffset:-12; } }
+.map-pins .pin{ cursor:pointer; outline:none; }
+.map-pins .pin circle.p{ fill:var(--offwhite); stroke:#0E0F11; stroke-width:1.5; transition:r .2s; }
+.map-pins .pin.cancelled circle.p{ fill:#D0503F; }
+.map-pins .pin text{ fill:var(--offwhite); font:600 8.5px 'IBM Plex Mono',monospace; letter-spacing:0.04em; paint-order:stroke; stroke:#0E0F11; stroke-width:3px; }
+.map-pins .pin .pin-name{ opacity:0; transition:opacity .2s; font-weight:500; fill:var(--yellow); }
+.map-pins .pin:hover .pin-name, .map-pins .pin:focus .pin-name{ opacity:1; }
+.map-pins .pin:hover circle.p, .map-pins .pin:focus circle.p{ r:5.5; }
+.map-pins .home circle.p{ fill:var(--yellow); }
+.map-pins .home .pulse{ fill:none; stroke:var(--yellow); stroke-width:1; transform-box:fill-box; transform-origin:center; animation:pin-pulse 2.4s ease-out infinite; }
+.map-pins .home text{ fill:var(--yellow); }
+@keyframes pin-pulse{ from{ transform:scale(1); opacity:.9; } to{ transform:scale(3.2); opacity:0; } }
+.sm-note{ margin-top:12px; font-size:11px; color:var(--aluminium); opacity:0.75; }
+.sm-note[hidden]{ display:none; }
+.invite-link{ margin-top:30px; }
+.invite-link a{ font-size:13px; letter-spacing:0.08em; color:var(--yellow); }
+.invite-link a:hover{ text-decoration:underline; }
+@media (prefers-reduced-motion: reduce){ .map-pins .route, .map-pins .home .pulse{ animation:none; } }
+
+/* ---------- POPTÁVKA ---------- */
+.invite-section{ max-width:var(--max); margin:0 auto; padding:30px 40px 110px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start; }
+@media (max-width:900px){ .invite-section{ grid-template-columns:1fr; gap:34px; padding:20px 20px 80px; } }
+.invite-intro h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(28px,4vw,46px); line-height:1.05; margin-bottom:18px; }
+.invite-intro p{ color:var(--aluminium); font-size:16px; line-height:1.7; max-width:44ch; }
+.invite-fine{ margin-top:16px; font-size:11px !important; opacity:0.75; }
+.invite-form{ border:1px solid var(--line-strong); background:var(--gunmetal); padding:28px; display:flex; flex-direction:column; gap:16px; }
+@media (max-width:640px){ .invite-form{ padding:20px; } }
+.f-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:560px){ .f-row{ grid-template-columns:1fr; } }
+.invite-form label{ display:flex; flex-direction:column; gap:7px; }
+.invite-form label > span{ font-size:10px; letter-spacing:0.12em; color:var(--aluminium); text-transform:uppercase; }
+.invite-form input, .invite-form select, .invite-form textarea{ width:100%; background:var(--black); color:var(--offwhite); border:1px solid var(--line-strong); padding:11px 12px; font:inherit; font-size:15px; border-radius:0; }
+.invite-form textarea{ resize:vertical; min-height:96px; }
+.invite-form input:focus, .invite-form select:focus, .invite-form textarea:focus{ outline:2px solid var(--yellow); outline-offset:0; border-color:transparent; }
+.invite-form .is-invalid{ border-color:#D0503F; }
+.invite-form input::-webkit-calendar-picker-indicator{ filter:invert(0.8); }
+.f-actions{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.f-actions .btn{ cursor:pointer; }
+.f-error{ font-size:12px; color:#D0503F; }
+@media (max-width:640px){
+  .map-pins .pin text{ font-size:15px; stroke-width:4px; }
+  .map-pins .grid-t{ font-size:11px; }
+  .map-pins .pin circle.p{ r:6; }
+}
