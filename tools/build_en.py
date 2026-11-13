@@ -193,6 +193,7 @@ TEXT = [
     ('FOLLOW-ME · FORMAČNÍ LETECKÝ TÝM · LKZA', 'FOLLOW-ME · FORMATION DISPLAY TEAM · LKZA'),
     ('<a href="#top">Nahoru ↑</a>', '<a href="#top">Top ↑</a>'),
     ('<a href="mailto:follow-me@email.cz">E-mail</a>', '<a href="mailto:follow-me@email.cz">Email</a>'),
+    ('class="footer-admin" rel="nofollow">Administrace</a>', 'class="footer-admin" rel="nofollow">Admin</a>'),
 ]
 
 # Popisky stejného textu na více místech (karty, technické údaje)

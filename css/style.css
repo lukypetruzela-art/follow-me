@@ -471,6 +471,11 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .site-footer .fl{ font-size:11px; letter-spacing:0.1em; color:var(--aluminium); }
 .site-footer .fr{ display:flex; gap:20px; font-size:11px; letter-spacing:0.1em; color:var(--aluminium); }
 .site-footer .fr a:hover{ color:var(--yellow); }
+.site-footer .fr{ flex-wrap:wrap; row-gap:12px; }
+.site-footer .fr a{ white-space:nowrap; }
+.site-footer .footer-admin{ opacity:0.55; padding-left:20px; border-left:1px solid var(--line); }
+@media (max-width:640px){ .site-footer .footer-admin{ padding-left:0; border-left:none; } }
+.site-footer .footer-admin:hover{ opacity:1; }
 @media (max-width:480px){ .contact-meta .row{ flex-direction:column; gap:4px; } .contact-meta .row .v{ text-align:left; } }
 @media (max-width:640px){ .site-footer{ padding:26px 20px; flex-direction:column; align-items:flex-start; } }
 
