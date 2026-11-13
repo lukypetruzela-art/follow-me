@@ -124,6 +124,38 @@ button{font:inherit; cursor:pointer;}
   width:clamp(180px, calc(32vw - 110px), 400px);
 }
 .hero-badge .emblem{ display:block; width:100%; height:auto; }
+
+/* ---------- animace znaku ----------
+   Při načtení: vykreslí se okraj, natočí se stupnice, letadla přiletí do formace
+   a dokreslí se spojnice. Potom letadla jemně „dýchají“ v pozici a po okraji
+   jednou za pár sekund oběhne žlutý radarový záblesk. */
+.emblem .em-ring{ stroke-dasharray:1244; stroke-dashoffset:1244; animation:em-draw 1.4s cubic-bezier(.6,0,.2,1) .1s forwards; }
+.emblem .em-ticks, .emblem .em-sweep{ transform-box:view-box; transform-origin:200px 200px; }
+.emblem .em-ticks{ opacity:0; animation:em-bezel 1.4s cubic-bezier(.2,.7,.2,1) .4s forwards; }
+.emblem .em-ring2, .emblem .em-core{ opacity:0; animation:em-fade .8s ease .7s forwards; }
+.emblem .em-text{ opacity:0; animation:em-fade .9s ease 1.1s forwards; }
+.emblem .em-plane{ opacity:0; transform:translateY(150px); animation:em-fly 1.3s cubic-bezier(.15,.75,.25,1) forwards; }
+.emblem .em-p1{ animation-delay:1.0s; }
+.emblem .em-p2{ animation-delay:1.25s; }
+.emblem .em-p3{ animation-delay:1.25s; }
+.emblem .em-p4{ animation-delay:1.5s; }
+.emblem .em-links{ opacity:0; animation:em-fade .6s ease 2.6s forwards; }
+.emblem .em-bob{ animation:em-bob 3.4s ease-in-out 3s infinite alternate; }
+.emblem .em-p2 .em-bob{ animation-duration:3.9s; animation-delay:3.3s; }
+.emblem .em-p3 .em-bob{ animation-duration:4.3s; animation-delay:3.1s; }
+.emblem .em-p4 .em-bob{ animation-duration:3.7s; animation-delay:3.5s; }
+.emblem .em-sweep{ opacity:0; animation:em-sweep 7s linear 3.2s infinite; }
+@keyframes em-draw{ to{ stroke-dashoffset:0; } }
+@keyframes em-bezel{ from{ opacity:0; transform:rotate(-40deg); } to{ opacity:1; transform:rotate(0); } }
+@keyframes em-fade{ to{ opacity:1; } }
+@keyframes em-fly{ 0%{ opacity:0; transform:translateY(150px); } 30%{ opacity:1; } 100%{ opacity:1; transform:translateY(0); } }
+@keyframes em-bob{ from{ transform:translate(0,0); } to{ transform:translate(.8px,-3px); } }
+@keyframes em-sweep{ 0%{ opacity:0; transform:rotate(0); } 8%{ opacity:.9; } 45%{ opacity:.9; } 55%{ opacity:0; transform:rotate(360deg); } 100%{ opacity:0; transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){
+  .emblem .em-ring, .emblem .em-ticks, .emblem .em-ring2, .emblem .em-core, .emblem .em-text,
+  .emblem .em-plane, .emblem .em-links, .emblem .em-bob{ animation:none !important; opacity:1; transform:none; stroke-dashoffset:0; }
+  .emblem .em-sweep{ display:none; }
+}
 @media (max-width:860px){
   .hero-badge{ width:190px; top:92px; left:20px; right:auto; }
 }
