@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>FOLLOW-ME — správa kalendáře</title>
+<link rel="icon" type="image/svg+xml" href="../assets/images/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0B0C0E; --gunmetal:#1B1E21; --gunmetal-2:#25282C; --aluminium:#B9BEC2; --offwhite:#EDEAE2;
+    --yellow:#F4C000; --red:#D0503F; --green:#7FB069; --line:rgba(237,234,226,0.14); --line-strong:rgba(237,234,226,0.28);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--black); color:var(--offwhite); font-family:'Inter',sans-serif; font-size:15px; line-height:1.5; min-height:100vh; }
+  .mono{ font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:32px 20px 80px; }
+  header{ display:flex; justify-content:space-between; align-items:center; gap:16px; padding-bottom:22px; border-bottom:1px solid var(--line-strong); margin-bottom:32px; flex-wrap:wrap; }
+  h1{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:22px; letter-spacing:0.12em; }
+  h1 span{ color:var(--yellow); }
+  h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:16px; letter-spacing:0.12em; color:var(--aluminium); margin:36px 0 14px; }
+  a{ color:var(--yellow); }
+  label{ display:block; font-size:11px; color:var(--aluminium); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px; font-family:'IBM Plex Mono',monospace; }
+  input, select{ width:100%; background:var(--gunmetal); color:var(--offwhite); border:1px solid var(--line-strong); padding:11px 12px; font:inherit; border-radius:0; }
+  input:focus, select:focus, button:focus-visible{ outline:2px solid var(--yellow); outline-offset:1px; }
+  button{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; cursor:pointer; padding:11px 18px; border:1px solid var(--yellow); background:var(--yellow); color:var(--black); }
+  button:hover{ background:transparent; color:var(--yellow); }
+  button.ghost{ background:transparent; color:var(--offwhite); border-color:var(--line-strong); }
+  button.ghost:hover{ border-color:var(--yellow); color:var(--yellow); }
+  button.danger{ background:transparent; color:var(--red); border-color:rgba(208,80,63,0.5); }
+  button.danger:hover{ border-color:var(--red); }
+  button:disabled{ opacity:0.5; cursor:wait; }
+  .login{ max-width:380px; margin:12vh auto 0; border:1px solid var(--line-strong); background:var(--gunmetal); padding:32px; }
+  .login p{ color:var(--aluminium); font-size:14px; margin:10px 0 22px; }
+  .login button{ width:100%; margin-top:16px; }
+  .grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; border:1px solid var(--line-strong); background:var(--gunmetal); padding:22px; }
+  .grid .c2{ grid-column:span 2; } .grid .c3{ grid-column:span 3; } .grid .c6{ grid-column:span 6; }
+  @media (max-width:700px){ .grid{ grid-template-columns:1fr 1fr; } .grid .c2, .grid .c3{ grid-column:span 1; } .grid .c6, .grid .wide-m{ grid-column:span 2; } }
+  .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .list{ border:1px solid var(--line-strong); }
+  .item{ display:grid; grid-template-columns:190px 1fr auto; gap:16px; align-items:center; padding:14px 18px; border-bottom:1px solid var(--line); }
+  .item:last-child{ border-bottom:none; }
+  .item.past{ opacity:0.5; }
+  .item .d{ font-size:13px; color:var(--yellow); }
+  .item .n{ font-weight:600; }
+  .item .l{ font-size:13px; color:var(--aluminium); }
+  .item .btns{ display:flex; gap:8px; }
+  .item .btns button{ padding:7px 11px; font-size:11px; }
+  @media (max-width:700px){ .item{ grid-template-columns:1fr; gap:6px; } }
+  .pill{ display:inline-block; font-size:10px; padding:2px 7px; border:1px solid var(--line-strong); margin-left:8px; vertical-align:2px; }
+  .pill.confirmed{ color:var(--green); border-color:var(--green); }
+  .pill.tbc{ color:var(--yellow); border-color:var(--yellow); }
+  .pill.cancelled{ color:var(--red); border-color:var(--red); }
+  .empty{ padding:26px 18px; color:var(--aluminium); }
+  .msg{ padding:12px 16px; border:1px solid var(--line-strong); margin-bottom:20px; font-size:14px; }
+  .msg.ok{ border-color:var(--green); color:var(--green); }
+  .msg.err{ border-color:var(--red); color:var(--red); }
+  .bar{ position:sticky; bottom:0; margin-top:28px; padding:16px 0; background:linear-gradient(0deg, var(--black) 70%, transparent); display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .dirty{ color:var(--yellow); font-size:12px; }
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <form class="login" id="login" autocomplete="on">
+    <h1>FOLLOW-ME <span>/ ADMIN</span></h1>
+    <p>Správa kalendáře akcí. Zadejte heslo administrátora.</p>
+    <label for="pw">Heslo</label>
+    <input type="password" id="pw" autocomplete="current-password" required>
+    <button type="submit" id="loginBtn">PŘIHLÁSIT →</button>
+    <p class="mono" id="loginErr" style="color:var(--red);margin:14px 0 0" hidden></p>
+  </form>
+
+  <main id="app" hidden>
+    <header>
+      <h1>FOLLOW-ME <span>/ KALENDÁŘ AKCÍ</span></h1>
+      <div class="actions">
+        <a class="mono" href="/#events" target="_blank" rel="noopener">ZOBRAZIT WEB ↗</a>
+        <button class="ghost" id="logout" type="button">ODHLÁSIT</button>
+      </div>
+    </header>
+
+    <div class="msg" id="msg" hidden></div>
+
+    <h2 id="formTitle">Nová akce</h2>
+    <form class="grid" id="form">
+      <div class="c2"><label for="f-date">Datum od *</label><input type="date" id="f-date" required></div>
+      <div class="c2"><label for="f-dateTo">Datum do</label><input type="date" id="f-dateTo"></div>
+      <div class="c2 wide-m"><label for="f-status">Stav</label>
+        <select id="f-status">
+          <option value="confirmed">Potvrzeno</option>
+          <option value="tbc">Bude upřesněno</option>
+          <option value="cancelled">Zrušeno</option>
+        </select>
+      </div>
+      <div class="c3 wide-m"><label for="f-name">Název akce *</label><input id="f-name" maxlength="120" required placeholder="např. Letecký den Hradec Králové"></div>
+      <div class="c3 wide-m"><label for="f-location">Místo</label><input id="f-location" maxlength="120" placeholder="např. Hradec Králové (LKHK)"></div>
+      <div class="c3 wide-m"><label for="f-link">Odkaz na akci</label><input type="url" id="f-link" maxlength="300" placeholder="https://…"></div>
+      <div class="c3 wide-m"><label for="f-note">Poznámka</label><input id="f-note" maxlength="200" placeholder="např. vystoupení v sobotu 14:30"></div>
+      <div class="c6 actions">
+        <button type="submit" id="addBtn">PŘIDAT DO SEZNAMU</button>
+        <button type="button" class="ghost" id="cancelEdit" hidden>ZRUŠIT ÚPRAVU</button>
+      </div>
+    </form>
+
+    <h2>Seznam akcí</h2>
+    <div class="list" id="list"></div>
+
+    <div class="bar">
+      <button type="button" id="save">ULOŽIT A ZVEŘEJNIT</button>
+      <span class="dirty mono" id="dirty" hidden>● Neuložené změny</span>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "fm-admin-pw";
+  var pw = "";
+  try { pw = sessionStorage.getItem(KEY) || ""; } catch (e) {}
+  var events = [], sha = null, editing = null, dirty = false;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var STATUS = { confirmed: "Potvrzeno", tbc: "Bude upřesněno", cancelled: "Zrušeno" };
+
+  function api(method, body) {
+    return fetch("/api/events", {
+      method: method,
+      headers: { "Content-Type": "application/json", "X-Admin-Password": pw },
+      body: body ? JSON.stringify(body) : undefined
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) {
+        if (!r.ok) { var e = new Error(d.error || "Chyba " + r.status); e.status = r.status; throw e; }
+        return d;
+      });
+    });
+  }
+
+  function msg(text, type) {
+    var m = $("msg"); m.textContent = text; m.className = "msg " + (type || ""); m.hidden = !text;
+    if (text) m.scrollIntoView({ block: "nearest" });
+  }
+  function setDirty(v) { dirty = v; $("dirty").hidden = !v; }
+
+  function fmt(d) { var p = d.split("-"); return +p[2] + ". " + +p[1] + ". " + p[0]; }
+  function range(e) { return e.dateTo ? fmt(e.date) + " – " + fmt(e.dateTo) : fmt(e.date); }
+  var today = new Date().toISOString().slice(0, 10);
+
+  function render() {
+    var list = $("list"); list.innerHTML = "";
+    if (!events.length) {
+      var em = document.createElement("div"); em.className = "empty";
+      em.textContent = "Zatím žádné akce. Na webu se zobrazí text „Kalendář sezóny připravujeme“.";
+      list.appendChild(em); return;
+    }
+    events.slice().sort(function (a, b) { return a.date.localeCompare(b.date); }).forEach(function (e) {
+      var row = document.createElement("div");
+      row.className = "item" + ((e.dateTo || e.date) < today ? " past" : "");
+      var d = document.createElement("div"); d.className = "d mono"; d.textContent = range(e);
+      var info = document.createElement("div");
+      var n = document.createElement("div"); n.className = "n"; n.textContent = e.name;
+      var pill = document.createElement("span"); pill.className = "pill mono " + e.status; pill.textContent = STATUS[e.status] || e.status;
+      n.appendChild(pill);
+      var l = document.createElement("div"); l.className = "l";
+      l.textContent = [e.location, e.note].filter(Boolean).join(" · ") + ((e.dateTo || e.date) < today ? " · proběhlo (na webu se nezobrazuje)" : "");
+      info.appendChild(n); info.appendChild(l);
+      var btns = document.createElement("div"); btns.className = "btns";
+      var ed = document.createElement("button"); ed.type = "button"; ed.className = "ghost"; ed.textContent = "UPRAVIT";
+      ed.onclick = function () { startEdit(e); };
+      var del = document.createElement("button"); del.type = "button"; del.className = "danger"; del.textContent = "SMAZAT";
+      del.onclick = function () {
+        if (!confirm("Smazat akci „" + e.name + "“?")) return;
+        events = events.filter(function (x) { return x !== e; }); setDirty(true); render();
+      };
+      btns.appendChild(ed); btns.appendChild(del);
+      row.appendChild(d); row.appendChild(info); row.appendChild(btns);
+      list.appendChild(row);
+    });
+  }
+
+  var fields = ["date", "dateTo", "status", "name", "location", "link", "note"];
+  function startEdit(e) {
+    editing = e;
+    fields.forEach(function (f) { $("f-" + f).value = e[f] || (f === "status" ? "tbc" : ""); });
+    $("formTitle").textContent = "Upravit akci"; $("addBtn").textContent = "POTVRDIT ÚPRAVU"; $("cancelEdit").hidden = false;
+    $("f-name").focus(); window.scrollTo({ top: $("formTitle").offsetTop - 20, behavior: "smooth" });
+  }
+  function resetForm() {
+    editing = null; $("form").reset(); $("f-status").value = "confirmed";
+    $("formTitle").textContent = "Nová akce"; $("addBtn").textContent = "PŘIDAT DO SEZNAMU"; $("cancelEdit").hidden = true;
+  }
+
+  $("form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var e = {};
+    fields.forEach(function (f) { var v = $("f-" + f).value.trim(); if (v) e[f] = v; });
+    if (e.dateTo && e.dateTo < e.date) { msg("Datum „do“ nemůže být dřív než datum „od“.", "err"); return; }
+    if (e.link && !/^https:\/\//.test(e.link)) { msg("Odkaz musí začínat https://", "err"); return; }
+    if (editing) { e.id = editing.id; events[events.indexOf(editing)] = e; }
+    else events.push(e);
+    msg(""); setDirty(true); resetForm(); render();
+  });
+  $("cancelEdit").onclick = resetForm;
+
+  $("save").onclick = function () {
+    var b = $("save"); b.disabled = true; b.textContent = "UKLÁDÁM…";
+    api("PUT", { events: events, sha: sha }).then(function (d) {
+      events = d.events; sha = d.sha; setDirty(false); render();
+      msg("Uloženo. Web se aktualizuje přibližně do minuty.", "ok");
+    }).catch(function (e) {
+      msg(e.message, "err");
+      if (e.status === 401) logout();
+    }).then(function () { b.disabled = false; b.textContent = "ULOŽIT A ZVEŘEJNIT"; });
+  };
+
+  function load() {
+    return api("GET").then(function (d) {
+      events = d.events || []; sha = d.sha; setDirty(false); render();
+      $("login").hidden = true; $("app").hidden = false;
+    });
+  }
+  function logout() {
+    pw = ""; try { sessionStorage.removeItem(KEY); } catch (e) {}
+    $("app").hidden = true; $("login").hidden = false; $("pw").value = "";
+  }
+  $("logout").onclick = function () {
+    if (dirty && !confirm("Máte neuložené změny. Opravdu odhlásit?")) return;
+    logout();
+  };
+
+  $("login").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    pw = $("pw").value; var btn = $("loginBtn"); btn.disabled = true; $("loginErr").hidden = true;
+    load().then(function () {
+      try { sessionStorage.setItem(KEY, pw); } catch (e) {}
+    }).catch(function (e) {
+      pw = ""; $("loginErr").textContent = e.message; $("loginErr").hidden = false;
+    }).then(function () { btn.disabled = false; });
+  });
+
+  window.addEventListener("beforeunload", function (e) { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+  resetForm();
+  if (pw) load().catch(logout);
+})();
+</script>
+</body>
+</html>

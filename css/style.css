@@ -417,6 +417,13 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .events-table a:hover{ text-decoration:underline; }
 .status-pill{ font-size:10px; letter-spacing:0.08em; padding:4px 9px; border:1px solid var(--line-strong); color:var(--aluminium); display:inline-block; }
 .status-pill.tbd{ color:var(--yellow); border-color:var(--yellow); }
+.status-pill.ok{ color:var(--offwhite); border-color:var(--offwhite); }
+.status-pill.cancel{ color:#D0503F; border-color:#D0503F; }
+.events-table tr.is-cancelled .ev-name{ text-decoration:line-through; color:var(--aluminium); }
+.ev-name{ display:block; font-family:'Inter',sans-serif; font-weight:600; letter-spacing:0; }
+.ev-note{ display:block; font-size:12px; color:var(--aluminium); margin-top:3px; }
+.ev-link{ display:inline-block; font-size:11px; color:var(--yellow); margin-top:5px; letter-spacing:0.06em; }
+.ev-link:hover{ text-decoration:underline; }
 @media (max-width:700px){
   .events-table thead{ display:none; }
   .events-table, .events-table tbody, .events-table tr, .events-table td{ display:block; width:100%; }

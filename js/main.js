@@ -222,6 +222,77 @@
     });
   }
 
+  /* ---------- kalendář akcí z data/events.json ---------- */
+  // Akce se spravují v /admin. Zobrazují se jen budoucí; když žádné nejsou,
+  // zůstane v tabulce výchozí řádek „Kalendář připravujeme“ z HTML.
+  var eventsBody = document.getElementById("eventsBody");
+  if (eventsBody && window.fetch) {
+    var en = document.documentElement.lang === "en";
+    var base = eventsBody.getAttribute("data-src") || "data/events.json";
+    var LABEL = en
+      ? { confirmed: "CONFIRMED", tbc: "TO BE CONFIRMED", cancelled: "CANCELLED", date: "Date", place: "Location", event: "Event", status: "Status", more: "Event website" }
+      : { confirmed: "POTVRZENO", tbc: "BUDE UPŘESNĚNO", cancelled: "ZRUŠENO", date: "Datum", place: "Místo", event: "Akce", status: "Stav", more: "Web akce" };
+    var fmtDate = function (iso) {
+      var p = iso.split("-");
+      return en ? +p[2] + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1] - 1] + " " + p[0]
+                : +p[2] + ". " + +p[1] + ". " + p[0];
+    };
+    var fmtRange = function (e) {
+      if (!e.dateTo) return fmtDate(e.date);
+      var a = e.date.split("-"), b = e.dateTo.split("-");
+      if (!en && a[0] === b[0] && a[1] === b[1]) return +a[2] + ".–" + fmtDate(e.dateTo);
+      return fmtDate(e.date) + " – " + fmtDate(e.dateTo);
+    };
+    var cell = function (label, child) {
+      var td = document.createElement("td");
+      td.setAttribute("data-label", label);
+      if (typeof child === "string") td.textContent = child; else td.appendChild(child);
+      return td;
+    };
+    var today = new Date().toISOString().slice(0, 10);
+
+    fetch(base, { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (list) {
+        var upcoming = (Array.isArray(list) ? list : []).filter(function (e) {
+          return e && e.date && (e.dateTo || e.date) >= today;
+        }).sort(function (a, b) { return a.date.localeCompare(b.date); });
+        if (!upcoming.length) return;
+        eventsBody.innerHTML = "";
+        upcoming.forEach(function (e) {
+          var tr = document.createElement("tr");
+          if (e.status === "cancelled") tr.className = "is-cancelled";
+          var name = document.createElement("span");
+          var strong = document.createElement("span");
+          strong.className = "ev-name";
+          strong.textContent = e.name;
+          name.appendChild(strong);
+          if (e.note) {
+            var note = document.createElement("span");
+            note.className = "ev-note";
+            note.textContent = e.note;
+            name.appendChild(note);
+          }
+          if (e.link) {
+            var a = document.createElement("a");
+            a.href = e.link; a.target = "_blank"; a.rel = "noopener";
+            a.className = "ev-link";
+            a.textContent = LABEL.more + " ↗";
+            name.appendChild(a);
+          }
+          var pill = document.createElement("span");
+          pill.className = "status-pill " + ({ confirmed: "ok", tbc: "tbd", cancelled: "cancel" }[e.status] || "tbd");
+          pill.textContent = LABEL[e.status] || LABEL.tbc;
+          tr.appendChild(cell(LABEL.date, fmtRange(e)));
+          tr.appendChild(cell(LABEL.place, e.location || "—"));
+          tr.appendChild(cell(LABEL.event, name));
+          tr.appendChild(cell(LABEL.status, pill));
+          eventsBody.appendChild(tr);
+        });
+      })
+      .catch(function () { /* necháme výchozí řádek */ });
+  }
+
   /* ---------- reveal on scroll ---------- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");
