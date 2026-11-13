@@ -126,7 +126,7 @@ button{font:inherit; cursor:pointer;}
 /* fotka formace v úvodu — vystupuje z tmy zprava */
 .hero-photo{
   position:absolute; top:0; right:0; bottom:0; width:68%; z-index:0;
-  background:url("../assets/images/photos/echelon-sestup-mraky.jpg") 50% 0%/cover no-repeat;
+  background:url("../assets/images/photos/echelon-sestup-mraky.webp") 50% 0%/cover no-repeat;
   -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
           mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
   animation:hero-photo-in 1.6s ease .1s both;
@@ -137,7 +137,7 @@ button{font:inherit; cursor:pointer;}
 @keyframes hero-photo-in{ from{ opacity:0; transform:scale(1.04); } to{ opacity:1; transform:scale(1); } }
 @media (prefers-reduced-motion: reduce){ .hero-photo{ animation:none; } }
 @media (max-width:860px){
-  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:78% 6%;
+  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:78% 6%; background-image:url("../assets/images/photos/echelon-sestup-mraky-sm.webp");
     -webkit-mask-image:linear-gradient(180deg, #000 35%, transparent 100%); mask-image:linear-gradient(180deg, #000 35%, transparent 100%); }
   .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.35), rgba(11,12,14,0.55)); }
 }
@@ -181,7 +181,7 @@ button{font:inherit; cursor:pointer;}
 .hero-inner{ position:relative; z-index:2; }
 .hero-eyebrow{ display:flex; align-items:center; gap:14px; font-size:12px; color:var(--yellow); margin-bottom:22px; padding-top:160px; }
 .hero-eyebrow .dash{ width:28px;height:1px;background:var(--yellow); }
-.hero-title{ font-size:clamp(44px, 9vw, 128px); line-height:0.92; font-weight:700; color:var(--offwhite); }
+.hero-title{ white-space:nowrap; font-size:clamp(44px, 9vw, 128px); line-height:0.92; font-weight:700; color:var(--offwhite); }
 html[lang="cs"] .hero-title{ line-height:1.16; }
 .hero-title .thin{ color:var(--aluminium); font-weight:500; }
 .hero-claim{ margin-top:26px; font-size:clamp(13px,1.6vw,16px); color:var(--aluminium); max-width:640px; }
@@ -213,7 +213,7 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
 @media (max-width:640px){ .reel{ padding:50px 20px 0; } }
 .reel-frame{ position:relative; aspect-ratio:21/9; overflow:hidden; border:1px solid var(--line-strong); background:var(--gunmetal); }
 @media (max-width:640px){ .reel-frame{ aspect-ratio:4/3; } }
-.reel-poster{ position:absolute; inset:0; background:url("../assets/images/photos/echelon-ctyri-stroje.jpg") 50% 50%/cover no-repeat; filter:grayscale(0.15) contrast(1.05); }
+.reel-poster{ position:absolute; inset:0; background:url("../assets/images/photos/echelon-ctyri-stroje.webp") 50% 50%/cover no-repeat; filter:grayscale(0.15) contrast(1.05); }
 .reel-player{ position:absolute; top:50%; left:50%; width:100%; aspect-ratio:16/9; transform:translate(-50%,-50%) scale(1.18); pointer-events:none; opacity:0; transition:opacity .8s ease; }
 /* video 16:9 musí pokrýt rámeček 21:9 i 4:3 */
 @media (max-width:640px){ .reel-player{ width:auto; height:100%; } }
@@ -374,7 +374,7 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
 /* ---------- HISTORY / QUOTE STRIP ---------- */
 .history-strip{ border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); padding:80px 40px; text-align:center; background:var(--gunmetal); }
 .history-strip.has-photo{ position:relative; padding:150px 40px; overflow:hidden;
-  background:linear-gradient(0deg, rgba(11,12,14,0.72), rgba(11,12,14,0.72)), url("../assets/images/photos/zapad-slunce-z-kokpitu.jpg") 50% 45%/cover no-repeat, var(--gunmetal); }
+  background:linear-gradient(0deg, rgba(11,12,14,0.72), rgba(11,12,14,0.72)), url("../assets/images/photos/zapad-slunce-z-kokpitu.webp") 50% 45%/cover no-repeat, var(--gunmetal); }
 @media (max-width:640px){ .history-strip.has-photo{ padding:110px 20px; background-position:center, 50% 45%, center; } }
 .history-strip .quote{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(22px,3.4vw,40px); line-height:1.25; max-width:1000px; margin:0 auto; }
 .history-strip .quote .fade{ color:var(--aluminium); }
@@ -471,6 +471,7 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 @media (max-width:640px){ .events-wrap{ padding:0 20px 70px; } }
 .events-table{ width:100%; border-collapse:collapse; border:1px solid var(--line-strong); }
 .events-table thead th{ text-align:left; font-size:10px; letter-spacing:0.12em; color:var(--aluminium); padding:14px 18px; border-bottom:1px solid var(--line-strong); }
+.events-table tbody td a{ text-decoration:underline; text-underline-offset:3px; }
 .events-table tbody td{ padding:16px 18px; font-size:14px; border-bottom:1px solid var(--line); color:var(--offwhite); }
 .events-table tbody tr:last-child td{ border-bottom:none; }
 .events-table a{ color:var(--yellow); }
@@ -494,7 +495,7 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 
 /* ---------- FLY WITH US ---------- */
 .fly-section{ position:relative; padding:110px 40px; border-top:1px solid var(--line-strong); overflow:hidden; }
-.fly-section.has-photo{ background:linear-gradient(90deg, rgba(11,12,14,0.94) 0%, rgba(11,12,14,0.8) 50%, rgba(11,12,14,0.94) 100%), url("../assets/images/photos/vzduch-mpr-lpr-krajina.jpg") 50% 55%/cover no-repeat; }
+.fly-section.has-photo{ background:linear-gradient(90deg, rgba(11,12,14,0.94) 0%, rgba(11,12,14,0.8) 50%, rgba(11,12,14,0.94) 100%), url("../assets/images/photos/vzduch-mpr-lpr-krajina.webp") 50% 55%/cover no-repeat; }
 .fly-section::before{ content:""; position:absolute; inset:0; background:radial-gradient(ellipse 700px 400px at 15% 20%, rgba(244,192,0,0.06), transparent 60%); }
 .fly-inner{ position:relative; max-width:900px; margin:0 auto; text-align:center; }
 .fly-inner h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(32px,5vw,64px); margin-bottom:22px; }
@@ -523,7 +524,7 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .site-footer .fr a:hover{ color:var(--yellow); }
 .site-footer .fr{ flex-wrap:wrap; row-gap:12px; }
 .site-footer .fr a{ white-space:nowrap; }
-.site-footer .footer-admin{ opacity:0.55; padding-left:20px; border-left:1px solid var(--line); }
+.site-footer .footer-admin{ opacity:0.85; padding-left:20px; border-left:1px solid var(--line); }
 @media (max-width:640px){ .site-footer .footer-admin{ padding-left:0; border-left:none; } }
 .site-footer .footer-admin:hover{ opacity:1; }
 @media (max-width:480px){ .contact-meta .row{ flex-direction:column; gap:4px; } .contact-meta .row .v{ text-align:left; } }
@@ -630,3 +631,8 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
   .map-pins .grid-t{ font-size:11px; }
   .map-pins .pin circle.p{ r:6; }
 }
+
+/* pevné výšky řádků v úvodu a liště — při načtení písma pak nic neposkočí */
+.hero-claim{ line-height:1.55; }
+.hero-eyebrow, .hero-readout .label, .hero-readout .value{ line-height:1.4; }
+.nav-word, .nav-links a, .nav-lang, .nav-ig{ line-height:20px; }

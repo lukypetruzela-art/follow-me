@@ -84,7 +84,7 @@ TEXT = [
      '<div class="nav-lang mono" role="navigation" aria-label="Language">\n    <a href="../" lang="cs" hreflang="cs">CZ</a><span aria-hidden="true">/</span>\n    <a href="./" class="active" lang="en" aria-current="page">EN</a>'),
     ('<div class="mm-lang mono"><a href="./" class="active" aria-current="page">CZ</a><a href="en/" lang="en" hreflang="en">EN</a></div>',
      '<div class="mm-lang mono"><a href="../" lang="cs" hreflang="cs">CZ</a><a href="./" class="active" aria-current="page">EN</a></div>'),
-    ('aria-label="FOLLOW-ME na Instagramu"', 'aria-label="FOLLOW-ME on Instagram"'),
+    ('aria-label="Instagram FOLLOW-ME"', 'aria-label="Instagram FOLLOW-ME"'),
     ('aria-label="Otevřít menu"', 'aria-label="Open menu"'),
 
     # ---------- úvod
@@ -210,7 +210,7 @@ TEXT = [
 
     # ---------- kalendář
     ('<h2>Kalendář vystoupení</h2>', '<h2>Display Calendar</h2>'),
-    ('<tr><th>Datum</th><th>Místo</th><th>Akce</th><th>Stav</th></tr>', '<tr><th>Date</th><th>Location</th><th>Event</th><th>Status</th></tr>'),
+    ('<tr><th scope="col">Datum</th><th scope="col">Místo</th><th scope="col">Akce</th><th scope="col">Stav</th></tr>', '<tr><th scope="col">Date</th><th scope="col">Location</th><th scope="col">Event</th><th scope="col">Status</th></tr>'),
     ('<td data-label="Datum">2027</td>', '<td data-label="Date">2027</td>'),
     ('<td data-label="Místo">—</td>', '<td data-label="Location">—</td>'),
     ('<td data-label="Akce">Kalendář sezóny 2027 připravujeme. Aktuality najdete na',
