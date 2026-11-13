@@ -5,6 +5,12 @@
 (function () {
   "use strict";
 
+  // jazyk stránky: hlavní verze je česká, anglická je v /en/
+  var EN = document.documentElement.lang === "en";
+  var T = EN
+    ? { open: "Open menu", close: "Close menu", igPost: "FOLLOW-ME post on Instagram", less: "FEWER PHOTOS ↑", more: "MORE PHOTOS" }
+    : { open: "Otevřít menu", close: "Zavřít menu", igPost: "Příspěvek FOLLOW-ME na Instagramu", less: "MÉNĚ FOTEK ↑", more: "DALŠÍ FOTKY" };
+
   /* ---------- mobile menu ---------- */
   var toggle = document.getElementById("navToggle");
   var menu = document.getElementById("mobileMenu");
@@ -13,7 +19,7 @@
     var setMenu = function (open) {
       menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "Zavřít menu" : "Otevřít menu");
+      toggle.setAttribute("aria-label", open ? T.close : T.open);
       document.body.style.overflow = open ? "hidden" : "";
     };
 
@@ -75,7 +81,7 @@
           a.rel = "noopener";
           var img = document.createElement("img");
           img.src = src;
-          img.alt = caption ? caption.slice(0, 120) : "Příspěvek FOLLOW-ME na Instagramu";
+          img.alt = caption ? caption.slice(0, 120) : T.igPost;
           img.loading = "lazy";
           a.appendChild(img);
           if (caption) {
@@ -172,7 +178,7 @@
       var show = moreGrid.hidden;
       moreGrid.hidden = !show;
       moreBtn.setAttribute("aria-expanded", show ? "true" : "false");
-      moreBtn.textContent = show ? "MÉNĚ FOTEK ↑" : "DALŠÍ FOTKY (" + moreGrid.children.length + ") ↓";
+      moreBtn.textContent = show ? T.less : T.more + " (" + moreGrid.children.length + ") ↓";
     });
   }
 
@@ -227,7 +233,7 @@
   // zůstane v tabulce výchozí řádek „Kalendář připravujeme“ z HTML.
   var eventsBody = document.getElementById("eventsBody");
   if (eventsBody && window.fetch) {
-    var en = document.documentElement.lang === "en";
+    var en = EN;
     var base = eventsBody.getAttribute("data-src") || "data/events.json";
     var LABEL = en
       ? { confirmed: "CONFIRMED", tbc: "TO BE CONFIRMED", cancelled: "CANCELLED", date: "Date", place: "Location", event: "Event", status: "Status", more: "Event website" }

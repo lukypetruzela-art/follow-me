@@ -55,3 +55,36 @@ repozitáři, jen zpracovaný výstup.
   respektováno.
 - Bez frameworku — čistý HTML/CSS/JS, snadno se předá jakémukoli vývojáři
   k napojení na CMS.
+
+
+## Jazykové verze
+- **Čeština je hlavní** (`index.html`, adresa `/`). Angličtina je v `en/index.html` (adresa `/en/`).
+- `en/index.html` se needituje ručně — vytváří ho skript z české verze:
+  ```
+  python3 tools/build_en.py
+  ```
+  Po změně českého textu doplňte jeho anglický překlad do `tools/build_en.py`
+  a skript spusťte. Když nějaký text nemá překlad, skript skončí chybou a
+  vypíše ho.
+
+## Kalendář akcí (administrace)
+- Akce jsou v `data/events.json`, web z nich sám vypíše budoucí termíny
+  (česky i anglicky). Proběhlé akce se nezobrazují.
+- Administrace: **`/admin`** — přihlášení heslem, přidání / úprava / smazání,
+  tlačítko „Uložit a zveřejnit“. Uložení vytvoří commit v GitHubu a Vercel web
+  do minuty znovu nasadí.
+- Jednorázové nastavení ve Vercelu (Project → Settings → Environment Variables):
+  | Proměnná | Hodnota |
+  |---|---|
+  | `ADMIN_PASSWORD` | heslo do administrace, aspoň 12 znaků |
+  | `GITHUB_TOKEN` | fine-grained token: jen repozitář `follow-me`, oprávnění **Contents: Read and write** |
+
+  Token: GitHub → Settings → Developer settings → Personal access tokens →
+  Fine-grained tokens → Generate new token → Repository access: *Only select
+  repositories* → `follow-me` → Permissions: *Contents → Read and write*.
+  Po uložení proměnných ve Vercelu dejte **Redeploy**.
+
+## Instagram (živý feed)
+Sekce `#instagram` umí ukazovat posledních 6 příspěvků přes službu Behold.
+JSON adresu feedu vložte do atributu `data-feed` u `<section class="ig-section">`
+v `index.html` a spusťte `python3 tools/build_en.py`.
