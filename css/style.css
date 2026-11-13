@@ -126,7 +126,7 @@ button{font:inherit; cursor:pointer;}
 /* fotka formace v úvodu — vystupuje z tmy zprava */
 .hero-photo{
   position:absolute; top:0; right:0; bottom:0; width:68%; z-index:0;
-  background:url("../assets/images/photos/echelon-sestup-mraky.webp") 50% 0%/cover no-repeat;
+  background:url("../assets/images/photos/uvod-formace.webp") 50% 0%/cover no-repeat;
   -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
           mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
   animation:hero-photo-in 1.6s ease .1s both;
@@ -137,7 +137,7 @@ button{font:inherit; cursor:pointer;}
 @keyframes hero-photo-in{ from{ opacity:0; transform:scale(1.04); } to{ opacity:1; transform:scale(1); } }
 @media (prefers-reduced-motion: reduce){ .hero-photo{ animation:none; } }
 @media (max-width:860px){
-  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:78% 6%; background-image:url("../assets/images/photos/echelon-sestup-mraky-sm.webp");
+  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:78% 6%; background-image:url("../assets/images/photos/uvod-formace-sm.webp");
     -webkit-mask-image:linear-gradient(180deg, #000 35%, transparent 100%); mask-image:linear-gradient(180deg, #000 35%, transparent 100%); }
   .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.35), rgba(11,12,14,0.55)); }
 }
