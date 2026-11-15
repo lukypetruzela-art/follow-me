@@ -99,12 +99,12 @@ v poštovním programu návštěvníka (adresa follow-me@email.cz).
 odkazu na Facebooku, WhatsAppu apod.
 
 ## Instagram = hlavní galerie
-- Sekce `#instagram` je hned pod úvodem (místo dřívějšího videa). Mřížka 4 × 4:
-  jeden velký příspěvek, 11 malých a dlaždice „Follow the leader“.
-- **Bez propojení** ukazuje výběr 12 fotek z `assets/images/photos/` — po kliknutí
+- Sekce `#instagram` je hned pod úvodem (místo dřívějšího videa). Mřížka na dva řádky:
+  jeden velký příspěvek, 3 malé a dlaždice „Follow the leader“.
+- **Bez propojení** ukazuje výběr 4 fotek z `assets/images/photos/` — po kliknutí
   se otevřou v prohlížeči fotek.
 - **Propojení s Instagramem:** založte feed na behold.so (typ JSON) a jeho adresu
   vložte do atributu `data-feed` u `<section class="ig-section">` v `index.html`,
-  pak `python3 tools/build_en.py`. Mřížka se sama naplní posledními 12 příspěvky
+  pak `python3 tools/build_en.py`. Mřížka se sama naplní posledními 4 příspěvky
   (videa a alba mají ikonu), v záhlaví se ukáže profilová fotka a počet sledujících.
 - Celá fotogalerie (45 fotek) je níž jako **Fotoarchiv** (`#gallery`).

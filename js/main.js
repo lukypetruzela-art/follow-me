@@ -57,7 +57,7 @@
 
   /* ---------- instagram: hlavní galerie (živý feed přes Behold) ---------- */
   // Když má sekce v data-feed JSON adresu feedu z behold.so, nahradí statické
-  // dlaždice posledními 12 příspěvky (první velký, poslední dlaždice „Sledujte nás“).
+  // dlaždice posledními 4 příspěvky (první velký, poslední dlaždice „Sledujte nás“).
   // Při chybě nebo bez adresy zůstane výběr fotek z HTML.
   var igSection = document.querySelector(".ig-section");
   var igGrid = document.getElementById("igGrid");
@@ -83,10 +83,9 @@
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
         var posts = (Array.isArray(data) ? data : data.posts || []).filter(function (p) { return p && p.permalink; });
-        // aby mřížka neměla díry: 1 velký (4 pole) + malé + „Sledujte nás“ = násobek 4
-        var n = posts.length >= 12 ? 12 : posts.length >= 8 ? 8 : posts.length >= 4 ? 4 : 0;
-        if (!n) return;
-        posts = posts.slice(0, n);
+        // dva řádky: 1 velký příspěvek (2 × 2) + 3 malé + dlaždice „Sledujte nás“
+        if (posts.length < 4) return;
+        posts = posts.slice(0, 4);
         var cta = igGrid.querySelector(".ig-cta");
         igGrid.innerHTML = "";
         posts.forEach(function (post, i) {

@@ -209,7 +209,7 @@ TEXT = [
     ('Celý fotoarchiv ↓', 'Full photo archive ↓'),
     ('''<!-- Hlavní galerie. Po propojení s Instagramem (Behold) vložte JSON adresu feedu
      do data-feed a mřížka se sama naplní posledními příspěvky. Do té doby ukazuje
-     výběr fotek níže; po kliknutí se otevřou v prohlížeči fotek. -->''', '<!-- Main gallery: see the Czech version for setup notes. -->'),
+     výběr 4 fotek níže; po kliknutí se otevřou v prohlížeči fotek. -->''', '<!-- Main gallery: see the Czech version for setup notes. -->'),
 
     # ---------- kalendář
     ('<h2>Kalendář vystoupení</h2>', '<h2>Display Calendar</h2>'),
