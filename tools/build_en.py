@@ -41,7 +41,6 @@ TEXT = [
     ('aria-label="Pozice 02 – pravé křídlo: Bob, OK-MPR"', 'aria-label="Position 02 – right wing: Bob, OK-MPR"'),
     ('aria-label="Pozice 03 – levé křídlo: Lubo, OK-LPR"', 'aria-label="Position 03 – left wing: Lubo, OK-LPR"'),
     ('aria-label="Pozice 04 – slot: Jarda, OK-SEN"', 'aria-label="Position 04 – slot: Jarda, OK-SEN"'),
-    ('Najeďte na pozici — klepnutím přejdete na kartu pilota.', 'Hover over a position — click to jump to the pilot’s file.'),
     ('<h3 class="display">Mapa sezóny</h3>', '<h3 class="display">Season Map</h3>'),
     ('<span class="lg lg-home"></span>Domovské letiště LKZA <span class="lg lg-ev"></span>Vystoupení', '<span class="lg lg-home"></span>Home base LKZA <span class="lg lg-ev"></span>Displays'),
     ('aria-label="Mapa vystoupení v sezóně"', 'aria-label="Map of this season’s displays"'),

@@ -538,7 +538,6 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 
 /* ---------- INTERAKTIVNÍ FORMACE ---------- */
 .formation-visual{ display:flex; flex-direction:column; gap:14px; }
-.fd-hint{ font-size:11px; color:var(--aluminium); opacity:0.7; text-align:center; }
 .fd-node{ cursor:pointer; outline:none; }
 .fd-halo{ fill:rgba(244,192,0,0); stroke:rgba(244,192,0,0); stroke-width:1; transition:fill .25s, stroke .25s; }
 .fd-dot{ transition:r .25s ease; }
