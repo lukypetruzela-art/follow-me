@@ -47,7 +47,7 @@
     <a href="#team">Tým</a>
     <a href="#machines">Stroje</a>
     <a href="#formation">Formace</a>
-    <a href="#gallery">Galerie</a>
+    <a href="#instagram">Galerie</a>
     <a href="#events">Kalendář</a>
     <a href="#fly">Létejte s námi</a>
     <a href="#contact">Kontakt</a>
@@ -66,7 +66,7 @@
   <a href="#team">Tým</a>
   <a href="#machines">Stroje</a>
   <a href="#formation">Formace</a>
-  <a href="#gallery">Galerie</a>
+  <a href="#instagram">Galerie</a>
   <a href="#events">Kalendář</a>
   <a href="#fly">Létejte s námi</a>
   <a href="#contact">Kontakt</a>
@@ -227,29 +227,52 @@
   </div>
 </section>
 
-<!-- ============================================================ VIDEO -->
-<!-- Krátká ztlumená smyčka z videa na YouTube. Úsek nastavíte v data-start / data-end
-     (sekundy). Do načtení videa a při omezení animací se ukazuje fotka formace. -->
-<section class="reel reveal" aria-label="Video formace FOLLOW-ME"
-  data-video="kPVHopPlcdI" data-start="63" data-end="73">
-  <div class="reel-frame">
-    <div class="reel-poster" aria-hidden="true"></div>
-    <div class="reel-player" id="reelPlayer" aria-hidden="true"></div>
-    <div class="reel-shade" aria-hidden="true"></div>
-    <div class="crop-marks" aria-hidden="true">
-      <span class="cm-tl"></span><span class="cm-tr"></span>
-      <span class="cm-bl"></span><span class="cm-br"></span>
+<!-- ============================================================ INSTAGRAM / GALERIE -->
+<!-- Hlavní galerie. Po propojení s Instagramem (Behold) vložte JSON adresu feedu
+     do data-feed a mřížka se sama naplní posledními příspěvky. Do té doby ukazuje
+     výběr fotek níže; po kliknutí se otevřou v prohlížeči fotek. -->
+<div class="section-label" id="instagram">
+  <span class="num mono">01</span>
+  <div class="rule"></div>
+  <h2>Galerie · Instagram</h2>
+</div>
+
+<section class="ig-section" aria-labelledby="ig-title" data-feed="">
+  <div class="ig-head">
+    <div class="ig-profile">
+      <a class="ig-avatar" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><img id="igAvatar" src="assets/images/brand/favicon.svg" alt="" width="64" height="64"></a>
+      <div>
+        <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>ŽIVĚ Z LETIŠTĚ</span>
+        <h2 class="ig-handle display" id="ig-title"><a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">@follow_me<wbr>_airshow<wbr>_team</a></h2>
+        <p class="ig-stats mono" id="igStats" hidden><span><b id="igFollowers"></b> sledujících</span><span><b id="igCount"></b> příspěvků</span></p>
+      </div>
     </div>
-    <div class="reel-hud mono" aria-hidden="true">
-      <span class="reel-rec"><span class="dot"></span>REC · ZÁZNAM Z AIRSHOW</span>
-      <span class="reel-tc" id="reelTc">01:03</span>
+    <div class="ig-side">
+      <p class="ig-text">Zákulisí tréninků, přelety airshow a stroje z blízka. Nejčerstvější záběry z kokpitu i z ranveje dáváme na Instagram.</p>
+      <a class="btn" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>SLEDOVAT NA INSTAGRAMU</a>
     </div>
-    <div class="reel-foot">
-      <span class="reel-caption mono">FORMACE V AKCI</span>
-      <a class="reel-cta mono" href="https://www.youtube.com/watch?v=kPVHopPlcdI&amp;t=63s" target="_blank" rel="noopener">PŘEHRÁT CELÉ VIDEO ▸</a>
-    </div>
-    <div class="reel-progress" aria-hidden="true"><span id="reelBar"></span></div>
   </div>
+
+  <div class="ig-grid" id="igGrid">
+    <a class="ig-tile is-big" href="assets/images/photos/knr-v-trave.webp" data-lightbox="ig" data-caption="OK-KNR · Z TRÁVY"><img src="assets/images/photos/knr-v-trave-sm.webp" srcset="assets/images/photos/knr-v-trave-sm.webp 800w, assets/images/photos/knr-v-trave.webp 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="OK-KNR vyfocený zespodu z vysoké trávy" loading="lazy" style="object-position:50% 50%"><span class="ig-hover"><span class="ig-cap mono">OK-KNR · Z TRÁVY</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/echelon-nad-letistem.webp" data-lightbox="ig" data-caption="ECHELON · NAD LETIŠTĚM"><img src="assets/images/photos/echelon-nad-letistem-sm.webp" alt="Čtyři stroje v řadě nad letištěm pod bouřkovými mraky" loading="lazy" style="object-position:50% 45%"><span class="ig-hover"><span class="ig-cap mono">ECHELON · NAD LETIŠTĚM</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/vzduch-mpr-lpr-krajina.webp" data-lightbox="ig" data-caption="Z KOKPITU · OK-MPR A OK-LPR"><img src="assets/images/photos/vzduch-mpr-lpr-krajina-sm.webp" alt="OK-MPR a nad ním OK-LPR, záběr z letadla nad krajinou s rybníky" loading="lazy" style="object-position:50% 40%"><span class="ig-hover"><span class="ig-cap mono">Z KOKPITU · OK-MPR A OK-LPR</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/zapad-slunce-z-kokpitu.webp" data-lightbox="ig" data-caption="ZÁPAD SLUNCE · Z KOKPITU"><img src="assets/images/photos/zapad-slunce-z-kokpitu-sm.webp" alt="Silueta letadla FOLLOW-ME při západu slunce, záběr z kokpitu druhého stroje" loading="lazy" style="object-position:50% 50%"><span class="ig-hover"><span class="ig-cap mono">ZÁPAD SLUNCE · Z KOKPITU</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/ctyri-stroje-na-zemi.webp" data-lightbox="ig" data-caption="PŘED STARTEM · ČTYŘI STROJE"><img src="assets/images/photos/ctyri-stroje-na-zemi-sm.webp" alt="Všechny čtyři stroje na trávě s roztočenými vrtulemi pod zataženou oblohou" loading="lazy" style="object-position:50% 75%"><span class="ig-hover"><span class="ig-cap mono">PŘED STARTEM · ČTYŘI STROJE</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/knr-kokpit-bourka.webp" data-lightbox="ig" data-caption="OK-KNR · KOKPIT"><img src="assets/images/photos/knr-kokpit-bourka-sm.webp" alt="Otevřený kokpit a vrtule OK-KNR pod bouřkovými mraky" loading="lazy" style="object-position:50% 60%"><span class="ig-hover"><span class="ig-cap mono">OK-KNR · KOKPIT</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/diamant-v-mracich.webp" data-lightbox="ig" data-caption="DIAMANT · V OBŘÍCH MRACÍCH"><img src="assets/images/photos/diamant-v-mracich-sm.webp" alt="Malý diamant čtyř strojů uprostřed obřích kupovitých mraků" loading="lazy" style="object-position:68% 42%"><span class="ig-hover"><span class="ig-cap mono">DIAMANT · V OBŘÍCH MRACÍCH</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/mpr-na-trave-bourka.webp" data-lightbox="ig" data-caption="OK-MPR · PŘED BOUŘKOU"><img src="assets/images/photos/mpr-na-trave-bourka-sm.webp" alt="OK-MPR na trávě pod bouřkovým mrakem" loading="lazy" style="object-position:50% 72%"><span class="ig-hover"><span class="ig-cap mono">OK-MPR · PŘED BOUŘKOU</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/vzduch-mpr-shora.webp" data-lightbox="ig" data-caption="OK-MPR · ZE VZDUCHU"><img src="assets/images/photos/vzduch-mpr-shora-sm.webp" alt="OK-MPR shora nad travnatou plochou, vlevo ocas OK-KNR, vpravo křídlo OK-LPR" loading="lazy" style="object-position:55% 50%"><span class="ig-hover"><span class="ig-cap mono">OK-MPR · ZE VZDUCHU</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/lpr-pojizdeni.webp" data-lightbox="ig" data-caption="OK-LPR · PŘED STARTEM"><img src="assets/images/photos/lpr-pojizdeni-sm.webp" alt="OK-LPR pojíždí po trávě s roztočenou vrtulí" loading="lazy" style="object-position:60% 50%"><span class="ig-hover"><span class="ig-cap mono">OK-LPR · PŘED STARTEM</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/knr-s-pilotem-bok.webp" data-lightbox="ig" data-caption="OK-KNR · S PILOTEM"><img src="assets/images/photos/knr-s-pilotem-bok-sm.webp" alt="OK-KNR z boku na trávě s pilotem v kokpitu, v pozadí další stroje" loading="lazy" style="object-position:45% 55%"><span class="ig-hover"><span class="ig-cap mono">OK-KNR · S PILOTEM</span></span></a>
+    <a class="ig-tile" href="assets/images/photos/mpr-detail-ocasu.webp" data-lightbox="ig" data-caption="OK-MPR · OCAS 263"><img src="assets/images/photos/mpr-detail-ocasu-sm.webp" alt="Detail šachovnicového ocasu OK-MPR, v pozadí ocasy OK-LPR a OK-SEN" loading="lazy" style="object-position:60% 40%"><span class="ig-hover"><span class="ig-cap mono">OK-MPR · OCAS 263</span></span></a>
+    <a class="ig-tile ig-cta" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
+      <span class="ig-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+      <span class="ig-cta-text display">Follow<br>the leader</span>
+      <span class="ig-cta-sub mono">@follow_me_airshow_team →</span>
+    </a>
+  </div>
+  <p class="ig-foot mono"><span id="igFoot">Výběr z našich fotek — nejnovější příspěvky najdete na Instagramu.</span> <a href="#gallery">Celý fotoarchiv ↓</a></p>
 </section>
 
 <!-- ============================================================ TEAM INTRO -->
@@ -275,7 +298,7 @@
 
 <!-- ============================================================ CREW -->
 <div class="section-label">
-  <span class="num mono">01</span>
+  <span class="num mono">02</span>
   <div class="rule"></div>
   <h2>Posádka — karty pilotů</h2>
 </div>
@@ -494,7 +517,7 @@
 
 <!-- ============================================================ MACHINES -->
 <div class="section-label" id="machines">
-  <span class="num mono">02</span>
+  <span class="num mono">03</span>
   <div class="rule"></div>
   <h2>Stroje</h2>
 </div>
@@ -598,7 +621,7 @@
 
 <!-- ============================================================ FORMATION -->
 <div class="section-label" id="formation">
-  <span class="num mono">03</span>
+  <span class="num mono">04</span>
   <div class="rule"></div>
   <h2>Formace</h2>
 </div>
@@ -685,9 +708,9 @@
 
 <!-- ============================================================ GALLERY -->
 <div class="section-label" id="gallery">
-  <span class="num mono">04</span>
+  <span class="num mono">05</span>
   <div class="rule"></div>
-  <h2>Galerie</h2>
+  <h2>Fotoarchiv</h2>
 </div>
 
 <div class="gallery-grid">
@@ -750,43 +773,6 @@
   <button type="button" class="lb-btn lb-next mono" id="lbNext" aria-label="Další fotka">→</button>
   <button type="button" class="lb-btn lb-close mono" id="lbClose" aria-label="Zavřít">✕</button>
 </dialog>
-
-<!-- ============================================================ INSTAGRAM -->
-<div class="section-label" id="instagram">
-  <span class="num mono">05</span>
-  <div class="rule"></div>
-  <h2>Instagram</h2>
-</div>
-
-<!-- Živý feed: po založení zdroje na behold.so vložte jeho JSON URL do data-feed
-     a sekce si sama načte posledních 6 příspěvků. Bez něj se ukážou dlaždice níže. -->
-<section class="ig-section" aria-labelledby="ig-title" data-feed="">
-  <div class="ig-head">
-    <div>
-      <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>ŽIVĚ Z LETIŠTĚ</span>
-      <h2 class="ig-handle display" id="ig-title"><a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">@follow_me<wbr>_airshow<wbr>_team</a></h2>
-      <p class="ig-text">Zákulisí tréninků, přelety airshow a stroje z blízka. Nejčerstvější záběry z kokpitu i z ranveje dáváme na Instagram.</p>
-    </div>
-    <a class="btn" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">SLEDOVAT NA INSTAGRAMU →</a>
-  </div>
-
-  <div class="ig-grid" id="igGrid">
-    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
-      <img src="assets/images/photos/lpr-knr-par-sm.webp" alt="OK-LPR a OK-KNR v těsném páru" loading="lazy" style="object-position:50% 50%">
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
-      <img src="assets/images/gallery/ok-knr.webp" alt="OK-KNR na letišti pod bouřkovými mraky" loading="lazy" style="object-position:60% 72%">
-    </a>
-    <a class="ig-tile" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
-      <img src="assets/images/photos/sen-nad-dalnici.webp" alt="OK-SEN shora nad dálnicí, záběr z letadla" loading="lazy" style="object-position:50% 50%">
-    </a>
-    <a class="ig-tile ig-cta" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
-      <span class="ig-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-      <span class="ig-cta-text display">Follow<br>the leader</span>
-      <span class="ig-cta-sub mono">@follow_me_airshow_team →</span>
-    </a>
-  </div>
-</section>
 
 <!-- ============================================================ EVENTS -->
 <div class="section-label" id="events">

@@ -55,119 +55,90 @@
     });
   });
 
-  /* ---------- instagram: živý feed (volitelný) ---------- */
-  // Když má sekce v data-feed URL JSON feedu (např. z behold.so), nahradí
-  // statické dlaždice posledními šesti příspěvky. Při chybě zůstanou dlaždice.
+  /* ---------- instagram: hlavní galerie (živý feed přes Behold) ---------- */
+  // Když má sekce v data-feed JSON adresu feedu z behold.so, nahradí statické
+  // dlaždice posledními 12 příspěvky (první velký, poslední dlaždice „Sledujte nás“).
+  // Při chybě nebo bez adresy zůstane výběr fotek z HTML.
   var igSection = document.querySelector(".ig-section");
   var igGrid = document.getElementById("igGrid");
   var feedUrl = igSection && igSection.getAttribute("data-feed");
+  var NS_SVG = "http://www.w3.org/2000/svg";
+  var badge = function (type) {
+    var svg = document.createElementNS(NS_SVG, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("class", "ig-badge");
+    svg.setAttribute("aria-hidden", "true");
+    var path = document.createElementNS(NS_SVG, "path");
+    path.setAttribute("fill", "currentColor");
+    path.setAttribute("d", type === "VIDEO"
+      ? "M8 5.5v13l11-6.5z"
+      : "M7 3h12a2 2 0 0 1 2 2v12h-2V5H7zM3 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z");
+    svg.appendChild(path);
+    return svg;
+  };
+  var fmtNum = function (n) { return Number(n).toLocaleString(EN ? "en-GB" : "cs-CZ"); };
 
   if (igGrid && feedUrl && window.fetch) {
     fetch(feedUrl)
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
-        var posts = (Array.isArray(data) ? data : data.posts || []).slice(0, 6);
-        if (!posts.length) return;
+        var posts = (Array.isArray(data) ? data : data.posts || []).filter(function (p) { return p && p.permalink; });
+        // aby mřížka neměla díry: 1 velký (4 pole) + malé + „Sledujte nás“ = násobek 4
+        var n = posts.length >= 12 ? 12 : posts.length >= 8 ? 8 : posts.length >= 4 ? 4 : 0;
+        if (!n) return;
+        posts = posts.slice(0, n);
+        var cta = igGrid.querySelector(".ig-cta");
         igGrid.innerHTML = "";
-        posts.forEach(function (post) {
-          var src = (post.sizes && post.sizes.medium && post.sizes.medium.mediaUrl) ||
-            (post.mediaType === "VIDEO" ? post.thumbnailUrl : post.mediaUrl) || post.thumbnailUrl;
+        posts.forEach(function (post, i) {
+          var big = i === 0;
+          var sizes = post.sizes || {};
+          var pick = (big ? (sizes.large || sizes.medium) : (sizes.medium || sizes.small)) || {};
+          var src = pick.mediaUrl || (post.mediaType === "VIDEO" ? post.thumbnailUrl : post.mediaUrl) || post.thumbnailUrl;
           if (!src) return;
           var caption = (post.prunedCaption || post.caption || "").trim();
           var a = document.createElement("a");
-          a.className = "ig-tile";
+          a.className = "ig-tile" + (big ? " is-big" : "");
           a.href = post.permalink;
           a.target = "_blank";
           a.rel = "noopener";
           var img = document.createElement("img");
           img.src = src;
-          img.alt = caption ? caption.slice(0, 120) : T.igPost;
+          img.alt = caption ? caption.split("\n")[0].slice(0, 140) : T.igPost;
           img.loading = "lazy";
           a.appendChild(img);
-          if (caption) {
-            var cap = document.createElement("span");
-            cap.className = "ig-cap mono";
-            cap.textContent = caption.split("\n")[0];
-            a.appendChild(cap);
-          }
-          igGrid.appendChild(a);
-        });
-        igGrid.classList.add("is-live");
-      })
-      .catch(function () { /* necháme statické dlaždice */ });
-  }
-
-  /* ---------- video reel: smyčka úseku z YouTube ---------- */
-  var reel = document.querySelector(".reel");
-  var reduceMotionReel = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (reel && !reduceMotionReel) {
-    var vid = reel.getAttribute("data-video");
-    var start = parseFloat(reel.getAttribute("data-start")) || 0;
-    var end = parseFloat(reel.getAttribute("data-end")) || start + 10;
-    var bar = document.getElementById("reelBar");
-    var tc = document.getElementById("reelTc");
-    var player = null;
-    var ticker = null;
-
-    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
-    var tick = function () {
-      if (!player || !player.getCurrentTime) return;
-      var t = player.getCurrentTime();
-      if (t >= end || t < start - 1) { player.seekTo(start, true); t = start; }
-      bar.style.width = Math.max(0, Math.min(1, (t - start) / (end - start))) * 100 + "%";
-      tc.textContent = pad(Math.floor(t / 60)) + ":" + pad(Math.floor(t % 60));
-    };
-
-    var createPlayer = function () {
-      player = new window.YT.Player("reelPlayer", {
-        videoId: vid,
-        host: "https://www.youtube-nocookie.com",
-        playerVars: {
-          autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, rel: 0,
-          playsinline: 1, iv_load_policy: 3, start: Math.floor(start)
-        },
-        events: {
-          onReady: function (e) { e.target.mute(); e.target.playVideo(); },
-          onStateChange: function (e) {
-            if (e.data === window.YT.PlayerState.PLAYING) {
-              reel.classList.add("is-playing");
-              if (!ticker) ticker = setInterval(tick, 200);
-            } else if (e.data === window.YT.PlayerState.ENDED) {
-              e.target.seekTo(start, true);
-              e.target.playVideo();
+          if (post.mediaType === "VIDEO" || post.mediaType === "CAROUSEL_ALBUM") a.appendChild(badge(post.mediaType));
+          if (post.timestamp) {
+            var d = new Date(post.timestamp);
+            if (!isNaN(d)) {
+              var date = document.createElement("span");
+              date.className = "ig-date mono";
+              date.textContent = d.toLocaleDateString(EN ? "en-GB" : "cs-CZ", { day: "numeric", month: "short", year: "numeric" });
+              a.appendChild(date);
             }
           }
+          var hover = document.createElement("span");
+          hover.className = "ig-hover";
+          var cap = document.createElement("span");
+          cap.className = "ig-cap mono";
+          cap.textContent = caption || T.igPost;
+          hover.appendChild(cap);
+          a.appendChild(hover);
+          igGrid.appendChild(a);
+        });
+        if (cta) igGrid.appendChild(cta);
+        igGrid.classList.add("is-live");
+        var foot = document.getElementById("igFoot");
+        if (foot) foot.textContent = EN ? "Latest posts from our Instagram." : "Nejnovější příspěvky z našeho Instagramu.";
+        if (data.profilePictureUrl) document.getElementById("igAvatar").src = data.profilePictureUrl;
+        if (data.followersCount != null) {
+          document.getElementById("igFollowers").textContent = fmtNum(data.followersCount);
+          var cnt = data.mediaCount != null ? data.mediaCount : null;
+          var cntBox = document.getElementById("igCount");
+          if (cnt != null) cntBox.textContent = fmtNum(cnt); else cntBox.parentNode.hidden = true;
+          document.getElementById("igStats").hidden = false;
         }
-      });
-    };
-
-    var loadApi = function () {
-      if (window.YT && window.YT.Player) { createPlayer(); return; }
-      var prev = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = function () { if (prev) prev(); createPlayer(); };
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      document.head.appendChild(tag);
-    };
-
-    // video načíst až když se sekce blíží k obrazovce
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { io.disconnect(); loadApi(); }
-      }, { rootMargin: "300px" });
-      io.observe(reel);
-    } else {
-      loadApi();
-    }
-
-    // šetřit výkon: pauza, když je smyčka mimo obrazovku
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        if (!player || !player.playVideo) return;
-        if (entries[0].isIntersecting) player.playVideo(); else player.pauseVideo();
-      }).observe(reel);
-    }
+      })
+      .catch(function () { /* necháme výběr fotek z HTML */ });
   }
 
   /* ---------- galerie: další fotky + prohlížeč ---------- */
@@ -183,11 +154,11 @@
   }
 
   var lb = document.getElementById("lightbox");
-  var tiles = Array.prototype.slice.call(document.querySelectorAll("a.g-tile"));
-  if (lb && lb.showModal && tiles.length) {
+  if (lb && lb.showModal) {
     var lbImg = document.getElementById("lbImg");
     var lbCap = document.getElementById("lbCap");
     var lbCount = document.getElementById("lbCount");
+    var tiles = [];
     var current = 0;
 
     var show = function (i) {
@@ -200,12 +171,15 @@
       lbCount.textContent = (current + 1) + " / " + tiles.length;
     };
 
-    tiles.forEach(function (t, i) {
-      t.addEventListener("click", function (e) {
-        e.preventDefault();
-        show(i);
-        lb.showModal();
-      });
+    // každá skupina fotek se prochází zvlášť: výběr v galerii Instagram a fotoarchiv
+    document.addEventListener("click", function (e) {
+      var t = e.target.closest ? e.target.closest("a.g-tile, a[data-lightbox]") : null;
+      if (!t) return;
+      e.preventDefault();
+      var sel = t.matches("a[data-lightbox]") ? 'a[data-lightbox="' + t.getAttribute("data-lightbox") + '"]' : "a.g-tile";
+      tiles = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (x) { return x.offsetParent !== null; });
+      show(Math.max(0, tiles.indexOf(t)));
+      lb.showModal();
     });
 
     document.getElementById("lbPrev").addEventListener("click", function () { show(current - 1); });

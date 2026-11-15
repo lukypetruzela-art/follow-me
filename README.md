@@ -98,7 +98,13 @@ v poštovním programu návštěvníka (adresa follow-me@email.cz).
 `assets/images/og/og-cs.jpg` a `og-en.jpg` (1200 × 630) se ukazují při sdílení
 odkazu na Facebooku, WhatsAppu apod.
 
-## Instagram (živý feed)
-Sekce `#instagram` umí ukazovat posledních 6 příspěvků přes službu Behold.
-JSON adresu feedu vložte do atributu `data-feed` u `<section class="ig-section">`
-v `index.html` a spusťte `python3 tools/build_en.py`.
+## Instagram = hlavní galerie
+- Sekce `#instagram` je hned pod úvodem (místo dřívějšího videa). Mřížka 4 × 4:
+  jeden velký příspěvek, 11 malých a dlaždice „Follow the leader“.
+- **Bez propojení** ukazuje výběr 12 fotek z `assets/images/photos/` — po kliknutí
+  se otevřou v prohlížeči fotek.
+- **Propojení s Instagramem:** založte feed na behold.so (typ JSON) a jeho adresu
+  vložte do atributu `data-feed` u `<section class="ig-section">` v `index.html`,
+  pak `python3 tools/build_en.py`. Mřížka se sama naplní posledními 12 příspěvky
+  (videa a alba mají ikonu), v záhlaví se ukáže profilová fotka a počet sledujících.
+- Celá fotogalerie (45 fotek) je níž jako **Fotoarchiv** (`#gallery`).

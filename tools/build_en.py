@@ -76,7 +76,7 @@ TEXT = [
     ('<a href="#team">Tým</a>', '<a href="#team">Team</a>'),
     ('<a href="#machines">Stroje</a>', '<a href="#machines">Aircraft</a>'),
     ('<a href="#formation">Formace</a>', '<a href="#formation">Formation</a>'),
-    ('<a href="#gallery">Galerie</a>', '<a href="#gallery">Gallery</a>'),
+    ('<a href="#instagram">Galerie</a>', '<a href="#instagram">Gallery</a>'),
     ('<a href="#events">Kalendář</a>', '<a href="#events">Events</a>'),
     ('<a href="#fly">Létejte s námi</a>', '<a href="#fly">Fly with us</a>'),
     ('<a href="#contact">Kontakt</a>', '<a href="#contact">Contact</a>'),
@@ -99,11 +99,6 @@ TEXT = [
     ('<span class="label">STAV</span>', '<span class="label">STATUS</span>'),
     ('</span>AKTIVNÍ FORMACE</span>', '</span>ACTIVE FORMATION</span>'),
 
-    # ---------- video
-    ('aria-label="Video formace FOLLOW-ME"', 'aria-label="FOLLOW-ME formation video"'),
-    ('REC · ZÁZNAM Z AIRSHOW', 'REC · AIRSHOW FOOTAGE'),
-    ('<span class="reel-caption mono">FORMACE V AKCI</span>', '<span class="reel-caption mono">FORMATION IN ACTION</span>'),
-    ('PŘEHRÁT CELÉ VIDEO ▸', 'WATCH THE FULL VIDEO ▸'),
 
     # ---------- tým
     ('<b>FOLLOW-ME</b> je formační tým, který od svého domovského letiště LKZA v Zábřehu u Hlučína — mezi Ostravou a Opavou — pravidelně vzlétá ve čtyřčlenné sestavě strojů Zlín Z-226 a Z-326. Piloti přezdívkami mezi sebou nešetří, veřejně je ale nepoužívají — na webu je tedy potkáte pod jmény, ne pod volacími znaky.',
@@ -195,7 +190,8 @@ TEXT = [
     ('50+ LET OD OTROKOVIC · POŘÁD VE VZDUCHU', '50+ YEARS SINCE OTROKOVICE · STILL FLYING'),
 
     # ---------- galerie
-    ('<h2>Galerie</h2>', '<h2>Gallery</h2>'),
+    ('<h2>Fotoarchiv</h2>', '<h2>Photo Archive</h2>'),
+    ('<h2>Galerie · Instagram</h2>', '<h2>Gallery · Instagram</h2>'),
     ('DALŠÍ FOTKY (', 'MORE PHOTOS ('),
     ('aria-label="Fotogalerie"', 'aria-label="Photo gallery"'),
     ('aria-label="Předchozí fotka"', 'aria-label="Previous photo"'),
@@ -206,7 +202,14 @@ TEXT = [
     ('ŽIVĚ Z LETIŠTĚ', 'LIVE FROM THE FLIGHT LINE'),
     ('Zákulisí tréninků, přelety airshow a stroje z blízka. Nejčerstvější záběry z kokpitu i z ranveje dáváme na Instagram.',
      'Behind the scenes at training, airshow fly-bys and the aircraft up close. Our latest shots from the cockpit and the runway go straight to Instagram.'),
-    ('SLEDOVAT NA INSTAGRAMU →', 'FOLLOW US ON INSTAGRAM →'),
+    ('SLEDOVAT NA INSTAGRAMU</a>', 'FOLLOW US ON INSTAGRAM</a>'),
+    ('</b> sledujících</span>', '</b> followers</span>'),
+    ('</b> příspěvků</span>', '</b> posts</span>'),
+    ('Výběr z našich fotek — nejnovější příspěvky najdete na Instagramu.', 'A selection of our photos — for the latest posts, head over to Instagram.'),
+    ('Celý fotoarchiv ↓', 'Full photo archive ↓'),
+    ('''<!-- Hlavní galerie. Po propojení s Instagramem (Behold) vložte JSON adresu feedu
+     do data-feed a mřížka se sama naplní posledními příspěvky. Do té doby ukazuje
+     výběr fotek níže; po kliknutí se otevřou v prohlížeči fotek. -->''', '<!-- Main gallery: see the Czech version for setup notes. -->'),
 
     # ---------- kalendář
     ('<h2>Kalendář vystoupení</h2>', '<h2>Display Calendar</h2>'),
@@ -314,14 +317,12 @@ ALTS = {
     "OK-KNR a OK-LPR v náklonu těsně vedle sebe": "OK-KNR and OK-LPR banking side by side",
     "OK-KNR a OK-LPR zezadu, OK-LPR těsně za OK-KNR": "OK-KNR and OK-LPR from behind, with OK-LPR tucked in behind OK-KNR",
     "OK-KNR letí nad OK-LPR, pohled z boku": "OK-KNR flying above OK-LPR, side view",
-    "OK-KNR na letišti pod bouřkovými mraky": "OK-KNR on the airfield under storm clouds",
     "OK-KNR sám na travnatém letišti pod šedými mraky": "OK-KNR alone on a grass airfield under grey clouds",
     "OK-KNR vyfocený zespodu z vysoké trávy": "OK-KNR photographed from low down in tall grass",
     "OK-KNR z boku na trávě s pilotem v kokpitu, v pozadí další stroje": "OK-KNR side-on on the grass with the pilot in the cockpit and the other aircraft behind",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR naskládané nad sebou": "OK-KNR, OK-SEN, OK-MPR and OK-LPR stacked one above the other",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR v těsné řadě, Leszno Air Picnic 2016": "OK-KNR, OK-SEN, OK-MPR and OK-LPR in a tight line, Leszno Air Picnic 2016",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR v šikmé řadě před bouřkovými mraky": "OK-KNR, OK-SEN, OK-MPR and OK-LPR in echelon against storm clouds",
-    "OK-LPR a OK-KNR v těsném páru": "OK-LPR and OK-KNR in a close pair",
     "OK-LPR a OK-KNR v těsném páru z boku": "OK-LPR and OK-KNR in a close pair, side view",
     "OK-LPR pojíždí po trávě s roztočenou vrtulí": "OK-LPR taxiing on the grass with its propeller turning",
     "OK-LPR, OK-KNR, OK-SEN a OK-MPR v diagonální řadě": "OK-LPR, OK-KNR, OK-SEN and OK-MPR in a diagonal line",
@@ -330,7 +331,6 @@ ALTS = {
     "OK-MPR a nad ním OK-LPR, záběr z letadla nad krajinou s rybníky": "OK-MPR with OK-LPR above, shot air-to-air over a landscape of ponds",
     "OK-MPR na trávě pod bouřkovým mrakem": "OK-MPR on the grass beneath a storm cloud",
     "OK-MPR shora nad travnatou plochou, vlevo ocas OK-KNR, vpravo křídlo OK-LPR": "OK-MPR from above over grass, with OK-KNR’s tail on the left and OK-LPR’s wing on the right",
-    "OK-SEN shora nad dálnicí, záběr z letadla": "OK-SEN from above over a motorway, shot air-to-air",
     "Otevřený kokpit a vrtule OK-KNR pod bouřkovými mraky": "OK-KNR’s open cockpit and propeller under storm clouds",
     "Portrét pilota Boba": "Portrait of pilot Bob",
     "Portrét pilota Jardy": "Portrait of pilot Jarda",
@@ -386,6 +386,7 @@ def main():
             missing.append("popisek: " + cz)
         out = out.replace(a, f'data-caption="{en}"')
         out = out.replace(f'<span class="g-label mono">{cz}</span>', f'<span class="g-label mono">{en}</span>')
+        out = out.replace(f'<span class="ig-cap mono">{cz}</span>', f'<span class="ig-cap mono">{en}</span>')
     for cz, en in ALTS.items():
         a = f'alt="{cz}"'
         if a not in out:
