@@ -253,6 +253,9 @@ EVERYWHERE = [
 ]
 
 CAPTIONS = {
+    "ŘADA · SHORA · FOTO CARLILL PHOTOGRAPHY": "LINE ASTERN · FROM ABOVE · PHOTO CARLILL PHOTOGRAPHY",
+    "ŘADA · NAD LESEM · FOTO JAKUB VANĚK": "LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK",
+    "DIAMANT · NAD KRAJINOU · FOTO JAKUB VANĚK": "DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK",
     "ŘADA · ZEPŘEDU": "LINE ASTERN · HEAD-ON",
     "ECHELON · NAD VĚTRNÍKY": "ECHELON · OVER THE WIND FARM",
     "ČTYŘI STROJE · ZE VZDUCHU": "ALL FOUR · AIR TO AIR",
@@ -313,6 +316,9 @@ CAPTIONS = {
 }
 
 ALTS = {
+    "OK-KNR, OK-SEN, OK-MPR a OK-LPR v řadě za sebou shora nad poli a lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR in line astern from above, over fields and forest",
+    "OK-KNR, OK-SEN, OK-MPR a OK-LPR těsně za sebou nad lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest",
+    "Čtyři stroje v diamantu nad lesem a poli": "Four aircraft in diamond formation over forest and fields",
     "Čtyři stroje v řadě za sebou zepředu, v čele OK-KNR, pod nimi krajina": "Four aircraft in line astern seen head-on, OK-KNR leading, countryside below",
     "Čtyři stroje v šikmé řadě nad poli a větrnými elektrárnami": "Four aircraft in echelon over fields and wind turbines",
     "OK-LPR, OK-KNR, OK-SEN a OK-MPR z boku nad krajinou": "OK-LPR, OK-KNR, OK-SEN and OK-MPR side-on over the countryside",
