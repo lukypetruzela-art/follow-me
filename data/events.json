@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "a2fed1e408ee",
+    "date": "2027-11-11",
+    "name": "Letecký den",
+    "location": "Hradec Králové",
+    "status": "confirmed",
+    "dateTo": "2027-11-12",
+    "lat": 50.2533,
+    "lng": 15.8453
+  }
+]
