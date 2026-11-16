@@ -120,13 +120,13 @@ button{font:inherit; cursor:pointer;}
   mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,1) 100%);
 }
 .hero-badge{
-  position:absolute; z-index:1; top:110px; right:50px;
-  width:clamp(170px, 18vw, 280px);
+  position:absolute; z-index:1; top:104px; right:44px;
+  width:clamp(150px, 14vw, 210px);
 }
 /* fotka formace v úvodu — vystupuje z tmy zprava */
 .hero-photo{
-  position:absolute; top:0; right:0; bottom:0; width:68%; z-index:0;
-  background:url("../assets/images/photos/uvod-formace.webp") 50% 0%/cover no-repeat;
+  position:absolute; top:0; right:0; bottom:0; width:72%; z-index:0;
+  background:url("../assets/images/photos/uvod-formace.webp") 22% 50%/cover no-repeat;
   -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
           mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
   animation:hero-photo-in 1.6s ease .1s both;
@@ -137,7 +137,7 @@ button{font:inherit; cursor:pointer;}
 @keyframes hero-photo-in{ from{ opacity:0; transform:scale(1.04); } to{ opacity:1; transform:scale(1); } }
 @media (prefers-reduced-motion: reduce){ .hero-photo{ animation:none; } }
 @media (max-width:860px){
-  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:78% 6%; background-image:url("../assets/images/photos/uvod-formace-sm.webp");
+  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:30% 40%; background-image:url("../assets/images/photos/uvod-formace-sm.webp");
     -webkit-mask-image:linear-gradient(180deg, #000 35%, transparent 100%); mask-image:linear-gradient(180deg, #000 35%, transparent 100%); }
   .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.35), rgba(11,12,14,0.55)); }
 }
@@ -224,7 +224,7 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
 @media (max-width:640px){ .section-intro{ padding:0 20px 44px; } }
 
 /* ---------- TEAM INTRO ---------- */
-.team-intro{ padding-top:100px; }
+.team-intro{ padding-top:20px; }
 .team-intro .section-intro{ text-align:left; max-width:900px; }
 
 /* ---------- PILOT CARDS ---------- */
@@ -621,3 +621,13 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .hero-claim{ line-height:1.55; }
 .hero-eyebrow, .hero-readout .label, .hero-readout .value{ line-height:1.4; }
 .nav-word, .nav-links a, .nav-lang, .nav-ig{ line-height:20px; }
+
+/* lišta: nahoře průhledná, po odrolování plná, aby pod ní neprosvítal obsah */
+.nav{ transition:background-color .3s ease; }
+.nav.is-scrolled{ background:rgba(11,12,14,0.92); }
+.season-map[hidden]{ display:none; }
+/* karty strojů na mobilu: menší okraje, fotka přes celou šířku karty */
+@media (max-width:640px){
+  .machine-card{ padding:28px 24px; min-height:0; }
+  .machine-photo{ margin:-28px -24px 24px; }
+}

@@ -351,8 +351,9 @@
       el("circle", { cx: hp[0], cy: hp[1], r: 5, "class": "pulse" }, home);
       el("circle", { cx: hp[0], cy: hp[1], r: 5, "class": "p" }, home);
       el("text", { x: hp[0] + 8, y: hp[1] + 15 }, home).textContent = "LKZA";
-      var note = document.getElementById("mapNote");
-      if (note && located.length) note.hidden = true;
+      // mapa se ukáže, až když je co ukázat (aspoň jedna akce se souřadnicemi)
+      var mapBox = document.getElementById("seasonMap");
+      if (mapBox && located.length) mapBox.hidden = false;
     });
   }
 
@@ -409,6 +410,14 @@
       window.location.href = "mailto:follow-me@email.cz?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
     });
     form.addEventListener("input", function (e) { e.target.classList.remove("is-invalid"); });
+  }
+
+  /* ---------- lišta po odrolování ---------- */
+  var navBar = document.querySelector(".nav");
+  if (navBar) {
+    var onScroll = function () { navBar.classList.toggle("is-scrolled", window.scrollY > 40); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
   }
 
   /* ---------- reveal on scroll ---------- */

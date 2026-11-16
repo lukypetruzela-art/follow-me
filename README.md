@@ -86,7 +86,7 @@ repozitáři, jen zpracovaný výstup.
 
 ## Kalendář na webu: odpočet a mapa
 - **Příští vystoupení** v úvodu ukazuje nejbližší nezrušenou akci s odpočtem dní.
-- **Mapa sezóny** pod kalendářem ukazuje akce, které mají v administraci vyplněné
+- **Mapa sezóny** pod kalendářem se zobrazí, až bude mít aspoň jedna akce souřadnice; ukazuje akce, které mají v administraci vyplněné
   souřadnice (pole „Souřadnice místa“, formát `50.2532, 15.8456`). Podklad mapy je
   `assets/images/map-base.svg`.
 
@@ -107,4 +107,4 @@ odkazu na Facebooku, WhatsAppu apod.
   vložte do atributu `data-feed` u `<section class="ig-section">` v `index.html`,
   pak `python3 tools/build_en.py`. Mřížka se sama naplní posledními 4 příspěvky
   (videa a alba mají ikonu), v záhlaví se ukáže profilová fotka a počet sledujících.
-- Celá fotogalerie (45 fotek) je níž jako **Fotoarchiv** (`#gallery`).
+- Níž na stránce je **Fotogalerie** (`#gallery`) s výběrem 11 fotek.
