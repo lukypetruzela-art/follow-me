@@ -129,7 +129,7 @@ button{font:inherit; cursor:pointer;}
      aby byla všechna čtyři letadla vždy vpravo od nadpisu a pod lištou. */
   --u:min(1vh, 0.6vw);
   position:absolute; top:0; right:0; bottom:0; width:calc(66 * var(--u)); z-index:0;
-  background:url("../assets/images/photos/uvod-formace.webp") calc(-4 * var(--u)) calc(3 * var(--u))/auto calc(147 * var(--u)) no-repeat;
+  background:url("../assets/images/photos/hero-zespodu.webp") calc(-4 * var(--u)) calc(3 * var(--u))/auto calc(147 * var(--u)) no-repeat;
   -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
           mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
   animation:hero-photo-in 1.6s ease .1s both;
@@ -141,7 +141,7 @@ button{font:inherit; cursor:pointer;}
 @media (max-width:860px){
   /* na mobilu je fotka otočená na šířku: čtyři letadla v pásu nad nadpisem */
   .hero-photo{ width:100%; bottom:auto; height:calc(150px + 78vw);
-    background:url("../assets/images/photos/uvod-formace-sm.webp") -50.8vw 104px/152.5vw auto no-repeat, linear-gradient(#0B0C0E 0 104px, #2f66ad 104px);
+    background:url("../assets/images/photos/hero-zespodu-mobil.webp") -50.8vw 104px/152.5vw auto no-repeat, linear-gradient(#0B0C0E 0 104px, #2f66ad 104px);
     -webkit-mask-image:linear-gradient(180deg, #000 70%, transparent 100%); mask-image:linear-gradient(180deg, #000 70%, transparent 100%); }
   .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.9) 0, rgba(11,12,14,0.25) 110px, rgba(11,12,14,0) 45%); }
 }
