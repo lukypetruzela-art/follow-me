@@ -120,26 +120,30 @@ button{font:inherit; cursor:pointer;}
   mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,1) 100%);
 }
 .hero-badge{
-  position:absolute; z-index:1; top:104px; right:44px;
-  width:clamp(150px, 14vw, 210px);
+  position:absolute; z-index:1; top:92px; right:28px;
+  width:clamp(104px, 9.5vw, 150px);
 }
 /* fotka formace v úvodu — vystupuje z tmy zprava */
 .hero-photo{
-  position:absolute; top:0; right:0; bottom:0; width:72%; z-index:0;
-  background:url("../assets/images/photos/uvod-formace.webp") 22% 50%/cover no-repeat;
-  -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
-          mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 22%, #000 48%);
+  /* Fotka formace zespodu. Velikost se řídí jednotkou --u (podle výšky i šířky okna),
+     aby byla všechna čtyři letadla vždy vpravo od nadpisu a pod lištou. */
+  --u:min(1vh, 0.6vw);
+  position:absolute; top:0; right:0; bottom:0; width:calc(66 * var(--u)); z-index:0;
+  background:url("../assets/images/photos/uvod-formace.webp") calc(-4 * var(--u)) calc(3 * var(--u))/auto calc(147 * var(--u)) no-repeat;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
+          mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
   animation:hero-photo-in 1.6s ease .1s both;
 }
 .hero-photo::after{ content:""; position:absolute; inset:0;
-  background:linear-gradient(0deg, #0B0C0E 0%, rgba(11,12,14,0.55) 22%, rgba(11,12,14,0) 45%),
-             linear-gradient(90deg, rgba(11,12,14,0.35), rgba(11,12,14,0) 60%); }
+  background:linear-gradient(0deg, #0B0C0E 0%, rgba(11,12,14,0.45) 13%, rgba(11,12,14,0) 30%); }
 @keyframes hero-photo-in{ from{ opacity:0; transform:scale(1.04); } to{ opacity:1; transform:scale(1); } }
 @media (prefers-reduced-motion: reduce){ .hero-photo{ animation:none; } }
 @media (max-width:860px){
-  .hero-photo{ width:100%; bottom:auto; height:72%; background-position:30% 40%; background-image:url("../assets/images/photos/uvod-formace-sm.webp");
-    -webkit-mask-image:linear-gradient(180deg, #000 35%, transparent 100%); mask-image:linear-gradient(180deg, #000 35%, transparent 100%); }
-  .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.35), rgba(11,12,14,0.55)); }
+  /* na mobilu je fotka otočená na šířku: čtyři letadla v pásu nad nadpisem */
+  .hero-photo{ width:100%; bottom:auto; height:calc(150px + 78vw);
+    background:url("../assets/images/photos/uvod-formace-sm.webp") -50.8vw 104px/152.5vw auto no-repeat, linear-gradient(#0B0C0E 0 104px, #2f66ad 104px);
+    -webkit-mask-image:linear-gradient(180deg, #000 70%, transparent 100%); mask-image:linear-gradient(180deg, #000 70%, transparent 100%); }
+  .hero-photo::after{ background:linear-gradient(180deg, rgba(11,12,14,0.9) 0, rgba(11,12,14,0.25) 110px, rgba(11,12,14,0) 45%); }
 }
 .hero-badge .emblem{ display:block; width:100%; height:auto; }
 
@@ -175,7 +179,7 @@ button{font:inherit; cursor:pointer;}
   .emblem .em-sweep{ display:none; }
 }
 @media (max-width:860px){
-  .hero-badge{ width:136px; top:88px; left:20px; right:auto; }
+  .hero-badge{ width:84px; top:80px; left:16px; right:auto; }
 }
 
 .hero-inner{ position:relative; z-index:2; }
@@ -204,7 +208,7 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
   .hero-readout .cell-machines, .hero-readout .cell:last-child{ grid-column:span 2; border-right:none; border-top:1px solid var(--line); }
   .hero-readout .cell-machines .value{ font-size:clamp(11px, 3.6vw, 14px); }
   .hero-readout .cell{ padding:14px 16px 20px; }
-  .hero-eyebrow{ padding-top:250px; }
+  .hero-eyebrow{ padding-top:calc(120px + 62vw); }
 }
 .nw{ white-space:nowrap; }
 
