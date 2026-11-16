@@ -297,11 +297,11 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
 .pilot-aircraft .txt b{ display:block; color:var(--offwhite); font-size:13px; letter-spacing:0.06em; margin-bottom:2px; }
 
 
-/* aircraft colour swatches, reused for pilots + machines */
-.swatch-knr{ background: repeating-conic-gradient(var(--yellow) 0% 25%, #17181A 0% 50%) 0 0/12px 12px; }
-.swatch-mpr{ background: linear-gradient(135deg, #D9DEE2 0%, #A9B2BA 55%, transparent 55%), repeating-conic-gradient(#C8242B 0% 25%, #F2F2F2 0% 50%) 0 0/10px 10px; }
-.swatch-lpr{ background: linear-gradient(135deg, #B9D3A3 0%, #8FB37E 55%, transparent 55%), repeating-conic-gradient(#6E1E2A 0% 25%, #B9D3A3 0% 50%) 0 0/10px 10px; }
-.swatch-sen{ background: linear-gradient(135deg, #24406E 0%, #1A2F55 55%, transparent 55%), repeating-conic-gradient(var(--yellow) 0% 25%, #17181A 0% 50%) 0 0/10px 10px; }
+/* barvy strojů: šachovnice 2 × 2 ve dvou barvách letadla (karty pilotů i strojů) */
+.swatch-knr{ background: repeating-conic-gradient(var(--yellow) 0% 25%, #17181A 0% 50%) 0 0/100% 100%; }
+.swatch-mpr{ background: repeating-conic-gradient(#C8242B 0% 25%, #D9DEE2 0% 50%) 0 0/100% 100%; }
+.swatch-lpr{ background: repeating-conic-gradient(#6E1E2A 0% 25%, #A9CF98 0% 50%) 0 0/100% 100%; }
+.swatch-sen{ background: repeating-conic-gradient(var(--yellow) 0% 25%, #1F3A6E 0% 50%) 0 0/100% 100%; }
 
 /* ---------- MACHINES ---------- */
 .machines-grid{ width:calc(100% - 80px); max-width:calc(var(--max) - 80px); margin:0 auto 60px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line-strong); border:1px solid var(--line-strong); }
