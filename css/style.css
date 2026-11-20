@@ -638,3 +638,9 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 /* nadpis a popis v úvodu zůstanou čitelné i přes světlé mraky na fotce */
 .hero-title{ text-shadow:0 2px 28px rgba(11,12,14,0.75), 0 0 2px rgba(11,12,14,0.6); }
 .hero-claim{ text-shadow:0 1px 12px rgba(11,12,14,0.9); }
+
+/* registrace v úvodu vedou na kartu stroje */
+.reg-link{ color:inherit; text-decoration:underline; text-decoration-color:rgba(244,192,0,0.45); text-underline-offset:4px; transition:color .2s, text-decoration-color .2s; }
+.reg-link:hover, .reg-link:focus-visible{ color:var(--yellow); text-decoration-color:var(--yellow); }
+.machine-card{ scroll-margin-top:80px; }
+.machine-card:target{ outline:2px solid var(--yellow); outline-offset:-2px; }
