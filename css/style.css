@@ -644,3 +644,9 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .reg-link:hover, .reg-link:focus-visible{ color:var(--yellow); text-decoration-color:var(--yellow); }
 .machine-card{ scroll-margin-top:80px; }
 .machine-card:target{ outline:2px solid var(--yellow); outline-offset:-2px; }
+
+/* stroj na kartě pilota vede na kartu stroje */
+a.pilot-aircraft{ color:inherit; text-decoration:none; transition:border-color .2s; }
+.pilot-aircraft .pa-go{ margin-left:auto; font-size:18px; color:var(--aluminium); transition:transform .2s, color .2s; }
+a.pilot-aircraft:hover .txt b, a.pilot-aircraft:focus-visible .txt b{ color:var(--yellow); }
+a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(--yellow); transform:translateX(4px); }
