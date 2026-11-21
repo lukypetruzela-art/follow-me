@@ -266,7 +266,7 @@ TEXT = [
     ('Posaďte se do stroje, který létá už přes šedesát let. Uslyšíte motor naostro, ucítíte drak letadla v zatáčce a uvidíte Moravu z kokpitu tak, jak ji vidí jen piloti. Napište nám a domluvíme si termín.',
      'Climb aboard an aircraft that has been flying for more than sixty years. Hear the engine up close, feel the airframe working through a turn and see Moravia from the cockpit the way only pilots do. Drop us a line and we’ll find a date.'),
     ('NAPSAT TÝMU →', 'EMAIL THE TEAM →'),
-    ('<h2 class="display">Domovská základna</h2>', '<h2 class="display">Home base</h2>'),
+    ('<h2>Domovská základna</h2>', '<h2>Home Base</h2>'),
     ('Formaci nejčastěji potkáte nad letištěm LKZA — Zábřeh u Hlučína, mezi Ostravou a Opavou. Fanoušci satelitních map si mohou souřadnice rovnou zadat do vyhledávače.',
      'You’ll most often find the formation over LKZA airfield — Zábřeh near Hlučín, between Ostrava and Opava. Satellite-map fans can paste the coordinates straight into a search engine.'),
     ('<span class="k">LETIŠTĚ</span><span class="v">LKZA — ZÁBŘEH U HLUČÍNA</span>', '<span class="k">AIRFIELD</span><span class="v">LKZA — ZÁBŘEH NEAR HLUČÍN</span>'),

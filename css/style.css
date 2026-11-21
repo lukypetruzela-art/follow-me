@@ -513,12 +513,12 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .btn-outline:hover, .btn-outline:focus-visible{ background:var(--offwhite); color:var(--black); border-color:var(--offwhite); }
 
 /* ---------- CONTACT / FOOTER ---------- */
-.contact-section{ padding:100px 40px 0; max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:60px; }
-@media (max-width:860px){ .contact-section{ grid-template-columns:1fr; gap:40px; padding:80px 20px 0; } }
-.contact-photo{ margin:0 0 28px; aspect-ratio:1600/1066; overflow:hidden; border:1px solid var(--line-strong); }
+.contact-section{ padding:0 40px; max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1.25fr 1fr; gap:48px; align-items:stretch; }
+@media (max-width:900px){ .contact-section{ grid-template-columns:1fr; gap:32px; padding:0 20px; } }
+.contact-photo{ margin:0; aspect-ratio:1600/1066; overflow:hidden; border:1px solid var(--line-strong); }
 .contact-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 50%; display:block; }
-.contact-block h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:28px; margin-bottom:18px; }
-.contact-block p{ color:var(--aluminium); font-size:15px; line-height:1.7; max-width:44ch; }
+.contact-card{ display:flex; flex-direction:column; justify-content:space-between; gap:28px; }
+.contact-card .home-base p{ color:var(--aluminium); font-size:15px; line-height:1.7; margin:0; }
 .contact-meta{ display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
 .contact-meta .row{ display:flex; justify-content:space-between; gap:20px; padding:14px 0; border-bottom:1px solid var(--line); font-size:13px; }
 .contact-meta .row .k{ color:var(--aluminium); }
@@ -739,7 +739,7 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 .nav-sub{ display:block; font-size:9.5px; line-height:12px; letter-spacing:0.52em; color:var(--yellow); font-weight:500; margin-top:1px; }
 
 /* znak Slezského aeroklubu Zábřeh u Domovské základny */
-.home-base{ display:flex; align-items:flex-start; gap:24px; }
+.home-base{ display:flex; align-items:center; gap:24px; }
 .club-logo{ flex-shrink:0; width:104px; height:104px; border-radius:50%; background:#fff; display:block;
   box-shadow:0 0 0 1px var(--line-strong), 0 10px 30px rgba(0,0,0,0.35); transition:transform .25s ease, box-shadow .25s ease; }
 .club-logo img{ width:100%; height:100%; display:block; border-radius:50%; }
