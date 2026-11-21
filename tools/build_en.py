@@ -103,7 +103,7 @@ TEXT = [
      '<b>FOLLOW-ME</b> is a formation team that regularly takes off from its home airfield, LKZA in Zábřeh near Hlučín — between Ostrava and Opava — as a four-ship of Zlín Z-226 and Z-326 aircraft. The pilots have no shortage of nicknames for one another, but they keep them off the record — so on this site you will meet them by name, not by call sign.'),
     ('Stroje z produkce otrokovické továrny Moravan už dnes nemají akrobatické oprávnění — přesto formace trénuje předvedenou sestavu tak přesně a tak těsně, jak to jde. Za dobu, kdy se tým drží ve vzduchu, navštívil řadu airshow po celé zemi i za hranicemi a ukázal divákům padesátileté veterány, kteří dnes vypadají lépe, než když poprvé opustili výrobní halu.',
      'Built by the Moravan factory in Otrokovice, these aircraft are no longer cleared for aerobatics — yet the formation trains its display routine as precisely and as tightly as it can. Over the years the team has flown at airshows across the country and abroad, showing crowds fifty-year-old veterans that look better today than the day they first rolled out of the factory.'),
-    ('<h2>Posádka — karty pilotů</h2>', '<h2>Crew — Pilot Files</h2>'),
+    ('<h2>Posádka</h2>', '<h2>Crew</h2>'),
     ('<span class="pilot-role-tag mono">VEDOUCÍ</span>', '<span class="pilot-role-tag mono">LEADER</span>'),
     ('<span class="pilot-role-tag mono">PRAVÉ KŘÍDLO</span>', '<span class="pilot-role-tag mono">RIGHT WING</span>'),
     ('<span class="pilot-role-tag mono">LEVÉ KŘÍDLO</span>', '<span class="pilot-role-tag mono">LEFT WING</span>'),
@@ -222,8 +222,6 @@ TEXT = [
 
     # ---------- galerie
     ('<h2>Fotogalerie</h2>', '<h2>Photo Gallery</h2>'),
-    ('<h2>Galerie · Instagram</h2>', '<h2>Gallery · Instagram</h2>'),
-    ('aria-label="Fotogalerie"', 'aria-label="Photo gallery"'),
     ('aria-label="Předchozí fotka"', 'aria-label="Previous photo"'),
     ('aria-label="Další fotka"', 'aria-label="Next photo"'),
     ('aria-label="Zavřít"', 'aria-label="Close"'),
@@ -236,7 +234,15 @@ TEXT = [
     ('</b> sledujících</span>', '</b> followers</span>'),
     ('</b> příspěvků</span>', '</b> posts</span>'),
     ('Výběr z našich fotek — nejnovější příspěvky najdete na Instagramu.', 'A selection of our photos — for the latest posts, head over to Instagram.'),
-    ('Další fotky ↓', 'More photos ↓'),
+    ('aria-label="Fotogalerie">', 'aria-label="Photo gallery">'),
+    ('aria-label="Výběr fotky"', 'aria-label="Choose a photo"'),
+    ('aria-label="Fotka 1"', 'aria-label="Photo 1"'),
+    ('aria-label="Fotka 2"', 'aria-label="Photo 2"'),
+    ('aria-label="Fotka 3"', 'aria-label="Photo 3"'),
+    ('aria-label="Fotka 4"', 'aria-label="Photo 4"'),
+    ('aria-label="Fotka 5"', 'aria-label="Photo 5"'),
+    ('DALŠÍ FOTKY NA INSTAGRAMU →', 'MORE PHOTOS ON INSTAGRAM →'),
+    ('Fotogalerie ↓</a>', 'Photo gallery ↓</a>'),
     ('''<!-- Hlavní galerie. Po propojení s Instagramem (Behold) vložte JSON adresu feedu
      do data-feed a mřížka se sama naplní posledními příspěvky. Do té doby ukazuje
      výběr 4 fotek níže; po kliknutí se otevřou v prohlížeči fotek. -->''', '<!-- Main gallery: see the Czech version for setup notes. -->'),
@@ -284,7 +290,6 @@ EVERYWHERE = [
 ]
 
 CAPTIONS = {
-    "ŘADA · SHORA · FOTO CARLILL PHOTOGRAPHY": "LINE ASTERN · FROM ABOVE · PHOTO CARLILL PHOTOGRAPHY",
     "ŘADA · NAD LESEM · FOTO JAKUB VANĚK": "LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK",
     "DIAMANT · NAD KRAJINOU · FOTO JAKUB VANĚK": "DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK",
     "ŘADA · ZEPŘEDU": "LINE ASTERN · HEAD-ON",
@@ -294,17 +299,11 @@ CAPTIONS = {
     "OK-KNR · TĚSNÁ FORMACE · FOTO CARLILL PHOTOGRAPHY": "OK-KNR · CLOSE FORMATION · PHOTO CARLILL PHOTOGRAPHY",
     "OK-KNR · PŘED BOUŘKOU": "OK-KNR · BEFORE THE STORM",
     "ECHELON · V BOUŘKOVÝCH MRACÍCH": "ECHELON · IN THE STORM CLOUDS",
-    "NAD MRAKY · FOTO MICHAŁ BANACH": "ABOVE THE CLOUDS · PHOTO MICHAŁ BANACH",
-    "OK-KNR · KOKPIT": "OK-KNR · COCKPIT",
-    "OK-KNR · Z TRÁVY": "OK-KNR · FROM THE GRASS",
-    "OK-MPR · PŘED BOUŘKOU": "OK-MPR · BEFORE THE STORM",
-    "PŘED STARTEM · ČTYŘI STROJE": "BEFORE TAKE-OFF · ALL FOUR",
 }
 
 ALTS = {
     "Zlín Z-326MF OK-SEN za letu shora, modro-žluté křídlo se šachovnicí, pilot v kokpitu": "Zlín Z-326MF OK-SEN in flight from above, blue-and-yellow chequered wing, pilot in the cockpit",
     "Zlín Z-226MS OK-LPR na trávě s roztočenou vrtulí, světle zelený s vínovou šachovnicí": "Zlín Z-226MS OK-LPR on the grass with its propeller turning, light green with maroon checks",
-    "OK-KNR, OK-SEN, OK-MPR a OK-LPR v řadě za sebou shora nad poli a lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR in line astern from above, over fields and forest",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR těsně za sebou nad lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest",
     "Čtyři stroje v diamantu nad lesem a poli": "Four aircraft in diamond formation over forest and fields",
     "Čtyři stroje v řadě za sebou zepředu, v čele OK-KNR, pod nimi krajina": "Four aircraft in line astern seen head-on, OK-KNR leading, countryside below",
@@ -314,19 +313,14 @@ ALTS = {
     "OK-KNR s pilotem v kokpitu, za ním těsně OK-SEN, OK-MPR a OK-LPR": "OK-KNR with the pilot in the cockpit, OK-SEN, OK-MPR and OK-LPR tucked in close",
     "OK-KNR zezadu na trávě, nad ním bouřková oblaka": "OK-KNR from behind on the grass beneath storm clouds",
     "Formace FOLLOW-ME nad hangárem Slezského aeroklubu Zábřeh": "The FOLLOW-ME formation over the Silesian Aero Club Zábřeh hangar",
-    "OK-KNR vyfocený zespodu z vysoké trávy": "OK-KNR photographed from low down in tall grass",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR v šikmé řadě před bouřkovými mraky": "OK-KNR, OK-SEN, OK-MPR and OK-LPR in echelon against storm clouds",
-    "OK-MPR na trávě pod bouřkovým mrakem": "OK-MPR on the grass beneath a storm cloud",
-    "Otevřený kokpit a vrtule OK-KNR pod bouřkovými mraky": "OK-KNR’s open cockpit and propeller under storm clouds",
     "Portrét pilota Boba": "Portrait of pilot Bob",
     "Portrét pilota Jardy": "Portrait of pilot Jarda",
     "Portrét pilota Jiřího": "Portrait of pilot Jiří",
     "Portrét pilota Luba": "Portrait of pilot Lubo",
     "Portrét pilota Tomáše": "Portrait of pilot Tomáš",
-    "Všechny čtyři stroje na trávě s roztočenými vrtulemi pod zataženou oblohou": "All four aircraft on the grass with propellers turning under an overcast sky",
     "Zlín Z-226MS OK-KNR z boku na trávě s pilotem v kokpitu": "Zlín Z-226MS OK-KNR side-on on the grass with the pilot in the cockpit",
     "Zlín Z-226MS OK-MPR za letu z boku, stříbrný s červeno-bílou šachovnicí": "Zlín Z-226MS OK-MPR in flight, side view, silver with red-and-white checks",
-    "Čtyři stroje FOLLOW-ME nad kupovitými mraky: OK-LPR, OK-KNR, OK-SEN a OK-MPR": "Four FOLLOW-ME aircraft above cumulus clouds: OK-LPR, OK-KNR, OK-SEN and OK-MPR",
 }
 
 
@@ -357,6 +351,7 @@ def main():
         out = out.replace(a, f'data-caption="{en}"')
         out = out.replace(f'<span class="g-label mono">{cz}</span>', f'<span class="g-label mono">{en}</span>')
         out = out.replace(f'<span class="ig-cap mono">{cz}</span>', f'<span class="ig-cap mono">{en}</span>')
+        out = out.replace(f'<span class="ss-cap mono">{cz}</span>', f'<span class="ss-cap mono">{en}</span>')
     for cz, en in ALTS.items():
         a = f'alt="{cz}"'
         if a not in out:

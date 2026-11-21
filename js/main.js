@@ -176,7 +176,7 @@
       if (!t) return;
       e.preventDefault();
       var sel = t.matches("a[data-lightbox]") ? 'a[data-lightbox="' + t.getAttribute("data-lightbox") + '"]' : "a.g-tile";
-      tiles = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (x) { return x.offsetParent !== null; });
+      tiles = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function (x) { return x.offsetParent !== null || x.hasAttribute("data-lightbox"); });
       show(Math.max(0, tiles.indexOf(t)));
       lb.showModal();
     });
@@ -418,6 +418,60 @@
     var onScroll = function () { navBar.classList.toggle("is-scrolled", window.scrollY > 40); };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+  }
+
+  /* ---------- slideshow fotogalerie ---------- */
+  var ss = document.getElementById("slideshow");
+  if (ss) {
+    var slides = [].slice.call(ss.querySelectorAll(".ss-slide"));
+    var dots = [].slice.call(ss.querySelectorAll(".ss-dot"));
+    var bar = ss.querySelector(".ss-progress span");
+    var idx = 0, timer = null, DELAY = 6000;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var go = function (i) {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        var on = k === idx;
+        s.classList.toggle("is-active", on);
+        if (on) { s.removeAttribute("aria-hidden"); s.removeAttribute("tabindex"); }
+        else { s.setAttribute("aria-hidden", "true"); s.setAttribute("tabindex", "-1"); }
+        var img = s.querySelector("img"); if (on && img) img.loading = "eager";
+      });
+      dots.forEach(function (d, k) { d.classList.toggle("is-active", k === idx); d.setAttribute("aria-selected", k === idx ? "true" : "false"); });
+      // přednačíst další fotku
+      var nx = slides[(idx + 1) % slides.length].querySelector("img"); if (nx) nx.loading = "eager";
+      restart();
+    };
+    var restart = function () {
+      clearTimeout(timer);
+      ss.classList.remove("is-playing"); void bar.offsetWidth;
+      if (reduce || ss.dataset.paused) return;
+      ss.style.setProperty("--ss-time", DELAY + "ms");
+      ss.classList.add("is-playing");
+      timer = setTimeout(function () { go(idx + 1); }, DELAY);
+    };
+    var pause = function (on) { if (on) ss.dataset.paused = "1"; else delete ss.dataset.paused; restart(); };
+    ss.querySelector(".ss-prev").addEventListener("click", function () { go(idx - 1); });
+    ss.querySelector(".ss-next").addEventListener("click", function () { go(idx + 1); });
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); }); });
+    ss.addEventListener("mouseenter", function () { pause(true); });
+    ss.addEventListener("mouseleave", function () { pause(false); });
+    ss.addEventListener("focusin", function () { pause(true); });
+    ss.addEventListener("focusout", function () { pause(false); });
+    ss.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") go(idx - 1);
+      if (e.key === "ArrowRight") go(idx + 1);
+    });
+    var sx = null;
+    ss.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; pause(true); }, { passive: true });
+    ss.addEventListener("touchend", function (e) {
+      if (sx !== null) { var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1)); }
+      sx = null; pause(false);
+    });
+    // přehrávat jen když je slideshow na obrazovce
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { pause(!en[0].isIntersecting); }, { threshold: 0.3 }).observe(ss);
+    } else { restart(); }
   }
 
   /* ---------- reveal on scroll ---------- */
