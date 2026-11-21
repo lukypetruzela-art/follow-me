@@ -21,6 +21,7 @@
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       toggle.setAttribute("aria-label", open ? T.close : T.open);
       document.body.style.overflow = open ? "hidden" : "";
+      var f = document.getElementById("inviteFab"); if (f) f.style.visibility = open ? "hidden" : "";
     };
 
     toggle.addEventListener("click", function () {
@@ -472,6 +473,16 @@
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (en) { pause(!en[0].isIntersecting); }, { threshold: 0.3 }).observe(ss);
     } else { restart(); }
+  }
+
+  /* ---------- plovoucí tlačítko poptávky ---------- */
+  // Schová se, když je na obrazovce formulář poptávky nebo otevřené mobilní menu.
+  var fab = document.getElementById("inviteFab");
+  var inviteSec = document.getElementById("invite");
+  if (fab && inviteSec && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (en) {
+      fab.classList.toggle("is-hidden", en[0].isIntersecting);
+    }, { threshold: 0.15 }).observe(inviteSec);
   }
 
   /* ---------- reveal on scroll ---------- */

@@ -200,6 +200,8 @@ TEXT = [
      'Over the years it has picked up a few scars, including a very, very intimate encounter between its belly and Mother Earth, but it is still a handsome thing. The eye-catching OK-SEN markings were also admired by those attending the Zlin fly-in at Samedan in Switzerland, near St. Moritz, where formation pilot Mili flew it reliably all the way. (Samedan airfield lies tucked away in the Alps and boasts a rather respectable elevation… we won’t give it away – have a look at the map.)'),
     ('Registrace vznikla z iniciál pilota (LP) a společného „R“ celé formace. Původně OK-KMX z roku 1957 — po renovaci u Zlin-Avionu létá od jara 2009 v metalickém zeleno-červeném kabátě.',
      'The registration comes from the pilot’s initials (LP) plus the “R” shared by the whole formation. Originally OK-KMX, built in 1957 — after restoration at Zlin-Avion it has flown since spring 2009 in a metallic green-and-red coat.'),
+    ('<!-- Plovoucí tlačítko poptávky: vidět pořád, schová se jen u samotného formuláře. -->', '<!-- Floating enquiry button. -->'),
+    ('<span>POZVĚTE NÁS K VÁM</span>', '<span>INVITE US TO YOUR EVENT</span>'),
     # ---------- formace
     ('<h2>Formace</h2>', '<h2>Formation</h2>'),
     ('01 · VEDOUCÍ</text>', '01 · LEAD</text>'),

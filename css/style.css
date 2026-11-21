@@ -322,7 +322,7 @@ html[lang="cs"] .hero-title{ line-height:1.16; }
 .machine-specs{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:22px; }
 .machine-specs div{ padding:12px 0; border-right:1px solid var(--line); }
 .machine-specs div:last-child{ border-right:none; }
-.machine-specs .k{ font-size:9px; color:var(--aluminium); letter-spacing:0.1em; display:block; margin-bottom:4px; }
+.machine-specs .k{ font-size:10px; color:var(--aluminium); letter-spacing:0.1em; display:block; margin-bottom:4px; }
 .machine-specs .v{ font-size:13px; color:var(--offwhite); }
 
 .machine-text{ font-size:14.5px; line-height:1.7; color:var(--aluminium); flex:1; }
@@ -479,7 +479,7 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
   .events-table, .events-table tbody, .events-table tr, .events-table td{ display:block; width:100%; }
   .events-table tr{ border-bottom:1px solid var(--line-strong); padding:14px 0; }
   .events-table td{ border:none; padding:4px 0; }
-  .events-table td::before{ content:attr(data-label); display:block; font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--aluminium); letter-spacing:0.1em; margin-bottom:2px; }
+  .events-table td::before{ content:attr(data-label); display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--aluminium); letter-spacing:0.1em; margin-bottom:2px; }
 }
 
 /* ---------- FLY WITH US ---------- */
@@ -692,3 +692,24 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 .ss-more{ font-size:12px; letter-spacing:0.1em; color:var(--yellow); }
 .ss-more:hover{ text-decoration:underline; }
 @media (prefers-reduced-motion: reduce){ .ss-slide, .ss-slide img{ transition:none; } .ss-slide img{ transform:none; } .slideshow.is-playing .ss-progress span{ animation:none; } }
+
+/* ---------- plovoucí tlačítko „Pozvěte nás“ ---------- */
+.invite-fab{ position:fixed; right:24px; bottom:24px; z-index:90; display:inline-flex; align-items:center; gap:10px;
+  padding:14px 20px; background:var(--yellow); color:var(--black); border:1px solid var(--yellow);
+  font-size:12px; letter-spacing:0.1em; font-weight:500; box-shadow:0 10px 30px rgba(0,0,0,0.45);
+  transition:transform .3s ease, opacity .3s ease, background .2s, color .2s; }
+.invite-fab svg{ width:18px; height:18px; transform:rotate(45deg); }
+.invite-fab:hover, .invite-fab:focus-visible{ background:var(--black); color:var(--yellow); }
+.invite-fab.is-hidden{ opacity:0; transform:translateY(20px); pointer-events:none; }
+@media (max-width:640px){
+  .invite-fab{ right:14px; bottom:max(14px, env(safe-area-inset-bottom)); padding:12px 15px; font-size:11px; gap:8px; }
+  .site-footer{ padding-bottom:84px; }
+}
+@media (prefers-reduced-motion: reduce){ .invite-fab{ transition:none; } }
+
+/* nadpis úvodu na nejmenších displejích, větší dotyková plocha ikon v liště */
+.hero-title{ width:fit-content; }
+@media (max-width:360px){ .hero-title{ font-size:38px; } }
+@media (max-width:1100px){ .nav-ig{ padding:9px; margin-right:6px; } }
+/* text nad jménem pilota nesmí zasahovat do mini schématu pozice */
+.pilot-eyebrow{ padding-right:60px; }
