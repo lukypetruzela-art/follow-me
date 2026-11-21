@@ -27,7 +27,7 @@
 <link rel="preload" href="assets/fonts/oswald-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="data/events.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=22">
+<link rel="stylesheet" href="css/style.css?v=23">
 <link rel="preload" as="image" href="assets/images/photos/hero-mraky-mobil.webp" media="(max-width: 860px)">
 <link rel="preload" as="image" href="assets/images/photos/hero-mraky.webp" media="(min-width: 861px)">
 </head>
@@ -810,47 +810,6 @@
   <p class="invite-link"><a href="#invite" class="mono">Pořádáte leteckou akci? Pozvěte nás →</a></p>
 </div>
 
-<!-- ============================================================ INVITE -->
-<section class="invite-section reveal" id="invite" aria-labelledby="invite-title">
-  <div class="invite-intro">
-    <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>PRO POŘADATELE</span>
-    <h2 class="display" id="invite-title">Pozvěte nás na vaši akci</h2>
-    <p>Letecký den, výročí letiště, firemní akce nebo přelet nad městem — čtyři historické Trenery ve formaci zvládnou na obloze i na zemi. Vyplňte pár údajů a my se vám ozveme.</p>
-    <p class="invite-fine mono">Formulář otevře váš e-mail s předvyplněnou zprávou na follow-me@email.cz.</p>
-  </div>
-  <form class="invite-form" id="inviteForm" novalidate>
-    <div class="f-row">
-      <label><span class="mono">Jméno a příjmení *</span><input type="text" name="name" required autocomplete="name"></label>
-      <label><span class="mono">Organizace</span><input type="text" name="org" autocomplete="organization"></label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">E-mail *</span><input name="email" type="email" required autocomplete="email"></label>
-      <label><span class="mono">Telefon</span><input name="phone" type="tel" autocomplete="tel"></label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">Název akce *</span><input type="text" name="event" required></label>
-      <label><span class="mono">Typ akce</span>
-        <select name="type">
-          <option>Letecký den</option>
-          <option>Výročí / den otevřených dveří letiště</option>
-          <option>Firemní nebo soukromá akce</option>
-          <option>Přelet nad akcí</option>
-          <option>Jiné</option>
-        </select>
-      </label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">Datum *</span><input name="date" type="date" required></label>
-      <label><span class="mono">Místo / letiště *</span><input type="text" name="place" required placeholder="např. Hradec Králové (LKHK)"></label>
-    </div>
-    <label class="f-full"><span class="mono">Zpráva</span><textarea name="msg" rows="4" placeholder="Program, předpokládaný čas vystoupení, počet diváků…"></textarea></label>
-    <div class="f-actions">
-      <button type="submit" class="btn">ODESLAT POPTÁVKU →</button>
-      <p class="f-error mono" id="inviteError" role="alert" hidden>Vyplňte prosím povinná pole označená hvězdičkou.</p>
-    </div>
-  </form>
-</section>
-
 <!-- ============================================================ FLY WITH US -->
 <section class="fly-section has-photo reveal" id="fly">
   <div class="fly-inner">
@@ -893,6 +852,52 @@
   </div>
 </section>
 
+<!-- ============================================================ INVITE -->
+<div class="section-label" id="invite">
+  <span class="num mono">08</span>
+  <div class="rule"></div>
+  <h2 id="invite-title">Pozvěte nás na vaši akci</h2>
+</div>
+
+<section class="invite-section reveal" aria-labelledby="invite-title">
+  <div class="invite-intro">
+    <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>PRO POŘADATELE</span>
+    <p>Letecký den, výročí letiště, firemní akce nebo přelet nad městem — čtyři historické Trenery ve formaci zvládnou na obloze i na zemi. Vyplňte pár údajů a my se vám ozveme.</p>
+    <p class="invite-fine mono">Formulář otevře váš e-mail s předvyplněnou zprávou na follow-me@email.cz.</p>
+  </div>
+  <form class="invite-form" id="inviteForm" novalidate>
+    <div class="f-row">
+      <label><span class="mono">Jméno a příjmení *</span><input type="text" name="name" required autocomplete="name"></label>
+      <label><span class="mono">Organizace</span><input type="text" name="org" autocomplete="organization"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">E-mail *</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span class="mono">Telefon</span><input name="phone" type="tel" autocomplete="tel"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Název akce *</span><input type="text" name="event" required></label>
+      <label><span class="mono">Typ akce</span>
+        <select name="type">
+          <option>Letecký den</option>
+          <option>Výročí / den otevřených dveří letiště</option>
+          <option>Firemní nebo soukromá akce</option>
+          <option>Přelet nad akcí</option>
+          <option>Jiné</option>
+        </select>
+      </label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Datum *</span><input name="date" type="date" required></label>
+      <label><span class="mono">Místo / letiště *</span><input type="text" name="place" required placeholder="např. Hradec Králové (LKHK)"></label>
+    </div>
+    <label class="f-full"><span class="mono">Zpráva</span><textarea name="msg" rows="4" placeholder="Program, předpokládaný čas vystoupení, počet diváků…"></textarea></label>
+    <div class="f-actions">
+      <button type="submit" class="btn">ODESLAT POPTÁVKU →</button>
+      <p class="f-error mono" id="inviteError" role="alert" hidden>Vyplňte prosím povinná pole označená hvězdičkou.</p>
+    </div>
+  </form>
+</section>
+
 <!-- Plovoucí tlačítko poptávky: vidět pořád, schová se jen u samotného formuláře. -->
 <a class="invite-fab mono" id="inviteFab" href="#invite">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="currentColor"/></svg>
@@ -900,16 +905,59 @@
 </a>
 
 <footer class="site-footer">
-  <div class="fl mono">FOLLOW-ME · FORMAČNÍ LETECKÝ TÝM · LKZA</div>
-  <div class="fr mono">
-    <a href="#top">Nahoru ↑</a>
-    <a href="mailto:follow-me@email.cz">E-mail</a>
-    <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebook</a>
-    <a href="/admin/" class="footer-admin" rel="nofollow">Administrace</a>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="#top" class="ft-mark" aria-label="FOLLOW-ME — nahoru">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="47" fill="none" stroke="rgba(237,234,226,0.45)" stroke-width="3"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#F4C000" transform="translate(36.2 17.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#EDEAE2" transform="translate(16.2 39.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#EDEAE2" transform="translate(56.2 39.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#B9BEC2" transform="translate(36.2 61.9) scale(1.15)"/>
+    </svg>
+        <span class="nav-word">FOLLOW-ME<small class="nav-sub mono">AIRSHOW</small></span>
+      </a>
+      <p>Formační tým čtyř historických strojů Zlín Z-226 a Z-326. Pět pilotů, čtyři stroje, jedna formace — z letiště LKZA nad airshow doma i v zahraničí.</p>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a>
+        <a href="mailto:follow-me@email.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a>
+      </div>
+    </div>
+    <nav class="ft-col" aria-label="Odkazy v patičce">
+      <h3 class="mono">WEB</h3>
+      <a href="#instagram">Galerie</a>
+      <a href="#team">Posádka</a>
+      <a href="#machines">Stroje</a>
+      <a href="#formation">Formace</a>
+      <a href="#events">Kalendář</a>
+      <a href="#fly">Létejte s námi</a>
+    </nav>
+    <div class="ft-col">
+      <h3 class="mono">KONTAKT</h3>
+      <a href="mailto:follow-me@email.cz">follow-me@email.cz</a>
+      <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebook</a>
+      <a href="#invite" class="ft-cta">Pozvěte nás na akci →</a>
+    </div>
+    <div class="ft-col ft-club">
+      <h3 class="mono">DOMOVSKÉ LETIŠTĚ</h3>
+      <a class="ft-club-link" href="https://lkza.cz/" target="_blank" rel="noopener">
+        <img src="assets/images/brand/slezsky-aeroklub-zabreh.webp" alt="" width="56" height="56" loading="lazy">
+        <span>Slezský aeroklub Zábřeh<small class="mono">LKZA · 49°55'42"N 18°04'42"E</small></span>
+      </a>
+    </div>
+  </div>
+  <div class="ft-bottom mono">
+    <span>© <span id="ftYear">2026</span> FOLLOW-ME · FORMAČNÍ LETECKÝ TÝM · LKZA</span>
+    <span class="ft-links">
+      <a href="./" class="ft-lang" lang="cs" aria-current="page">CZ</a> / <a href="en/" lang="en" hreflang="en">EN</a>
+      <a href="#top">Nahoru ↑</a>
+      <a href="/admin/" class="footer-admin" rel="nofollow">Administrace</a>
+    </span>
   </div>
 </footer>
 
-<script src="js/main.js?v=22"></script>
+<script src="js/main.js?v=23"></script>
 </body>
 </html>

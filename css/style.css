@@ -525,17 +525,6 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 .contact-meta .row .v{ color:var(--offwhite); text-align:right; }
 .contact-meta .row .v a:hover{ color:var(--yellow); }
 
-.site-footer{ margin-top:90px; padding:34px 40px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
-.site-footer .fl{ font-size:11px; letter-spacing:0.1em; color:var(--aluminium); }
-.site-footer .fr{ display:flex; gap:20px; font-size:11px; letter-spacing:0.1em; color:var(--aluminium); }
-.site-footer .fr a:hover{ color:var(--yellow); }
-.site-footer .fr{ flex-wrap:wrap; row-gap:12px; }
-.site-footer .fr a{ white-space:nowrap; }
-.site-footer .footer-admin{ opacity:0.85; padding-left:20px; border-left:1px solid var(--line); }
-@media (max-width:640px){ .site-footer .footer-admin{ padding-left:0; border-left:none; } }
-.site-footer .footer-admin:hover{ opacity:1; }
-@media (max-width:480px){ .contact-meta .row{ flex-direction:column; gap:4px; } .contact-meta .row .v{ text-align:left; } }
-@media (max-width:640px){ .site-footer{ padding:26px 20px; flex-direction:column; align-items:flex-start; } }
 
 /* ---------- REVEAL ANIMATION ---------- */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
@@ -613,8 +602,8 @@ a.g-tile:hover .g-label{ color:var(--yellow); opacity:1; }
 @media (prefers-reduced-motion: reduce){ .map-pins .route, .map-pins .home .pulse{ animation:none; } }
 
 /* ---------- POPTÁVKA ---------- */
-.invite-section{ max-width:var(--max); margin:0 auto; padding:30px 40px 110px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start; }
-@media (max-width:900px){ .invite-section{ grid-template-columns:1fr; gap:34px; padding:20px 20px 80px; } }
+.invite-section{ max-width:var(--max); margin:0 auto; padding:0 40px 110px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:start; }
+@media (max-width:900px){ .invite-section{ grid-template-columns:1fr; gap:34px; padding:0 20px 80px; } }
 .invite-intro h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:clamp(28px,4vw,46px); line-height:1.05; margin-bottom:18px; }
 .invite-intro p{ color:var(--aluminium); font-size:16px; line-height:1.7; max-width:44ch; }
 .invite-fine{ margin-top:16px; font-size:11px !important; opacity:0.75; }
@@ -745,3 +734,37 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 .club-logo img{ width:100%; height:100%; display:block; border-radius:50%; }
 .club-logo:hover, .club-logo:focus-visible{ transform:scale(1.04); box-shadow:0 0 0 2px var(--yellow), 0 10px 30px rgba(0,0,0,0.35); }
 @media (max-width:480px){ .home-base{ gap:16px; } .club-logo{ width:76px; height:76px; } }
+
+/* ---------- PATIČKA ---------- */
+.site-footer{ margin-top:40px; border-top:1px solid var(--line-strong); background:linear-gradient(180deg, #0E0F11, var(--black)); }
+.ft-top{ max-width:var(--max); margin:0 auto; padding:64px 40px 48px; display:grid; grid-template-columns:1.5fr 0.8fr 1fr 1.2fr; gap:48px; }
+@media (max-width:1000px){ .ft-top{ grid-template-columns:1fr 1fr; gap:40px 32px; } }
+@media (max-width:560px){ .ft-top{ grid-template-columns:1fr 1fr; padding:48px 20px 36px; gap:34px 20px; } .ft-brand, .ft-club{ grid-column:1 / -1; } }
+.ft-mark{ display:inline-flex; align-items:center; gap:12px; }
+.ft-mark svg{ width:40px; height:40px; }
+.ft-mark .nav-word{ font-size:18px; }
+.ft-brand p{ margin-top:18px; font-size:14px; line-height:1.7; color:var(--aluminium); max-width:40ch; }
+.ft-social{ display:flex; gap:10px; margin-top:22px; }
+.ft-social a{ width:42px; height:42px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line-strong); color:var(--offwhite); transition:border-color .2s, color .2s; }
+.ft-social a:hover, .ft-social a:focus-visible{ border-color:var(--yellow); color:var(--yellow); }
+.ft-social svg{ width:19px; height:19px; }
+.ft-col{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+.ft-col h3{ font-size:11px; letter-spacing:0.16em; color:var(--yellow); font-weight:500; margin-bottom:6px; }
+.ft-col a{ font-size:14px; color:var(--aluminium); transition:color .2s; }
+.ft-col a:hover, .ft-col a:focus-visible{ color:var(--offwhite); }
+.ft-col .ft-cta{ margin-top:6px; color:var(--yellow); font-weight:500; }
+.ft-col .ft-cta:hover{ color:var(--offwhite); }
+.ft-club-link{ display:flex; align-items:center; gap:14px; }
+.ft-club-link img{ width:56px; height:56px; border-radius:50%; background:#fff; box-shadow:0 0 0 1px var(--line-strong); flex-shrink:0; }
+.ft-club-link span{ display:flex; flex-direction:column; gap:4px; color:var(--offwhite); font-size:14px; line-height:1.35; }
+.ft-club-link small{ font-size:11px; color:var(--aluminium); letter-spacing:0.04em; }
+.ft-bottom{ max-width:var(--max); margin:0 auto; padding:20px 40px 26px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:14px 24px; flex-wrap:wrap; font-size:11px; letter-spacing:0.1em; color:var(--aluminium); }
+@media (max-width:560px){ .ft-bottom{ padding:18px 20px 24px; flex-direction:column; align-items:flex-start; } }
+.ft-links{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.ft-links a:hover{ color:var(--yellow); }
+.ft-links .ft-lang{ color:var(--yellow); }
+.ft-bottom .footer-admin{ padding-left:18px; border-left:1px solid var(--line); }
+
+/* úzké mobily: obsah sekce kontakt se nesmí roztáhnout přes okraj */
+.contact-section > *{ min-width:0; }
+.contact-meta .row .v{ overflow-wrap:anywhere; }

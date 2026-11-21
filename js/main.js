@@ -496,6 +496,9 @@
     fabWatch.forEach(function (el) { fabObs.observe(el); });
   }
 
+  var ftYear = document.getElementById("ftYear");
+  if (ftYear) ftYear.textContent = new Date().getFullYear();
+
   /* ---------- reveal on scroll ---------- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");

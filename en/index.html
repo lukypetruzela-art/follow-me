@@ -30,7 +30,7 @@
 <link rel="preload" href="../assets/fonts/oswald-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../data/events.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="../css/style.css?v=22">
+<link rel="stylesheet" href="../css/style.css?v=23">
 <link rel="preload" as="image" href="../assets/images/photos/hero-mraky-mobil.webp" media="(max-width: 860px)">
 <link rel="preload" as="image" href="../assets/images/photos/hero-mraky.webp" media="(min-width: 861px)">
 </head>
@@ -764,47 +764,6 @@
   <p class="invite-link"><a href="#invite" class="mono">Organising an air event? Invite us →</a></p>
 </div>
 
-<!-- ============================================================ INVITE -->
-<section class="invite-section reveal" id="invite" aria-labelledby="invite-title">
-  <div class="invite-intro">
-    <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>FOR EVENT ORGANISERS</span>
-    <h2 class="display" id="invite-title">Invite us to your event</h2>
-    <p>An air show, an airfield anniversary, a corporate event or a flypast over town — four vintage Trenérs in formation steal the show in the air and on the ground. Fill in a few details and we’ll get back to you.</p>
-    <p class="invite-fine mono">The form opens your email app with a pre-filled message to follow-me@email.cz.</p>
-  </div>
-  <form class="invite-form" id="inviteForm" novalidate>
-    <div class="f-row">
-      <label><span class="mono">Full name *</span><input type="text" name="name" required autocomplete="name"></label>
-      <label><span class="mono">Organisation</span><input type="text" name="org" autocomplete="organization"></label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">Email *</span><input name="email" type="email" required autocomplete="email"></label>
-      <label><span class="mono">Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">Event name *</span><input type="text" name="event" required></label>
-      <label><span class="mono">Event type</span>
-        <select name="type">
-          <option>Air show</option>
-          <option>Airfield anniversary / open day</option>
-          <option>Corporate or private event</option>
-          <option>Flypast over an event</option>
-          <option>Other</option>
-        </select>
-      </label>
-    </div>
-    <div class="f-row">
-      <label><span class="mono">Date *</span><input name="date" type="date" required></label>
-      <label><span class="mono">Location / airfield *</span><input type="text" name="place" required placeholder="e.g. Hradec Králové (LKHK)"></label>
-    </div>
-    <label class="f-full"><span class="mono">Message</span><textarea name="msg" rows="4" placeholder="Programme, expected display time, expected crowd size…"></textarea></label>
-    <div class="f-actions">
-      <button type="submit" class="btn">SEND ENQUIRY →</button>
-      <p class="f-error mono" id="inviteError" role="alert" hidden>Please fill in the required fields marked with an asterisk.</p>
-    </div>
-  </form>
-</section>
-
 <!-- ============================================================ FLY WITH US -->
 <section class="fly-section has-photo reveal" id="fly">
   <div class="fly-inner">
@@ -843,6 +802,52 @@
   </div>
 </section>
 
+<!-- ============================================================ INVITE -->
+<div class="section-label" id="invite">
+  <span class="num mono">08</span>
+  <div class="rule"></div>
+  <h2 id="invite-title">Invite us to your event</h2>
+</div>
+
+<section class="invite-section reveal" aria-labelledby="invite-title">
+  <div class="invite-intro">
+    <span class="ig-eyebrow mono"><span class="dot" aria-hidden="true"></span>FOR EVENT ORGANISERS</span>
+    <p>An air show, an airfield anniversary, a corporate event or a flypast over town — four vintage Trenérs in formation steal the show in the air and on the ground. Fill in a few details and we’ll get back to you.</p>
+    <p class="invite-fine mono">The form opens your email app with a pre-filled message to follow-me@email.cz.</p>
+  </div>
+  <form class="invite-form" id="inviteForm" novalidate>
+    <div class="f-row">
+      <label><span class="mono">Full name *</span><input type="text" name="name" required autocomplete="name"></label>
+      <label><span class="mono">Organisation</span><input type="text" name="org" autocomplete="organization"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Email *</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span class="mono">Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Event name *</span><input type="text" name="event" required></label>
+      <label><span class="mono">Event type</span>
+        <select name="type">
+          <option>Air show</option>
+          <option>Airfield anniversary / open day</option>
+          <option>Corporate or private event</option>
+          <option>Flypast over an event</option>
+          <option>Other</option>
+        </select>
+      </label>
+    </div>
+    <div class="f-row">
+      <label><span class="mono">Date *</span><input name="date" type="date" required></label>
+      <label><span class="mono">Location / airfield *</span><input type="text" name="place" required placeholder="e.g. Hradec Králové (LKHK)"></label>
+    </div>
+    <label class="f-full"><span class="mono">Message</span><textarea name="msg" rows="4" placeholder="Programme, expected display time, expected crowd size…"></textarea></label>
+    <div class="f-actions">
+      <button type="submit" class="btn">SEND ENQUIRY →</button>
+      <p class="f-error mono" id="inviteError" role="alert" hidden>Please fill in the required fields marked with an asterisk.</p>
+    </div>
+  </form>
+</section>
+
 <!-- Floating enquiry button. -->
 <a class="invite-fab mono" id="inviteFab" href="#invite">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="currentColor"/></svg>
@@ -850,16 +855,59 @@
 </a>
 
 <footer class="site-footer">
-  <div class="fl mono">FOLLOW-ME · FORMATION DISPLAY TEAM · LKZA</div>
-  <div class="fr mono">
-    <a href="#top">Top ↑</a>
-    <a href="mailto:follow-me@email.cz">Email</a>
-    <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebook</a>
-    <a href="/admin/" class="footer-admin" rel="nofollow">Admin</a>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="#top" class="ft-mark" aria-label="FOLLOW-ME — back to top">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="47" fill="none" stroke="rgba(237,234,226,0.45)" stroke-width="3"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#F4C000" transform="translate(36.2 17.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#EDEAE2" transform="translate(16.2 39.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#EDEAE2" transform="translate(56.2 39.9) scale(1.15)"/>
+      <path d="M12 1.5 L12.9 4 L13 8.6 L21.5 10.4 L21.5 12.2 L13 11.8 L12.6 17 L15.6 18.2 L15.6 19.4 L12 19 L8.4 19.4 L8.4 18.2 L11.4 17 L11 11.8 L2.5 12.2 L2.5 10.4 L11 8.6 L11.1 4 Z" fill="#B9BEC2" transform="translate(36.2 61.9) scale(1.15)"/>
+    </svg>
+        <span class="nav-word">FOLLOW-ME<small class="nav-sub mono">AIRSHOW</small></span>
+      </a>
+      <p>A formation team of four vintage Zlín Z-226 and Z-326 aircraft. Five pilots, four machines, one formation — from LKZA airfield to airshows at home and abroad.</p>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21z"/></svg></a>
+        <a href="mailto:follow-me@email.cz" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a>
+      </div>
+    </div>
+    <nav class="ft-col" aria-label="Footer links">
+      <h3 class="mono">SITE</h3>
+      <a href="#instagram">Gallery</a>
+      <a href="#team">Crew</a>
+      <a href="#machines">Aircraft</a>
+      <a href="#formation">Formation</a>
+      <a href="#events">Events</a>
+      <a href="#fly">Fly with us</a>
+    </nav>
+    <div class="ft-col">
+      <h3 class="mono">CONTACT</h3>
+      <a href="mailto:follow-me@email.cz">follow-me@email.cz</a>
+      <a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">Facebook</a>
+      <a href="#invite" class="ft-cta">Invite us to your event →</a>
+    </div>
+    <div class="ft-col ft-club">
+      <h3 class="mono">HOME AIRFIELD</h3>
+      <a class="ft-club-link" href="https://lkza.cz/" target="_blank" rel="noopener">
+        <img src="../assets/images/brand/slezsky-aeroklub-zabreh.webp" alt="" width="56" height="56" loading="lazy">
+        <span>Silesian Aero Club Zábřeh<small class="mono">LKZA · 49°55'42"N 18°04'42"E</small></span>
+      </a>
+    </div>
+  </div>
+  <div class="ft-bottom mono">
+    <span>© <span id="ftYear">2026</span> FOLLOW-ME · FORMATION DISPLAY TEAM · LKZA</span>
+    <span class="ft-links">
+      <a href="../" lang="cs" hreflang="cs">CZ</a> / <a href="./" class="ft-lang" lang="en" aria-current="page">EN</a>
+      <a href="#top">Top ↑</a>
+      <a href="/admin/" class="footer-admin" rel="nofollow">Admin</a>
+    </span>
   </div>
 </footer>
 
-<script src="../js/main.js?v=22"></script>
+<script src="../js/main.js?v=23"></script>
 </body>
 </html>
