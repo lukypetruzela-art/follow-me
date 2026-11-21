@@ -721,7 +721,6 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 .invite-fab.is-hidden{ opacity:0; transform:translateY(20px); pointer-events:none; }
 @media (max-width:640px){
   .invite-fab{ right:14px; bottom:max(14px, env(safe-area-inset-bottom)); padding:12px 15px; font-size:11px; gap:8px; }
-  .site-footer{ padding-bottom:84px; }
 }
 @media (prefers-reduced-motion: reduce){ .invite-fab{ transition:none; } }
 

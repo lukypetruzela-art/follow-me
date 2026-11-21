@@ -484,13 +484,16 @@
   }
 
   /* ---------- plovoucí tlačítko poptávky ---------- */
-  // Schová se, když je na obrazovce formulář poptávky nebo otevřené mobilní menu.
+  // Schová se, když je na obrazovce formulář poptávky, patička (odkazy, Administrace) nebo mobilní menu.
   var fab = document.getElementById("inviteFab");
-  var inviteSec = document.getElementById("invite");
-  if (fab && inviteSec && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (en) {
-      fab.classList.toggle("is-hidden", en[0].isIntersecting);
-    }, { threshold: 0.15 }).observe(inviteSec);
+  var fabWatch = [document.getElementById("invite"), document.querySelector(".site-footer")].filter(Boolean);
+  if (fab && fabWatch.length && "IntersectionObserver" in window) {
+    var fabSeen = new Set();
+    var fabObs = new IntersectionObserver(function (en) {
+      en.forEach(function (e) { if (e.isIntersecting) fabSeen.add(e.target); else fabSeen.delete(e.target); });
+      fab.classList.toggle("is-hidden", fabSeen.size > 0);
+    }, { threshold: 0.05 });
+    fabWatch.forEach(function (el) { fabObs.observe(el); });
   }
 
   /* ---------- reveal on scroll ---------- */
