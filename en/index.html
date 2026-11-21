@@ -25,10 +25,12 @@
 <link rel="canonical" href="https://follow-me-blond.vercel.app/">
 <link rel="canonical" href="https://follow-me-blond.vercel.app/en/">
 <link rel="icon" type="image/svg+xml" href="../assets/images/brand/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=16">
+<link rel="preload" href="../assets/fonts/oswald-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/oswald-latin-ext-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/oswald-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../data/events.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=18">
 <link rel="preload" as="image" href="../assets/images/photos/hero-mraky-mobil.webp" media="(max-width: 860px)">
 <link rel="preload" as="image" href="../assets/images/photos/hero-mraky.webp" media="(min-width: 861px)">
 </head>
@@ -201,11 +203,11 @@
       A formation display team flying vintage Zlín Z-226 and Z-326 aircraft, built in Otrokovice. <b>Home base: LKZA, Zábřeh near Hlučín.</b>
     </p>
     <!-- Next display: filled in automatically from data/events.json. -->
-    <a class="next-event" id="nextEvent" href="#events" hidden>
+    <a class="next-event is-pending" id="nextEvent" href="#events" aria-hidden="true" tabindex="-1">
       <span class="ne-label mono"><span class="dot" aria-hidden="true"></span>NEXT DISPLAY</span>
-      <span class="ne-name" id="neName"></span>
-      <span class="ne-meta mono" id="neMeta"></span>
-      <span class="ne-count mono" id="neCount"></span>
+      <span class="ne-name" id="neName">&nbsp;</span>
+      <span class="ne-meta mono" id="neMeta">&nbsp;</span>
+      <span class="ne-count mono" id="neCount">&nbsp;</span>
     </a>
   </div>
 
@@ -255,9 +257,9 @@
 
   <div class="ig-grid" id="igGrid">
     <a class="ig-tile is-big" href="../assets/images/photos/rada-zepredu.webp" data-lightbox="ig" data-caption="LINE ASTERN · HEAD-ON"><img src="../assets/images/photos/rada-zepredu-sm.webp" srcset="../assets/images/photos/rada-zepredu-sm.webp 800w, ../assets/images/photos/rada-zepredu.webp 1600w" sizes="(max-width:900px) 100vw, 50vw" alt="Four aircraft in line astern seen head-on, OK-KNR leading, countryside below" loading="lazy" style="object-position:50% 40%"><span class="ig-hover"><span class="ig-cap mono">LINE ASTERN · HEAD-ON</span></span></a>
-    <a class="ig-tile" href="../assets/images/photos/mpr-knr-zapad-slunce.webp" data-lightbox="ig" data-caption="OK-MPR + OK-KNR · SUNSET"><img src="../assets/images/photos/mpr-knr-zapad-slunce-sm.webp" alt="OK-MPR side-on and OK-KNR banking at sunset" loading="lazy" style="object-position:72% 45%"><span class="ig-hover"><span class="ig-cap mono">OK-MPR + OK-KNR · SUNSET</span></span></a>
-    <a class="ig-tile" href="../assets/images/photos/ctyri-stroje-nad-krajinou.webp" data-lightbox="ig" data-caption="ALL FOUR · AIR TO AIR"><img src="../assets/images/photos/ctyri-stroje-nad-krajinou-sm.webp" alt="OK-LPR, OK-KNR, OK-SEN and OK-MPR side-on over the countryside" loading="lazy" style="object-position:62% 50%"><span class="ig-hover"><span class="ig-cap mono">ALL FOUR · AIR TO AIR</span></span></a>
-    <a class="ig-tile" href="../assets/images/photos/echelon-sestup-mraky.webp" data-lightbox="ig" data-caption="ECHELON · IN THE STORM CLOUDS"><img src="../assets/images/photos/echelon-sestup-mraky-sm.webp" alt="OK-KNR, OK-SEN, OK-MPR and OK-LPR in echelon against storm clouds" loading="lazy" style="object-position:60% 28%"><span class="ig-hover"><span class="ig-cap mono">ECHELON · IN THE STORM CLOUDS</span></span></a>
+    <a class="ig-tile" href="../assets/images/photos/mpr-knr-zapad-slunce.webp" data-lightbox="ig" data-caption="OK-MPR + OK-KNR · SUNSET"><img src="../assets/images/photos/mpr-knr-zapad-slunce-xs.webp" srcset="../assets/images/photos/mpr-knr-zapad-slunce-xs.webp 480w, ../assets/images/photos/mpr-knr-zapad-slunce-sm.webp 800w" sizes="(max-width:900px) 50vw, 25vw" alt="OK-MPR side-on and OK-KNR banking at sunset" loading="lazy" style="object-position:72% 45%"><span class="ig-hover"><span class="ig-cap mono">OK-MPR + OK-KNR · SUNSET</span></span></a>
+    <a class="ig-tile" href="../assets/images/photos/ctyri-stroje-nad-krajinou.webp" data-lightbox="ig" data-caption="ALL FOUR · AIR TO AIR"><img src="../assets/images/photos/ctyri-stroje-nad-krajinou-xs.webp" srcset="../assets/images/photos/ctyri-stroje-nad-krajinou-xs.webp 480w, ../assets/images/photos/ctyri-stroje-nad-krajinou-sm.webp 800w" sizes="(max-width:900px) 50vw, 25vw" alt="OK-LPR, OK-KNR, OK-SEN and OK-MPR side-on over the countryside" loading="lazy" style="object-position:62% 50%"><span class="ig-hover"><span class="ig-cap mono">ALL FOUR · AIR TO AIR</span></span></a>
+    <a class="ig-tile" href="../assets/images/photos/echelon-sestup-mraky.webp" data-lightbox="ig" data-caption="ECHELON · IN THE STORM CLOUDS"><img src="../assets/images/photos/echelon-sestup-mraky-xs.webp" srcset="../assets/images/photos/echelon-sestup-mraky-xs.webp 480w, ../assets/images/photos/echelon-sestup-mraky-sm.webp 800w" sizes="(max-width:900px) 50vw, 25vw" alt="OK-KNR, OK-SEN, OK-MPR and OK-LPR in echelon against storm clouds" loading="lazy" style="object-position:60% 28%"><span class="ig-hover"><span class="ig-cap mono">ECHELON · IN THE STORM CLOUDS</span></span></a>
     <a class="ig-tile ig-cta" href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">
       <span class="ig-cta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
       <span class="ig-cta-text display">Follow<br>the leader</span>
@@ -278,7 +280,7 @@
       <b>FOLLOW-ME</b> is a formation team that regularly takes off from its home airfield, LKZA in Zábřeh near Hlučín — between Ostrava and Opava — as a four-ship of Zlín Z-226 and Z-326 aircraft. The pilots have no shortage of nicknames for one another, but they keep them off the record — so on this site you will meet them by name, not by call sign.
     </p>
     <p>
-      Built by the Moravan factory in Otrokovice, these aircraft are no longer cleared for aerobatics — yet the formation trains its display routine as precisely and as tightly as it can. Over the years the team has flown at airshows across the country and abroad, showing crowds fifty-year-old veterans that look better today than the day they first rolled out of the factory.
+      Built by the Moravan factory in Otrokovice, these aircraft are no longer cleared for aerobatics — yet the formation trains its display routine as precisely and as tightly as it can. Over the years the team has flown at airshows across the country and abroad, showing crowds veterans more than sixty years old that look better today than the day they first rolled out of the factory.
     </p>
 </div>
 
@@ -291,7 +293,7 @@
         <span class="cm-tl"></span><span class="cm-tr"></span>
         <span class="cm-bl"></span><span class="cm-br"></span>
       </div>
-      <img class="pilot-photo" src="../assets/images/pilots/tomas-560.webp" srcset="../assets/images/pilots/tomas-560.webp 560w, ../assets/images/pilots/tomas.webp 900w" sizes="(max-width:900px) 100vw, 42vw" alt="Portrait of pilot Tomáš" loading="lazy" width="900" height="900">
+      <img class="pilot-photo" src="../assets/images/pilots/tomas-560.webp" srcset="../assets/images/pilots/tomas-560.webp 560w, ../assets/images/pilots/tomas.webp 900w" sizes="(max-width:900px) calc(100vw - 40px), 560px" alt="Portrait of pilot Tomáš" loading="lazy" width="900" height="900">
       <div class="pilot-tag">
         <span class="pilot-num mono">01</span>
         <span class="pilot-role-tag mono">LEADER</span>
@@ -329,7 +331,7 @@
         <span class="cm-tl"></span><span class="cm-tr"></span>
         <span class="cm-bl"></span><span class="cm-br"></span>
       </div>
-      <img class="pilot-photo" src="../assets/images/pilots/bob-560.webp" srcset="../assets/images/pilots/bob-560.webp 560w, ../assets/images/pilots/bob.webp 900w" sizes="(max-width:900px) 100vw, 42vw" alt="Portrait of pilot Bob" loading="lazy" width="900" height="900">
+      <img class="pilot-photo" src="../assets/images/pilots/bob-560.webp" srcset="../assets/images/pilots/bob-560.webp 560w, ../assets/images/pilots/bob.webp 900w" sizes="(max-width:900px) calc(100vw - 40px), 560px" alt="Portrait of pilot Bob" loading="lazy" width="900" height="900">
       <div class="pilot-tag">
         <span class="pilot-num mono">02</span>
         <span class="pilot-role-tag mono">RIGHT WING</span>
@@ -367,7 +369,7 @@
         <span class="cm-tl"></span><span class="cm-tr"></span>
         <span class="cm-bl"></span><span class="cm-br"></span>
       </div>
-      <img class="pilot-photo" src="../assets/images/pilots/lubo-560.webp" srcset="../assets/images/pilots/lubo-560.webp 560w, ../assets/images/pilots/lubo.webp 900w" sizes="(max-width:900px) 100vw, 42vw" alt="Portrait of pilot Lubo" loading="lazy" width="900" height="900">
+      <img class="pilot-photo" src="../assets/images/pilots/lubo-560.webp" srcset="../assets/images/pilots/lubo-560.webp 560w, ../assets/images/pilots/lubo.webp 900w" sizes="(max-width:900px) calc(100vw - 40px), 560px" alt="Portrait of pilot Lubo" loading="lazy" width="900" height="900">
       <div class="pilot-tag">
         <span class="pilot-num mono">03</span>
         <span class="pilot-role-tag mono">LEFT WING</span>
@@ -405,7 +407,7 @@
         <span class="cm-tl"></span><span class="cm-tr"></span>
         <span class="cm-bl"></span><span class="cm-br"></span>
       </div>
-      <img class="pilot-photo" src="../assets/images/pilots/jarda-560.webp" srcset="../assets/images/pilots/jarda-560.webp 560w, ../assets/images/pilots/jarda.webp 900w" sizes="(max-width:900px) 100vw, 42vw" alt="Portrait of pilot Jarda" loading="lazy" width="900" height="900">
+      <img class="pilot-photo" src="../assets/images/pilots/jarda-560.webp" srcset="../assets/images/pilots/jarda-560.webp 560w, ../assets/images/pilots/jarda.webp 900w" sizes="(max-width:900px) calc(100vw - 40px), 560px" alt="Portrait of pilot Jarda" loading="lazy" width="900" height="900">
       <div class="pilot-tag">
         <span class="pilot-num mono">04</span>
         <span class="pilot-role-tag mono">SLOT</span>
@@ -443,7 +445,7 @@
         <span class="cm-tl"></span><span class="cm-tr"></span>
         <span class="cm-bl"></span><span class="cm-br"></span>
       </div>
-      <img class="pilot-photo" src="../assets/images/pilots/jiri-560.webp" srcset="../assets/images/pilots/jiri-560.webp 560w, ../assets/images/pilots/jiri.webp 900w" sizes="(max-width:900px) 100vw, 42vw" alt="Portrait of pilot Jiří" loading="lazy" width="900" height="900">
+      <img class="pilot-photo" src="../assets/images/pilots/jiri-560.webp" srcset="../assets/images/pilots/jiri-560.webp 560w, ../assets/images/pilots/jiri.webp 900w" sizes="(max-width:900px) calc(100vw - 40px), 560px" alt="Portrait of pilot Jiří" loading="lazy" width="900" height="900">
       <div class="pilot-tag">
         <span class="pilot-num mono">05</span>
         <span class="pilot-role-tag mono">SLOT / RESERVE</span>
@@ -476,7 +478,7 @@
   <h2>Aircraft</h2>
 </div>
 <div class="section-intro">
-  <p>Four aircraft built by the Moravan factory in Otrokovice. Fifty years old and still flying — here, age isn’t a weakness, it’s a mark of quality.</p>
+  <p>Four aircraft built by the Moravan factory in Otrokovice. More than sixty years old and still flying — here, age isn’t a weakness, it’s a mark of quality.</p>
 </div>
 
 <div class="machines-grid">
@@ -682,7 +684,7 @@
     <span class="bright">THESE AREN’T MUSEUM PIECES.</span><br>
     <span class="fade">THEY’RE AIRCRAFT THAT STILL FLY.</span>
   </div>
-  <p class="sub mono">50+ YEARS SINCE OTROKOVICE · STILL FLYING</p>
+  <p class="sub mono">60+ YEARS SINCE OTROKOVICE · STILL FLYING</p>
 </div>
 
 <!-- ============================================================ GALLERY -->
@@ -694,11 +696,11 @@
 
 <section class="slideshow" id="slideshow" aria-roledescription="carousel" aria-label="Photo gallery">
   <div class="ss-frame">
-    <a class="ss-slide is-active" href="../assets/images/photos/rada-vanek.webp" data-lightbox="arch" data-caption="LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK"><img src="../assets/images/photos/rada-vanek.webp" srcset="../assets/images/photos/rada-vanek-sm.webp 800w, ../assets/images/photos/rada-vanek.webp 1600w" sizes="(max-width:1400px) 100vw, 1320px" alt="OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest" style="object-position:50% 30%"><span class="ss-cap mono">LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK</span></a>
-    <a class="ss-slide" href="../assets/images/photos/diamant-vanek.webp" data-lightbox="arch" data-caption="DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK" aria-hidden="true" tabindex="-1"><img src="../assets/images/photos/diamant-vanek.webp" srcset="../assets/images/photos/diamant-vanek-sm.webp 800w, ../assets/images/photos/diamant-vanek.webp 1600w" sizes="(max-width:1400px) 100vw, 1320px" alt="Four aircraft in diamond formation over forest and fields" loading="lazy" style="object-position:50% 45%"><span class="ss-cap mono">DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK</span></a>
-    <a class="ss-slide" href="../assets/images/photos/knr-tesne-carlill.webp" data-lightbox="arch" data-caption="OK-KNR · CLOSE FORMATION · PHOTO CARLILL PHOTOGRAPHY" aria-hidden="true" tabindex="-1"><img src="../assets/images/photos/knr-tesne-carlill.webp" srcset="../assets/images/photos/knr-tesne-carlill-sm.webp 800w, ../assets/images/photos/knr-tesne-carlill.webp 1600w" sizes="(max-width:1400px) 100vw, 1320px" alt="OK-KNR with the pilot in the cockpit, OK-SEN, OK-MPR and OK-LPR tucked in close" loading="lazy" style="object-position:50% 30%"><span class="ss-cap mono">OK-KNR · CLOSE FORMATION · PHOTO CARLILL PHOTOGRAPHY</span></a>
-    <a class="ss-slide" href="../assets/images/photos/echelon-vetrniky.webp" data-lightbox="arch" data-caption="ECHELON · OVER THE WIND FARM" aria-hidden="true" tabindex="-1"><img src="../assets/images/photos/echelon-vetrniky.webp" srcset="../assets/images/photos/echelon-vetrniky-sm.webp 800w, ../assets/images/photos/echelon-vetrniky.webp 1600w" sizes="(max-width:1400px) 100vw, 1320px" alt="Four aircraft in echelon over fields and wind turbines" loading="lazy" style="object-position:50% 40%"><span class="ss-cap mono">ECHELON · OVER THE WIND FARM</span></a>
-    <a class="ss-slide" href="../assets/images/photos/knr-zezadu-bourka.webp" data-lightbox="arch" data-caption="OK-KNR · BEFORE THE STORM" aria-hidden="true" tabindex="-1"><img src="../assets/images/photos/knr-zezadu-bourka.webp" srcset="../assets/images/photos/knr-zezadu-bourka-sm.webp 800w, ../assets/images/photos/knr-zezadu-bourka.webp 1600w" sizes="(max-width:1400px) 100vw, 1320px" alt="OK-KNR from behind on the grass beneath storm clouds" loading="lazy" style="object-position:50% 72%"><span class="ss-cap mono">OK-KNR · BEFORE THE STORM</span></a>
+    <a class="ss-slide is-active" href="../assets/images/photos/rada-vanek.webp" data-lightbox="arch" data-caption="LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK"><img loading="lazy" src="../assets/images/photos/rada-vanek-md.webp" srcset="../assets/images/photos/rada-vanek-sm.webp 800w, ../assets/images/photos/rada-vanek-md.webp 1200w, ../assets/images/photos/rada-vanek.webp 1600w" sizes="(max-width:1400px) calc(100vw - 80px), 1320px" alt="OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest" style="object-position:50% 30%"><span class="ss-cap mono">LINE ASTERN · OVER THE FOREST · PHOTO JAKUB VANĚK</span></a>
+    <a class="ss-slide" href="../assets/images/photos/diamant-vanek.webp" data-lightbox="arch" data-caption="DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK" aria-hidden="true" tabindex="-1"><img data-src="../assets/images/photos/diamant-vanek-md.webp" data-srcset="../assets/images/photos/diamant-vanek-sm.webp 800w, ../assets/images/photos/diamant-vanek-md.webp 1200w, ../assets/images/photos/diamant-vanek.webp 1600w" sizes="(max-width:1400px) calc(100vw - 80px), 1320px" alt="Four aircraft in diamond formation over forest and fields" loading="lazy" style="object-position:50% 45%"><span class="ss-cap mono">DIAMOND · OVER THE COUNTRYSIDE · PHOTO JAKUB VANĚK</span></a>
+    <a class="ss-slide" href="../assets/images/photos/knr-tesne-carlill.webp" data-lightbox="arch" data-caption="OK-KNR · CLOSE FORMATION · PHOTO CARLILL PHOTOGRAPHY" aria-hidden="true" tabindex="-1"><img data-src="../assets/images/photos/knr-tesne-carlill-md.webp" data-srcset="../assets/images/photos/knr-tesne-carlill-sm.webp 800w, ../assets/images/photos/knr-tesne-carlill-md.webp 1200w, ../assets/images/photos/knr-tesne-carlill.webp 1600w" sizes="(max-width:1400px) calc(100vw - 80px), 1320px" alt="OK-KNR with the pilot in the cockpit, OK-SEN, OK-MPR and OK-LPR tucked in close" loading="lazy" style="object-position:50% 30%"><span class="ss-cap mono">OK-KNR · CLOSE FORMATION · PHOTO CARLILL PHOTOGRAPHY</span></a>
+    <a class="ss-slide" href="../assets/images/photos/echelon-vetrniky.webp" data-lightbox="arch" data-caption="ECHELON · OVER THE WIND FARM" aria-hidden="true" tabindex="-1"><img data-src="../assets/images/photos/echelon-vetrniky-md.webp" data-srcset="../assets/images/photos/echelon-vetrniky-sm.webp 800w, ../assets/images/photos/echelon-vetrniky-md.webp 1200w, ../assets/images/photos/echelon-vetrniky.webp 1600w" sizes="(max-width:1400px) calc(100vw - 80px), 1320px" alt="Four aircraft in echelon over fields and wind turbines" loading="lazy" style="object-position:50% 40%"><span class="ss-cap mono">ECHELON · OVER THE WIND FARM</span></a>
+    <a class="ss-slide" href="../assets/images/photos/knr-zezadu-bourka.webp" data-lightbox="arch" data-caption="OK-KNR · BEFORE THE STORM" aria-hidden="true" tabindex="-1"><img data-src="../assets/images/photos/knr-zezadu-bourka-md.webp" data-srcset="../assets/images/photos/knr-zezadu-bourka-sm.webp 800w, ../assets/images/photos/knr-zezadu-bourka-md.webp 1200w, ../assets/images/photos/knr-zezadu-bourka.webp 1600w" sizes="(max-width:1400px) calc(100vw - 80px), 1320px" alt="OK-KNR from behind on the grass beneath storm clouds" loading="lazy" style="object-position:50% 72%"><span class="ss-cap mono">OK-KNR · BEFORE THE STORM</span></a>
     <button type="button" class="ss-btn ss-prev mono" aria-label="Previous photo">←</button>
     <button type="button" class="ss-btn ss-next mono" aria-label="Next photo">→</button>
     <div class="ss-progress" aria-hidden="true"><span></span></div>
@@ -754,7 +756,7 @@
       <p class="sm-legend mono"><span class="lg lg-home"></span>Home base LKZA <span class="lg lg-ev"></span>Displays</p>
     </div>
     <div class="map-frame">
-      <img src="../assets/images/map-base.svg" alt="" aria-hidden="true" width="540" height="408">
+      <img src="../assets/images/map-base.svg" alt="" aria-hidden="true" width="540" height="408" loading="lazy">
       <svg class="map-pins" id="mapPins" viewBox="0 0 539.9 408" role="img" aria-label="Map of this season’s displays"
            data-lon0="10.5" data-lat1="53.6" data-k="60" data-cos="0.6428"></svg>
     </div>
@@ -808,7 +810,7 @@
   <div class="fly-inner">
     <h2 class="display">Want to fly?</h2>
     <p>
-      Climb aboard an aircraft that has been flying for more than fifty years. Hear the engine up close, feel the airframe working through a turn and see Moravia from the cockpit the way only pilots do. Drop us a line and we’ll find a date.
+      Climb aboard an aircraft that has been flying for more than sixty years. Hear the engine up close, feel the airframe working through a turn and see Moravia from the cockpit the way only pilots do. Drop us a line and we’ll find a date.
     </p>
     <a href="mailto:follow-me@email.cz" class="btn">EMAIL THE TEAM →</a>
   </div>
@@ -827,7 +829,7 @@
     <div class="row"><span class="k">AIRFIELD</span><span class="v">LKZA — ZÁBŘEH NEAR HLUČÍN</span></div>
     <div class="row"><span class="k">COORDINATES</span><span class="v">49°55'42"N 18°04'42"E</span></div>
     <div class="row"><span class="k">EMAIL</span><span class="v"><a href="mailto:follow-me@email.cz">follow-me@email.cz</a></span></div>
-    <div class="row"><span class="k">AERO CLUB</span><span class="v"><a href="http://www.lkza.cz/" target="_blank" rel="noopener">lkza.cz</a></span></div>
+    <div class="row"><span class="k">AERO CLUB</span><span class="v"><a href="https://lkza.cz/" target="_blank" rel="noopener">lkza.cz</a></span></div>
     <div class="row"><span class="k">INSTAGRAM</span><span class="v"><a href="https://www.instagram.com/follow_me_airshow_team/" target="_blank" rel="noopener">@follow_me_airshow_team</a></span></div>
     <div class="row"><span class="k">FACEBOOK</span><span class="v"><a href="https://www.facebook.com/FollowMeDemonstrationTeam" target="_blank" rel="noopener">/FollowMeDemonstrationTeam</a></span></div>
   </div>
@@ -850,6 +852,6 @@
   </div>
 </footer>
 
-<script src="../js/main.js?v=16"></script>
+<script src="../js/main.js?v=18"></script>
 </body>
 </html>

@@ -101,8 +101,8 @@ TEXT = [
     # ---------- tým
     ('<b>FOLLOW-ME</b> je formační tým, který od svého domovského letiště LKZA v Zábřehu u Hlučína — mezi Ostravou a Opavou — pravidelně vzlétá ve čtyřčlenné sestavě strojů Zlín Z-226 a Z-326. Piloti přezdívkami mezi sebou nešetří, veřejně je ale nepoužívají — na webu je tedy potkáte pod jmény, ne pod volacími znaky.',
      '<b>FOLLOW-ME</b> is a formation team that regularly takes off from its home airfield, LKZA in Zábřeh near Hlučín — between Ostrava and Opava — as a four-ship of Zlín Z-226 and Z-326 aircraft. The pilots have no shortage of nicknames for one another, but they keep them off the record — so on this site you will meet them by name, not by call sign.'),
-    ('Stroje z produkce otrokovické továrny Moravan už dnes nemají akrobatické oprávnění — přesto formace trénuje předvedenou sestavu tak přesně a tak těsně, jak to jde. Za dobu, kdy se tým drží ve vzduchu, navštívil řadu airshow po celé zemi i za hranicemi a ukázal divákům padesátileté veterány, kteří dnes vypadají lépe, než když poprvé opustili výrobní halu.',
-     'Built by the Moravan factory in Otrokovice, these aircraft are no longer cleared for aerobatics — yet the formation trains its display routine as precisely and as tightly as it can. Over the years the team has flown at airshows across the country and abroad, showing crowds fifty-year-old veterans that look better today than the day they first rolled out of the factory.'),
+    ('Stroje z produkce otrokovické továrny Moravan už dnes nemají akrobatické oprávnění — přesto formace trénuje předvedenou sestavu tak přesně a tak těsně, jak to jde. Za dobu, kdy se tým drží ve vzduchu, navštívil řadu airshow po celé zemi i za hranicemi a ukázal divákům přes šedesát let staré veterány, kteří dnes vypadají lépe, než když poprvé opustili výrobní halu.',
+     'Built by the Moravan factory in Otrokovice, these aircraft are no longer cleared for aerobatics — yet the formation trains its display routine as precisely and as tightly as it can. Over the years the team has flown at airshows across the country and abroad, showing crowds veterans more than sixty years old that look better today than the day they first rolled out of the factory.'),
     ('<h2>Posádka</h2>', '<h2>Crew</h2>'),
     ('<span class="pilot-role-tag mono">VEDOUCÍ</span>', '<span class="pilot-role-tag mono">LEADER</span>'),
     ('<span class="pilot-role-tag mono">PRAVÉ KŘÍDLO</span>', '<span class="pilot-role-tag mono">RIGHT WING</span>'),
@@ -148,8 +148,8 @@ TEXT = [
 
     # ---------- stroje
     ('<h2>Stroje</h2>', '<h2>Aircraft</h2>'),
-    ('Čtyři stroje z produkce otrokovické továrny Moravan. Padesát let staré, a přesto pořád ve vzduchu — stáří tu není slabina, je to kvalita.',
-     'Four aircraft built by the Moravan factory in Otrokovice. Fifty years old and still flying — here, age isn’t a weakness, it’s a mark of quality.'),
+    ('Čtyři stroje z produkce otrokovické továrny Moravan. Přes šedesát let staré, a přesto pořád ve vzduchu — stáří tu není slabina, je to kvalita.',
+     'Four aircraft built by the Moravan factory in Otrokovice. More than sixty years old and still flying — here, age isn’t a weakness, it’s a mark of quality.'),
     ('<span class="k">VÝR. ČÍSLO</span>', '<span class="k">SERIAL</span>'),
     ('<span class="v">01 / VEDOUCÍ</span>', '<span class="v">01 / LEAD</span>'),
     ('<span class="v">02 / PRAVÉ</span>', '<span class="v">02 / RIGHT</span>'),
@@ -220,7 +220,7 @@ TEXT = [
      'The “tail-end Charlie” — sits behind the leader and rides out the turbulence from the rest of the formation. Precision without the radio chatter.'),
     ('<span class="bright">TOHLE NEJSOU LETADLA V MUZEU.</span><br>\n    <span class="fade">JSOU TO STROJE, KTERÉ POŘÁD LÍTAJÍ.</span>',
      '<span class="bright">THESE AREN’T MUSEUM PIECES.</span><br>\n    <span class="fade">THEY’RE AIRCRAFT THAT STILL FLY.</span>'),
-    ('50+ LET OD OTROKOVIC · POŘÁD VE VZDUCHU', '50+ YEARS SINCE OTROKOVICE · STILL FLYING'),
+    ('60+ LET OD OTROKOVIC · POŘÁD VE VZDUCHU', '60+ YEARS SINCE OTROKOVICE · STILL FLYING'),
 
     # ---------- galerie
     ('<h2>Fotogalerie</h2>', '<h2>Photo Gallery</h2>'),
@@ -263,8 +263,8 @@ TEXT = [
 
     # ---------- létejte s námi + kontakt
     ('<h2 class="display">Chcete létat?</h2>', '<h2 class="display">Want to fly?</h2>'),
-    ('Posaďte se do stroje, který létá už přes padesát let. Uslyšíte motor naostro, ucítíte drak letadla v zatáčce a uvidíte Moravu z kokpitu tak, jak ji vidí jen piloti. Napište nám a domluvíme si termín.',
-     'Climb aboard an aircraft that has been flying for more than fifty years. Hear the engine up close, feel the airframe working through a turn and see Moravia from the cockpit the way only pilots do. Drop us a line and we’ll find a date.'),
+    ('Posaďte se do stroje, který létá už přes šedesát let. Uslyšíte motor naostro, ucítíte drak letadla v zatáčce a uvidíte Moravu z kokpitu tak, jak ji vidí jen piloti. Napište nám a domluvíme si termín.',
+     'Climb aboard an aircraft that has been flying for more than sixty years. Hear the engine up close, feel the airframe working through a turn and see Moravia from the cockpit the way only pilots do. Drop us a line and we’ll find a date.'),
     ('NAPSAT TÝMU →', 'EMAIL THE TEAM →'),
     ('<h2 class="display">Domovská základna</h2>', '<h2 class="display">Home base</h2>'),
     ('Formaci nejčastěji potkáte nad letištěm LKZA — Zábřeh u Hlučína, mezi Ostravou a Opavou. Fanoušci satelitních map si mohou souřadnice rovnou zadat do vyhledávače.',
@@ -376,6 +376,7 @@ def main():
     # cesty: anglická verze leží o složku hlouběji
     out = re.sub(r'(?<=["\s,])(assets|css|js)/', r"../\1/", out)
     out = out.replace('<tbody id="eventsBody">', '<tbody id="eventsBody" data-src="../data/events.json">')
+    out = out.replace('<link rel="preload" href="data/events.json"', '<link rel="preload" href="../data/events.json"')
     out = out.replace(f'<link rel="icon"', f'<link rel="canonical" href="{SITE}/en/">\n<link rel="icon"', 1)
 
     target = ROOT / "en" / "index.html"

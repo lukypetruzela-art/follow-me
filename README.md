@@ -110,3 +110,10 @@ odkazu na Facebooku, WhatsAppu apod.
   pak `python3 tools/build_en.py`. Mřížka se sama naplní posledními 4 příspěvky
   (videa a alba mají ikonu), v záhlaví se ukáže profilová fotka a počet sledujících.
 - Níž na stránce je **Fotogalerie** (`#gallery`) s výběrem 11 fotek.
+
+## Ukládání v prohlížeči (cache)
+Obrázky, styly a skripty si prohlížeč pamatuje 30 dní. Proto:
+- **vyměněný obrázek nahrajte pod novým názvem** (jinak ho návštěvníci uvidí až za měsíc),
+- po změně `css/style.css` nebo `js/main.js` zvyšte číslo `?v=` v `index.html`
+  a spusťte `python3 tools/build_en.py`.
+Kalendář (`data/`) se neukládá, změny z administrace jsou vidět hned.

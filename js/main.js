@@ -230,7 +230,7 @@
   var dataSrc = (eventsBody && eventsBody.getAttribute("data-src")) || "data/events.json";
 
   var eventsPromise = window.fetch
-    ? fetch(dataSrc, { cache: "no-cache" })
+    ? fetch(dataSrc)
         .then(function (r) { return r.ok ? r.json() : []; })
         .then(function (list) {
           return (Array.isArray(list) ? list : []).filter(function (e) {
@@ -292,14 +292,15 @@
   };
   eventsPromise.then(function (upcoming) {
     var next = upcoming.filter(function (e) { return e.status !== "cancelled"; })[0];
-    if (!nextBox || !next) return;
+    if (!nextBox) return;
+    if (!next) { nextBox.hidden = true; return; }
     var t0 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
     var p = next.date.split("-");
     var days = Math.round((Date.UTC(+p[0], +p[1] - 1, +p[2]) - t0) / 86400000);
     document.getElementById("neName").textContent = next.name;
     document.getElementById("neMeta").textContent = fmtRange(next) + (next.location ? " · " + next.location : "");
     document.getElementById("neCount").textContent = days < 0 ? (en ? "HAPPENING NOW" : "PRÁVĚ PROBÍHÁ") : daysLabel(days);
-    nextBox.hidden = false;
+    nextBox.classList.remove("is-pending"); nextBox.removeAttribute("aria-hidden"); nextBox.removeAttribute("tabindex");
   });
 
   /* ---------- mapa sezóny ---------- */
@@ -428,6 +429,13 @@
     var dots = [].slice.call(ss.querySelectorAll(".ss-dot"));
     var bar = ss.querySelector(".ss-progress span");
     var idx = 0, timer = null, DELAY = 6000;
+    var loadSlide = function (s) {
+      var img = s.querySelector("img");
+      if (img && img.dataset.src) {
+        img.srcset = img.dataset.srcset; img.src = img.dataset.src;
+        delete img.dataset.src; delete img.dataset.srcset;
+      }
+    };
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var go = function (i) {
       idx = (i + slides.length) % slides.length;
@@ -436,11 +444,11 @@
         s.classList.toggle("is-active", on);
         if (on) { s.removeAttribute("aria-hidden"); s.removeAttribute("tabindex"); }
         else { s.setAttribute("aria-hidden", "true"); s.setAttribute("tabindex", "-1"); }
-        var img = s.querySelector("img"); if (on && img) img.loading = "eager";
+        if (on) loadSlide(s);
       });
       dots.forEach(function (d, k) { d.classList.toggle("is-active", k === idx); d.setAttribute("aria-selected", k === idx ? "true" : "false"); });
       // přednačíst další fotku
-      var nx = slides[(idx + 1) % slides.length].querySelector("img"); if (nx) nx.loading = "eager";
+      loadSlide(slides[(idx + 1) % slides.length]);
       restart();
     };
     var restart = function () {
