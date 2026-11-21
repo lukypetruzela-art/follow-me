@@ -737,3 +737,11 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 /* podtitul AIRSHOW pod názvem v liště */
 .nav-word{ display:flex; flex-direction:column; }
 .nav-sub{ display:block; font-size:9.5px; line-height:12px; letter-spacing:0.52em; color:var(--yellow); font-weight:500; margin-top:1px; }
+
+/* znak Slezského aeroklubu Zábřeh u Domovské základny */
+.home-base{ display:flex; align-items:flex-start; gap:24px; }
+.club-logo{ flex-shrink:0; width:104px; height:104px; border-radius:50%; background:#fff; display:block;
+  box-shadow:0 0 0 1px var(--line-strong), 0 10px 30px rgba(0,0,0,0.35); transition:transform .25s ease, box-shadow .25s ease; }
+.club-logo img{ width:100%; height:100%; display:block; border-radius:50%; }
+.club-logo:hover, .club-logo:focus-visible{ transform:scale(1.04); box-shadow:0 0 0 2px var(--yellow), 0 10px 30px rgba(0,0,0,0.35); }
+@media (max-width:480px){ .home-base{ gap:16px; } .club-logo{ width:76px; height:76px; } }

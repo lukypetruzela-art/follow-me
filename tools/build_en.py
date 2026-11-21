@@ -304,6 +304,7 @@ CAPTIONS = {
 }
 
 ALTS = {
+    "Znak Slezského aeroklubu Zábřeh": "Emblem of the Silesian Aero Club Zábřeh",
     "Zlín Z-326MF OK-SEN za letu z boku, tmavě modrý se žlutou šachovnicí, nad krajinou": "Zlín Z-326MF OK-SEN in flight, side view, dark blue with yellow checks, over the countryside",
     "Zlín Z-226MS OK-LPR za letu z boku, světle zelený s vínovou šachovnicí, pilot v kokpitu": "Zlín Z-226MS OK-LPR in flight, side view, light green with maroon checks, pilot in the cockpit",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR těsně za sebou nad lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest",
