@@ -304,8 +304,8 @@ CAPTIONS = {
 }
 
 ALTS = {
-    "Zlín Z-326MF OK-SEN za letu shora, modro-žluté křídlo se šachovnicí, pilot v kokpitu": "Zlín Z-326MF OK-SEN in flight from above, blue-and-yellow chequered wing, pilot in the cockpit",
-    "Zlín Z-226MS OK-LPR na trávě s roztočenou vrtulí, světle zelený s vínovou šachovnicí": "Zlín Z-226MS OK-LPR on the grass with its propeller turning, light green with maroon checks",
+    "Zlín Z-326MF OK-SEN za letu z boku, tmavě modrý se žlutou šachovnicí, nad krajinou": "Zlín Z-326MF OK-SEN in flight, side view, dark blue with yellow checks, over the countryside",
+    "Zlín Z-226MS OK-LPR za letu z boku, světle zelený s vínovou šachovnicí, pilot v kokpitu": "Zlín Z-226MS OK-LPR in flight, side view, light green with maroon checks, pilot in the cockpit",
     "OK-KNR, OK-SEN, OK-MPR a OK-LPR těsně za sebou nad lesem": "OK-KNR, OK-SEN, OK-MPR and OK-LPR tucked in line astern over a forest",
     "Čtyři stroje v diamantu nad lesem a poli": "Four aircraft in diamond formation over forest and fields",
     "Čtyři stroje v řadě za sebou zepředu, v čele OK-KNR, pod nimi krajina": "Four aircraft in line astern seen head-on, OK-KNR leading, countryside below",
