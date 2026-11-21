@@ -40,6 +40,7 @@ function validate(list) {
     const status = STATUSES.includes(e.status) ? e.status : "tbc";
     const link = clean(e.link, 300);
     const note = clean(e.note, 200);
+    const icao = clean(e.icao, 4).toUpperCase();
     if (!DATE.test(date) || isNaN(Date.parse(date))) throw new Error(`Akce ${n}: chybí nebo je špatně datum.`);
     if (dateTo && (!DATE.test(dateTo) || dateTo < date)) throw new Error(`Akce ${n}: datum „do“ je špatně.`);
     if (!name) throw new Error(`Akce ${n}: chybí název.`);
@@ -53,6 +54,7 @@ function validate(list) {
       out.lat = Math.round(lat * 10000) / 10000;
       out.lng = Math.round(lng * 10000) / 10000;
     }
+    if (/^[A-Z]{4}$/.test(icao)) out.icao = icao;
     if (link) out.link = link;
     if (note) out.note = note;
     return out;

@@ -86,6 +86,8 @@ repozitáři, jen zpracovaný výstup.
 
 ## Kalendář na webu: odpočet a mapa
 - **Příští vystoupení** v úvodu ukazuje nejbližší nezrušenou akci s odpočtem dní.
+- **Kód letiště:** v administraci stačí napsat ICAO kód (např. LKHK) a místo i souřadnice
+  se doplní z `data/airports.json` (3 200 evropských letišť z OurAirports, public domain).
 - **Mapa sezóny** pod kalendářem se zobrazí, až bude mít aspoň jedna akce souřadnice; ukazuje akce, které mají v administraci vyplněné
   souřadnice (pole „Souřadnice místa“, formát `50.2532, 15.8456`). Podklad mapy je
   `assets/images/map-base.svg`.
