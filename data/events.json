@@ -17,5 +17,15 @@
     "status": "confirmed",
     "lat": 49.6753,
     "lng": 13.2744
+  },
+  {
+    "id": "baf9f908bf27",
+    "date": "2029-01-01",
+    "name": "Noc balonowa",
+    "location": "Leszno (EPLS)",
+    "status": "confirmed",
+    "lat": 51.835,
+    "lng": 16.5219,
+    "icao": "EPLS"
   }
 ]
