@@ -734,3 +734,7 @@ a.pilot-aircraft:hover .pa-go, a.pilot-aircraft:focus-visible .pa-go{ color:var(
 
 /* rámeček Příští vystoupení drží místo, dokud se nenačte kalendář */
 .next-event.is-pending{ visibility:hidden; }
+
+/* podtitul AIRSHOW pod názvem v liště */
+.nav-word{ display:flex; flex-direction:column; }
+.nav-sub{ display:block; font-size:9.5px; line-height:12px; letter-spacing:0.52em; color:var(--yellow); font-weight:500; margin-top:1px; }
